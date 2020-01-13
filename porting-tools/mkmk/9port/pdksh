@@ -1,0 +1,8 @@
+#!/bin/rc
+
+@{
+	cd /sys/src/ape/cmd/pdksh
+	mkmk -xccrap.c -o pdksh > mkfile.mkmk
+}
+
+

@@ -1,0 +1,26 @@
+This is a port of netsurf libparserutils to Plan9/APE. For iconv, we use apr-iconv rather than the de facto standard GNU variant. The reason for this is to ensure that the netsurf libraries stay permissively licensed.
+
+Source files have been copied out of their sub-directories in order to simplify the mk-based build.
+
+generation of mkfile:
+
+mkmk -s libparserutils -a -S -B -I. -I./include -I/sys/include/ape -I/sys/include/ape/apr-1 -I/$objtype/include/ape -DPLAN9 -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x docs -x test -x include -H/$objtype/lib/libiconv.a > mkfile
+
+mkfile manually edited to install libparerutils.a
+
+the following is added to the mkfile:
+(dircp does not work during mk in pkg/create, hence the convoluted directory making and copying).
+
+install:V:
+	mkdir -p /sys/include/ape/parserutils
+	cp include/parserutils/*.h /sys/include/ape/parserutils/
+	mkdir -p /sys/include/ape/parserutils/charset
+	cp include/parserutils/charset/*.h /sys/include/ape/parserutils/charset/
+	mkdir -p /sys/include/ape/parserutils/input
+	cp include/parserutils/input/*.h /sys/include/ape/parserutils/input/
+	mkdir -p /sys/include/ape/parserutils/utils
+	cp include/parserutils/utils/*.h /sys/include/ape/parserutils/utils/
+
+nuke:V:
+	rm -rf /sys/include/ape/parserutils
+	

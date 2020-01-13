@@ -1,0 +1,30 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	mkdir -p /sys/lib/heirloom/help
+	cp ad /sys/lib/heirloom/help/
+	cp bd /sys/lib/heirloom/help/
+	cp bu /sys/lib/heirloom/help/
+	cp cb /sys/lib/heirloom/help/
+	cp cm /sys/lib/heirloom/help/
+	cp co /sys/lib/heirloom/help/
+	cp cmds /sys/lib/heirloom/help/
+	cp de /sys/lib/heirloom/help/
+	cp default /sys/lib/heirloom/help/
+	cp ge /sys/lib/heirloom/help/
+	cp he /sys/lib/heirloom/help/
+	cp prs /sys/lib/heirloom/help/
+	cp rc /sys/lib/heirloom/help/
+	cp un /sys/lib/heirloom/help/
+	cp ut /sys/lib/heirloom/help/
+	cp vc /sys/lib/heirloom/help/
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+

@@ -1,0 +1,22 @@
+</$objtype/mkfile
+DIRS=lib sed doc
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp gsed.rc /rc/bin/ape/gsed
+	chmod +x /rc/bin/ape/gsed
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /rc/bin/ape/gsed
+

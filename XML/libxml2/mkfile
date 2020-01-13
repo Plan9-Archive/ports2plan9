@@ -1,0 +1,667 @@
+</$objtype/mkfile
+LIB=libxml2.a$O
+OFILES=globals.$O error.$O HTMLparser.$O xmlregexp.$O xmlstring.$O trio.$O triostr.$O \
+	xzlib.$O xmlwriter.$O entities.$O SAX2.$O xmlmodule.$O xmlschemastypes.$O \
+	xpath.$O parser.$O xmlunicode.$O c14n.$O legacy.$O trionan.$O dict.$O debugXML.$O \
+	encoding.$O nanohttp.$O schematron.$O parserInternals.$O xmlmemory.$O xmlsave.$O \
+	HTMLtree.$O nanoftp.$O threads.$O xmlreader.$O chvalid.$O xmlIO.$O catalog.$O \
+	tree.$O xlink.$O xpointer.$O list.$O xmlschemas.$O DOCBparser.$O pattern.$O \
+	SAX.$O buf.$O uri.$O relaxng.$O xinclude.$O hash.$O valid.$O 
+HFILES=elfgcchack.h include/libxml/xmlmemory.h libxml.h include/libxml/xmlexports.h \
+	include/libxml/xmlversion.h config.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./include -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_SOURCE -D_C99_SNPRINTF_EXTENSION \
+	-D_BSD_EXTENSION -DHAVE_INTTYPES_H -DHAVE_SYS_SOCKET_H -DHAVE_NETDB_H -DHAVE_SYS_SELECT_H 
+
+valid.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/list.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/valid.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/hash.h 
+hash.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/hash.h include/libxml/parser.h 
+xinclude.$O: include/libxml/tree.h buf.h include/libxml/tree.h include/libxml/xinclude.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/xpointer.h include/libxml/tree.h include/libxml/uri.h include/libxml/parser.h \
+	include/libxml/tree.h 
+relaxng.$O: include/libxml/xmlschemas.h include/libxml/schemasInternals.h include/libxml/xmlschemastypes.h \
+	include/libxml/xmlregexp.h include/libxml/xmlautomata.h include/libxml/xmlschemas.h \
+	include/libxml/schemasInternals.h include/libxml/xmlschemastypes.h include/libxml/xmlstring.h \
+	include/libxml/hash.h include/libxml/relaxng.h include/libxml/tree.h include/libxml/uri.h \
+	include/libxml/hash.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h 
+uri.$O: include/libxml/parser.h include/libxml/xmlerror.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/tree.h include/libxml/uri.h 
+buf.$O: include/libxml/tree.h buf.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/tree.h 
+SAX.$O: include/libxml/SAX2.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h include/libxml/HTMLparser.h \
+	include/libxml/tree.h include/libxml/HTMLtree.h include/libxml/valid.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/SAX.h include/libxml/xmlIO.h \
+	include/libxml/hash.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/xpath.h include/libxml/tree.h include/libxml/debugXML.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/entities.h \
+	include/libxml/valid.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/tree.h 
+pattern.$O: include/libxml/dict.h include/libxml/tree.h include/libxml/pattern.h \
+	include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/dict.h \
+	include/libxml/hash.h include/libxml/tree.h 
+DOCBparser.$O: include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/parser.h include/libxml/DOCBparser.h include/libxml/parser.h \
+	include/libxml/xmlerror.h 
+xmlschemas.$O: include/libxml/tree.h include/libxml/xmlschemas.h include/libxml/xmlstring.h \
+	include/libxml/hash.h include/libxml/relaxng.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/xmlreader.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/pattern.h include/libxml/xmlIO.h include/libxml/encoding.h \
+	include/libxml/dict.h include/libxml/xmlregexp.h include/libxml/xmlautomata.h \
+	include/libxml/xmlschemas.h include/libxml/schemasInternals.h include/libxml/xmlschemastypes.h \
+	include/libxml/dict.h include/libxml/hash.h include/libxml/xmlregexp.h \
+	include/libxml/schemasInternals.h include/libxml/tree.h include/libxml/xmlschemas.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/hash.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/parser.h 
+list.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/list.h 
+xpointer.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/xpath.h include/libxml/xpathInternals.h include/libxml/xpath.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/xpointer.h 
+xlink.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/xlink.h include/libxml/valid.h \
+	include/libxml/parser.h include/libxml/tree.h 
+tree.$O: include/libxml/hash.h include/libxml/tree.h save.h include/libxml/tree.h \
+	buf.h include/libxml/hash.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/debugXML.h include/libxml/HTMLparser.h include/libxml/tree.h \
+	include/libxml/HTMLtree.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/valid.h include/libxml/entities.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/parser.h include/libxml/tree.h 
+catalog.$O: include/libxml/tree.h buf.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/tree.h \
+	include/libxml/xmlstring.h include/libxml/catalog.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/hash.h 
+xmlIO.$O: include/libxml/tree.h enc.h include/libxml/tree.h buf.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/tree.h include/libxml/xmlstring.h \
+	include/libxml/catalog.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/nanoftp.h include/libxml/nanohttp.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/xmlIO.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/parser.h 
+chvalid.$O: include/libxml/chvalid.h 
+xmlreader.$O: include/libxml/tree.h buf.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/pattern.h include/libxml/tree.h include/libxml/xinclude.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/tree.h include/libxml/xmlschemas.h \
+	include/libxml/xmlstring.h include/libxml/hash.h include/libxml/relaxng.h \
+	include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/tree.h include/libxml/xmlschemas.h include/libxml/xmlstring.h \
+	include/libxml/hash.h include/libxml/relaxng.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/xmlreader.h include/libxml/xmlIO.h 
+threads.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/threads.h 
+nanoftp.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/nanoftp.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/parser.h 
+HTMLtree.$O: include/libxml/tree.h buf.h include/libxml/tree.h include/libxml/uri.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/entities.h include/libxml/HTMLparser.h \
+	include/libxml/tree.h include/libxml/HTMLtree.h include/libxml/HTMLparser.h 
+xmlsave.$O: include/libxml/tree.h save.h include/libxml/tree.h enc.h include/libxml/tree.h \
+	buf.h include/libxml/HTMLparser.h include/libxml/tree.h include/libxml/HTMLtree.h \
+	include/libxml/xmlIO.h include/libxml/encoding.h include/libxml/tree.h \
+	include/libxml/xmlsave.h include/libxml/tree.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h 
+xmlmemory.$O: include/libxml/threads.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h 
+parserInternals.$O: include/libxml/tree.h enc.h include/libxml/tree.h buf.h include/libxml/chvalid.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/tree.h include/libxml/xmlstring.h \
+	include/libxml/catalog.h include/libxml/SAX.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/xmlIO.h include/libxml/valid.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/entities.h \
+	include/libxml/valid.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/tree.h 
+schematron.$O: include/libxml/tree.h include/libxml/schematron.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/pattern.h include/libxml/xpath.h include/libxml/xpathInternals.h \
+	include/libxml/xpath.h include/libxml/tree.h include/libxml/uri.h include/libxml/tree.h \
+	include/libxml/parser.h 
+nanohttp.$O: include/libxml/tree.h include/libxml/uri.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/nanohttp.h include/libxml/parser.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h 
+encoding.$O: include/libxml/tree.h enc.h include/libxml/tree.h buf.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h include/libxml/HTMLparser.h \
+	include/libxml/encoding.h 
+debugXML.$O: include/libxml/xmlstring.h include/libxml/hash.h include/libxml/relaxng.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/xpath.h include/libxml/xpathInternals.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/HTMLparser.h include/libxml/HTMLparser.h include/libxml/tree.h \
+	include/libxml/HTMLtree.h include/libxml/hash.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/debugXML.h include/libxml/valid.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/parser.h \
+	include/libxml/tree.h 
+dict.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/dict.h include/libxml/tree.h 
+trionan.$O: triodef.h trionan.h triodef.h 
+legacy.$O: include/libxml/HTMLparser.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/SAX.h include/libxml/entities.h \
+	include/libxml/tree.h 
+c14n.$O: include/libxml/tree.h buf.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/c14n.h include/libxml/xpath.h include/libxml/xpathInternals.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/parser.h include/libxml/tree.h 
+xmlunicode.$O: include/libxml/chvalid.h include/libxml/xmlunicode.h 
+parser.$O: include/libxml/xpath.h include/libxml/tree.h enc.h include/libxml/tree.h \
+	buf.h include/libxml/xmlstring.h include/libxml/hash.h include/libxml/relaxng.h \
+	include/libxml/xmlschemas.h include/libxml/schemasInternals.h include/libxml/xmlschemastypes.h \
+	include/libxml/tree.h include/libxml/xmlstring.h include/libxml/catalog.h \
+	include/libxml/tree.h include/libxml/uri.h include/libxml/xmlIO.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/entities.h \
+	include/libxml/valid.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/tree.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/threads.h 
+xpath.$O: triodef.h trionan.h triodef.h trionan.c timsort.h include/libxml/tree.h \
+	buf.h include/libxml/dict.h include/libxml/tree.h include/libxml/pattern.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/threads.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/hash.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/debugXML.h include/libxml/xpath.h include/libxml/tree.h \
+	include/libxml/xpointer.h include/libxml/hash.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/xpath.h \
+	include/libxml/xpathInternals.h include/libxml/xpath.h include/libxml/valid.h \
+	include/libxml/tree.h 
+xmlschemastypes.$O: include/libxml/xmlschemas.h include/libxml/schemasInternals.h \
+	include/libxml/xmlschemastypes.h include/libxml/dict.h include/libxml/hash.h \
+	include/libxml/xmlregexp.h include/libxml/schemasInternals.h include/libxml/tree.h \
+	include/libxml/xmlschemas.h include/libxml/tree.h include/libxml/uri.h \
+	include/libxml/xpath.h include/libxml/valid.h include/libxml/hash.h include/libxml/xmlstring.h \
+	include/libxml/chvalid.h include/libxml/parser.h include/libxml/HTMLparser.h \
+	include/libxml/parser.h include/libxml/parserInternals.h include/libxml/parser.h 
+xmlmodule.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/xmlmodule.h include/libxml/parser.h \
+	include/libxml/xmlerror.h 
+SAX2.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/HTMLparser.h include/libxml/tree.h \
+	include/libxml/HTMLtree.h include/libxml/valid.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/SAX.h include/libxml/xmlIO.h include/libxml/hash.h \
+	include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/xpath.h include/libxml/tree.h include/libxml/debugXML.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/entities.h \
+	include/libxml/valid.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h include/libxml/parser.h include/libxml/tree.h 
+entities.$O: include/libxml/tree.h save.h include/libxml/dict.h include/libxml/globals.h \
+	include/libxml/threads.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h include/libxml/parser.h \
+	include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/parser.h include/libxml/entities.h include/libxml/hash.h 
+xmlwriter.$O: include/libxml/tree.h save.h include/libxml/tree.h enc.h include/libxml/tree.h \
+	buf.h include/libxml/xmlstring.h include/libxml/list.h include/libxml/xmlIO.h \
+	include/libxml/xmlwriter.h include/libxml/HTMLparser.h include/libxml/tree.h \
+	include/libxml/HTMLtree.h include/libxml/tree.h include/libxml/uri.h include/libxml/parser.h 
+triostr.$O: triop.h triodef.h triostr.h triodef.h 
+trio.$O: triop.h triodef.h triostr.h triodef.h trionan.h triodef.h triop.h trio.h \
+	triodef.h 
+xmlstring.$O: include/libxml/xmlstring.h include/libxml/xmlstring.h include/libxml/chvalid.h \
+	include/libxml/parser.h include/libxml/HTMLparser.h include/libxml/parser.h \
+	include/libxml/parserInternals.h 
+xmlregexp.$O: include/libxml/xmlunicode.h include/libxml/xmlautomata.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/tree.h 
+HTMLparser.$O: include/libxml/tree.h enc.h include/libxml/tree.h buf.h include/libxml/tree.h \
+	include/libxml/uri.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h include/libxml/xmlIO.h \
+	include/libxml/valid.h include/libxml/encoding.h include/libxml/entities.h \
+	include/libxml/HTMLparser.h include/libxml/tree.h include/libxml/HTMLtree.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/xmlstring.h include/libxml/chvalid.h include/libxml/parser.h \
+	include/libxml/HTMLparser.h include/libxml/parser.h include/libxml/parserInternals.h \
+	include/libxml/parser.h include/libxml/tree.h 
+error.$O: include/libxml/globals.h include/libxml/threads.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h include/libxml/xlink.h \
+	include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/globals.h include/libxml/encoding.h include/libxml/parser.h \
+	include/libxml/tree.h include/libxml/globals.h include/libxml/xmlIO.h include/libxml/tree.h \
+	include/libxml/encoding.h include/libxml/xmlstring.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/tree.h include/libxml/entities.h \
+	include/libxml/xmlregexp.h include/libxml/xmlregexp.h include/libxml/tree.h \
+	include/libxml/xmlautomata.h include/libxml/list.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/xmlerror.h include/libxml/valid.h \
+	include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h include/libxml/dict.h \
+	include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h include/libxml/xmlregexp.h \
+	include/libxml/xmlstring.h include/libxml/tree.h include/libxml/parser.h \
+	include/libxml/globals.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/parser.h 
+globals.$O: include/libxml/SAX.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/threads.h include/libxml/globals.h include/libxml/threads.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX2.h include/libxml/tree.h \
+	include/libxml/xlink.h include/libxml/parser.h include/libxml/SAX.h include/libxml/parser.h \
+	include/libxml/xmlerror.h include/libxml/globals.h include/libxml/encoding.h \
+	include/libxml/parser.h include/libxml/tree.h include/libxml/globals.h \
+	include/libxml/xmlIO.h include/libxml/tree.h include/libxml/encoding.h \
+	include/libxml/xmlstring.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/tree.h include/libxml/entities.h include/libxml/xmlregexp.h \
+	include/libxml/xmlregexp.h include/libxml/tree.h include/libxml/xmlautomata.h \
+	include/libxml/list.h include/libxml/tree.h include/libxml/parser.h include/libxml/xmlerror.h \
+	include/libxml/valid.h include/libxml/dict.h include/libxml/parser.h include/libxml/hash.h \
+	include/libxml/dict.h include/libxml/tree.h include/libxml/dict.h include/libxml/tree.h \
+	include/libxml/xmlregexp.h include/libxml/xmlstring.h include/libxml/tree.h \
+	include/libxml/parser.h include/libxml/globals.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -rf /sys/include/ape/libxml2
+	rm -f /$objtype/lib/ape/libxml2.a
+	rm -f /rc/bin/ape/xml2-config
+	rm -f /$objtype/bin/xmlcatalog
+	rm -f /$objtype/bin/xmllint
+	rm -f /$objtype/lib/ape/pkgconfig/libxml-2.0.pc
+
+install:V:
+	mk -f mkfile.bin installall
+	cp libxml.3 /sys/man/3/libxml
+	cp xml2-config.1 /sys/man/1/xml2-config
+	cp xml2-config /rc/bin/ape/
+	mkdir -p /sys/include/ape/libxml2/libxml
+	cp apeheaders/*.h /sys/include/ape/libxml2/libxml/
+	cp libxml-2.0.pc /$objtype/lib/ape/pkgconfig/
+
+

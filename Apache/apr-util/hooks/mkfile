@@ -1,0 +1,29 @@
+</$objtype/mkfile
+LIB=../libaprutil-1.a$O
+OFILES=apr_hooks.$O 
+HFILES=/sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr.h ../include/apr_optional.h \
+	../include/apu.h ../include/apr_optional_hooks.h /sys/include/ape/apr-1/apr_tables.h \
+	/sys/include/ape/apr-1/apr_hash.h /sys/include/ape/apr-1/apr_pools.h ../include/apr_hooks.h \
+	/sys/include/ape/apr-1/apr_tables.h ../include/apu.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE \
+	-D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -UAPU_DSO_BUILD 
+
+apr_hooks.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

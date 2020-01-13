@@ -1,0 +1,21 @@
+</$objtype/mkfile
+LIB=libpcre.a$O
+OFILES=pcre_maketables.$O pcre_string_utils.$O pcre_get.$O pcre_byte_order.$O pcre_ucd.$O \
+	pcre_globals.$O pcre_dfa_exec.$O pcre_newline.$O pcre_valid_utf8.$O pcre_version.$O \
+	pcre_ord2utf8.$O pcre_exec.$O pcre_printint.$O pcre_jit_compile.$O pcre_xclass.$O \
+	pcre_study.$O pcre_compile.$O pcre_chartables.$O pcre_config.$O pcre_tables.$O \
+	pcre_fullinfo.$O pcre_refcount.$O 
+HFILES=pcre_internal.h ucp.h pcre.h config.h plan9hacks.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

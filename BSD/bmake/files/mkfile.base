@@ -1,0 +1,34 @@
+</$objtype/mkfile
+LIB=base.a
+OFILES=arch.$O buf.$O compat.$O cond.$O dir.$O for.$O getopt.$O hash.$O job.$O \
+	make.$O make_malloc.$O parse.$O sigcompat.$O str.$O strlist.$O suff.$O \
+	targ.$O trace.$O util.$O var.$O 
+HFILES=make.h nonints.h make_malloc.h buf.h make-conf.h hash.h sprite.h lst.h sprite.h \
+	missing/sys/cdefs.h config.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./missing -DHAVE_CONFIG_H 
+
+var.$O: job.h dir.h 
+util.$O: 
+trace.$O: trace.h job.h 
+targ.$O: dir.h 
+suff.$O: dir.h 
+strlist.$O: strlist.h 
+sigcompat.$O: 
+parse.$O: pathnames.h job.h dir.h 
+make_malloc.$O: 
+make.$O: job.h dir.h 
+job.$O: trace.h pathnames.h job.h dir.h wait.h missing/sys/file.h 
+for.$O: strlist.h dir.h 
+dir.$O: dir.h 
+cond.$O: dir.h 
+compat.$O: pathnames.h job.h dir.h wait.h 
+arch.$O: dir.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

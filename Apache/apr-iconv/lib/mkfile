@@ -1,0 +1,40 @@
+</$objtype/mkfile
+LIB=../libapriconv-1.a$O
+OFILES=iconv_ces_euc.$O iconv_ces.$O api_version.$O iconv.$O iconv_int.$O iconv_ces_iso2022.$O \
+	iconv_module.$O iconv_ccs.$O iconv_uc.$O 
+HFILES=iconv.h apr_iconv_private.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	../include/apr_iconv.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I/sys/include/ape/apr-1 -DHAVE_SOCK_OPTS -D_REENTRANT_SOURCE \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION \
+	-D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -DAPI_USE_BUILTIN_ALIASES \
+	-D_LIMITS_EXTENSION 
+
+iconv_uc.$O: 
+iconv_module.$O: charset_alias.h /sys/include/ape/apr-1/apr_version.h ../include/api_version.h \
+	/sys/include/ape/apr-1/apr_lib.h /sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_strings.h \
+	/sys/include/ape/apr-1/apr_env.h apr_dso.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_inherit.h /sys/include/ape/apr-1/apr_time.h \
+	/sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_file_io.h 
+iconv_ces_iso2022.$O: 
+iconv_int.$O: 
+iconv.$O: 
+api_version.$O: /sys/include/ape/apr-1/apr_version.h ../include/api_version.h 
+iconv_ces.$O: 
+iconv_ces_euc.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,24 @@
+</$objtype/mkfile
+DIRS=lib doc
+# xmlwf: this binary needs to be worked on
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp libexpat.a$O /$objtype/lib/ape/libexpat.a
+	mkdir -p /$objtype/lib/ape/pkgconfig
+	cp expat.pc /$objtype/lib/ape/pkgconfig/
+	cp apeheaders/*.h /sys/include/ape/
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+

@@ -1,0 +1,5 @@
+mkmk -o clzip -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x testsuite > mkfile
+
+errors:
+main.c : some plan9-specific hacks...
+

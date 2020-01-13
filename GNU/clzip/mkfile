@@ -1,0 +1,36 @@
+</$objtype/mkfile
+DIRS=doc 
+TARG=clzip
+OFILES=carg_parser.$O decoder.$O encoder.$O main.$O 
+BIN=/$objtype/bin
+HFILES=clzip.h stdint.h stdbool.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+main.$O: encoder.h decoder.h carg_parser.h 
+encoder.$O: encoder.h 
+decoder.$O: decoder.h 
+carg_parser.$O: carg_parser.h 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+

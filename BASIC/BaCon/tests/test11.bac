@@ -1,0 +1,41 @@
+REM Testing BASIC compiler
+
+PRINT "=========================="
+PRINT "Test 11: Testing READ/DATA"
+PRINT "=========================="
+PRINT
+
+REM Define some integer data
+DATA 1, 2, 3, 4, 5
+DATA 6, 7, 8, 9, 10
+
+REM Define some string data
+DATA "Hello ", "world ", "this ", "is ", "BACON!\n"
+
+REM Some float data
+DATA 1.1, 2.2, 3.3, 4.4
+
+REM We can use arrays as well
+DECLARE dat[10] TYPE int
+
+REM Get all integer data
+FOR x = 0 TO 9
+    READ dat[x]
+    PRINT dat[x]
+NEXT
+
+REM Get all string data
+FOR y = 1 TO 5
+    READ q$
+    PRINT q$;
+NEXT
+
+REM Get some float data
+DECLARE t TYPE double
+FOR z = 1 TO 4
+    READ t
+    PRINT t
+NEXT
+
+REM Reset data pointers
+RESTORE

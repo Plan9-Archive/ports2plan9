@@ -1,0 +1,25 @@
+This is a port of db 1.85 of the Berkeley db code. This is also the latest truly permissive release. Later versions are restricted and hidden away by Oracle and may also have licencing conflicts with some OSS programs.
+
+==generation of mkfile ==
+
+mkmk -s libdb -a -B -S -I. -I/sys/include/ape -I/$objtype/include/ape -I/sys/include/ape/apr-1 -DPLAN9 -D_PLAN9_SOURCE -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D__DBINTERFACE_PRIVATE -D__BIT_TYPES_DEFINED__ -x doc -x test -x sys -x man > mkfile
+
+target changed from libdb.a8 to libdb.a
+
+added to mkfile
+
+nuke:V:
+	rm -f /sys/man/3ape/btree
+	rm -f /sys/man/3ape/dbopen
+	rm -f /sys/man/3ape/hash
+	rm -f /sys/man/3ape/mpool
+	rm -f /sys/man/3ape/recno
+	;
+
+install:V:
+	mkdir -p /sys/man/3ape
+	cp btree.3 /sys/man/3ape/btree
+	cp dbopen.3 /sys/man/3ape/dbopen
+	cp hash.3 /sys/man/3ape/hash
+	cp mpool.3 /sys/man/3ape/mpool
+	cp recno.3 /sys/man/3ape/recno

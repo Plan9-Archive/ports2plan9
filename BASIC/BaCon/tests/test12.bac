@@ -1,0 +1,40 @@
+REM Testing BASIC compiler
+PRINT "========================="
+PRINT "Test 12: Testing FUNCTION"
+PRINT "========================="
+PRINT
+
+REM Define a simple function
+FUNCTION calc
+
+LOCAL a TYPE double
+
+a = 3 * PI
+RETURN a
+
+END FUNCTION
+
+REM Define a simple string function
+FUNCTION tell_us$
+
+var$ = "Hello function"
+
+RETURN var$
+
+END FUNCTION
+
+REM Define function with arguments
+FUNCTION demo(STRING a$, NUMBER i)
+
+PRINT a$
+PRINT i
+
+RETURN 0
+
+ENDFUNCTION
+
+REM Use function
+PRINT calc()
+PRINT tell_us$()
+
+var$

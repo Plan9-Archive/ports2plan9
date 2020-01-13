@@ -1,0 +1,24 @@
+REM Testing BASIC compiler
+
+PRINT "=============================="
+PRINT "Test 10: Testing POKE and PEEK"
+PRINT "=============================="
+PRINT
+
+REM Testing poke
+LET address = MEMORY(10)
+
+FOR x = 0 TO 9
+    POKE address + x, 5
+NEXT
+
+FOR y = 0 TO 9
+    b = PEEK(address + y)
+    PRINT b
+NEXT
+
+REM Release all
+FREE address
+
+PRINT "PEEK(1234) should generate an error."
+c = PEEK(1234)

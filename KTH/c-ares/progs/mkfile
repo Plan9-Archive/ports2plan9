@@ -1,0 +1,23 @@
+</$objtype/mkfile
+TARG=acountry ahost adig 
+LIB=../libcares.a 
+BIN=.
+HFILES=../ares_nowarn.h ../ares_getopt.h ../inet_net_pton.h ../inet_ntop.h ../ares_dns.h \
+	../ares.h ../ares_setup.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I.. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE \
+	-D_BSD_EXTENSION -D_REENTRANT_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-DHAVE_CONFIG_H -DHAVE_STDBOOL_H -DHAVE_STRDUP 
+
+adig.$O: ../nameser.h 
+ahost.$O: ../ares_ipv6.h 
+acountry.$O: 
+
+install:V:
+	cp $O.acountry /$objtype/bin/
+	cp $O.ahost /$objtype/bin/
+	cp $O.adig /$objtype/bin/

@@ -1,0 +1,30 @@
+pcc  -o 8.out shell.8 ./libsqlite3.a8
+open_db: undefined: sqlite3_enable_load_extension
+do_meta_command: undefined: sqlite3_load_extension
+do_meta_command: undefined: sqlite3_trace
+posixFchown: undefined: fchown
+
+history_truncate_file: undefined: mkstemp
+fn_complete: undefined: wcschr
+fn_complete: undefined: wcsncpy
+el_init: undefined: nl_langinfo
+el_editmode: undefined: wcscmp
+wcsdup: undefined: wmemcpy
+unvis: undefined: u_char
+terminal_echotc: undefined: wcstol
+el_match: undefined: wcsstr
+parse_line: undefined: tok_winit
+parse_line: undefined: tok_wstr
+parse_line: undefined: tok_wend
+hist_command: undefined: history_w
+vi_match: undefined: wcscspn
+pcc: 8l: 8l 689: error
+mk: pcc  -o ...  : exit status=rc 686: pcc 688: 8l: 8l 689: error
+
+
+The second part of errors are linking errors related to libedit. Need to fix libedit.
+
+redefinitions and stubs are put in config.h
+
+shell.c needs to be built with 
+-DSQLITE_OMIT_LOAD_EXTENSION

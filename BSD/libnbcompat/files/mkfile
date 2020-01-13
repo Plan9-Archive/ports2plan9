@@ -1,0 +1,96 @@
+</$objtype/mkfile
+LIB=libnbcompat.a
+OFILES=__fts13.$O __glob13.$O __unsetenv13.$O asprintf.$O engine.$O err.$O fgetln.$O \
+	findenv.$O fnmatch.$O fparseln.$O fts.$O getaddrinfo.$O getenv.$O getopt.$O \
+	getopt_long.$O gettemp.$O glob.$O isblank.$O lchflags.$O lchmod.$O lchown.$O \
+	lutimes.$O malloc.$O md5c.$O md5hl.$O mdXhl.$O mkdtemp.$O mkstemp.$O poll.$O \
+	pwcache.$O regcomp.$O regerror.$O regexec.$O regfree.$O rmd160.$O rmd160hl.$O \
+	setenv.$O setgroupent.$O setmode.$O setpassent.$O setprogname.$O sha1.$O \
+	sha1hl.$O sha2.$O sha2hl.$O shquote.$O snprintf.$O statvfs.$O strdup.$O \
+	strerror.$O strlcat.$O strlcpy.$O strmode.$O strsep.$O strtoll.$O timegm.$O \
+	unsetenv.$O unvis.$O usleep.$O utimes.$O vis.$O warn.$O 
+HFILES=nbcompat.h nbcompat/getopt.h nbcompat/util.h nbcompat/unistd.h nbcompat/tzfile.h \
+	nbcompat/time.h nbcompat/termcap.h nbcompat/string.h nbcompat/stdio.h nbcompat/stdlib.h \
+	nbcompat/statvfs.h nbcompat/stat.h nbcompat/queue.h nbcompat/pwd.h nbcompat/paths.h \
+	nbcompat/grp.h nbcompat/fnmatch.h nbcompat/err.h nbcompat/dirent.h nbcompat/ctype.h \
+	nbcompat/assert.h nbcompat/param.h nbcompat/endian.h nbcompat/limits.h \
+	nbcompat/types.h nbcompat/cdefs.h nbcompat/nbconfig.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./nbcompat -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE \
+	-D_BSD_EXTENSION -DHAVE_CONFIG_H -D_LIMITS_EXTENSION -DHAVE_SYS_TYPES_H \
+	-DHAVE_INTTYPES_H -DHAVE_LIMITS_H -DHAVE_SYS_PARAM_H -DHAVE_ERRNO_H -DHAVE_STDARG_H \
+	-DHAVE_STDDEF_H -DHAVE_ASSERT_H -DHAVE_CTYPE_H -DHAVE_DIRENT_H -DHAVE_GRP_H \
+	-DHAVE_PWD_H -DHAVE_SYS_STAT_H -DHAVE_STDLIB_H -DHAVE_STDIO_H -DHAVE_STRING_H \
+	-DHAVE_MEMMOVE -DHAVE_STRDUP -DHAVE_STRERROR -DTIME_WITH_SYS_TIME -DHAVE_UNISTD_H \
+	-DHAVE_FCNTL_H -DHAVE_NETDB_H -DHAVE_SYS_SOCKET_H -DHAVE_MALLOC -DHAVE_MEMSET \
+	-DHAVE_SETGRENT -DHAVE_SIGNAL_H -DHAVE_SETPWENT -DHAVE_SYS_UIO_H -DHAVE_STRTOLL \
+	-DHAVE_SELECT -DHAVE_UTIME_H 
+
+warn.$O: 
+vis.$O: nbcompat/vis.h 
+utimes.$O: 
+unvis.$O: nbcompat/vis.h 
+unsetenv.$O: __unsetenv13.c 
+strtoll.$O: 
+strdup.$O: 
+snprintf.$O: 
+sha2hl.$O: nbcompat/sha2.h 
+sha2.$O: nbcompat/sha2.h nbcompat/sha2.h 
+sha1hl.$O: nbcompat/sha1.h 
+sha1.$O: nbcompat/sha1.h 
+setmode.$O: 
+setenv.$O: 
+rmd160hl.$O: nbcompat/rmd160.h 
+rmd160.$O: nbcompat/rmd160.h 
+regfree.$O: private/regex2.h private/utils.h nbcompat/regex.h 
+regexec.$O: engine.c engine.c private/regex2.h private/utils.h nbcompat/regex.h 
+regerror.$O: private/utils.h nbcompat/regex.h 
+regcomp.$O: private/cname.h private/cclass.h private/regex2.h private/utils.h nbcompat/regex.h 
+pwcache.$O: private/pwcache.h 
+poll.$O: nbcompat/poll.h 
+mkstemp.$O: 
+mkdtemp.$O: 
+mdXhl.$O: 
+md5hl.$O: mdXhl.c nbcompat/md5.h 
+md5c.$O: nbcompat/md5.h 
+glob.$O: nbcompat/glob.h __glob13.c 
+gettemp.$O: 
+getopt_long.$O: 
+getopt.$O: 
+getenv.$O: 
+getaddrinfo.$O: nbcompat/netdb.h nbcompat/netdb.h 
+fts.$O: nbcompat/fts.h __fts13.c 
+fparseln.$O: 
+findenv.$O: 
+err.$O: 
+asprintf.$O: 
+__unsetenv13.$O: 
+__glob13.$O: nbcompat/glob.h 
+__fts13.$O: nbcompat/fts.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+

@@ -1,0 +1,497 @@
+This is clzip.info, produced by makeinfo version 4.13 from
+clzip.texinfo.
+
+INFO-DIR-SECTION Data Compression
+START-INFO-DIR-ENTRY
+* Clzip: (clzip).               Data compressor based on the LZMA algorithm
+END-INFO-DIR-ENTRY
+
+
+File: clzip.info,  Node: Top,  Next: Introduction,  Up: (dir)
+
+Clzip Manual
+************
+
+This manual is for Clzip (version 1.2, 18 May 2011).
+
+* Menu:
+
+* Introduction::          Purpose and features of clzip
+* Algorithm::             How clzip compresses the data
+* Invoking Clzip::        Command line interface
+* File Format::           Detailed format of the compressed file
+* Examples::              A small tutorial with examples
+* Problems::              Reporting bugs
+* Concept Index::         Index of concepts
+
+
+   Copyright (C) 2010, 2011 Antonio Diaz Diaz.
+
+   This manual is free documentation: you have unlimited permission to
+copy, distribute and modify it.
+
+
+File: clzip.info,  Node: Introduction,  Next: Algorithm,  Prev: Top,  Up: Top
+
+1 Introduction
+**************
+
+Clzip is a lossless data compressor based on the LZMA algorithm, with
+very safe integrity checking and a user interface similar to the one of
+gzip or bzip2. Clzip decompresses almost as fast as gzip and compresses
+better than bzip2, which makes it well suited for software distribution
+and data archiving.
+
+   Clzip uses the lzip file format; the files produced by clzip are
+fully compatible with lzip-1.4 or newer. Clzip is in fact a C language
+version of lzip, intended for embedded devices or systems lacking a C++
+compiler.
+
+   Clzip replaces every file given in the command line with a compressed
+version of itself, with the name "original_name.lz". Each compressed
+file has the same modification date, permissions, and, when possible,
+ownership as the corresponding original, so that these properties can be
+correctly restored at decompression time. Clzip is able to read from
+some types of non regular files if the `--stdout' option is specified.
+
+   If no file names are specified, clzip compresses (or decompresses)
+from standard input to standard output. In this case, clzip will
+decline to write compressed output to a terminal, as this would be
+entirely incomprehensible and therefore pointless.
+
+   Clzip will correctly decompress a file which is the concatenation of
+two or more compressed files. The result is the concatenation of the
+corresponding uncompressed files. Integrity testing of concatenated
+compressed files is also supported.
+
+   Clzip can produce multimember files and safely recover, with
+lziprecover, the undamaged members in case of file damage. Clzip can
+also split the compressed output in volumes of a given size, even when
+reading from standard input. This allows the direct creation of
+multivolume compressed tar archives.
+
+   The amount of memory required for compression is about 5 MiB plus 1
+or 2 times the dictionary size limit (1 if input file size is less than
+dictionary size limit, else 2) plus 8 times the dictionary size really
+used. The amount of memory required for decompression is only a few tens
+of KiB larger than the dictionary size really used.
+
+   Clzip will automatically use the smallest possible dictionary size
+without exceeding the given limit. Keep in mind that the decompression
+memory requirement is affected at compression time by the choice of
+dictionary size limit.
+
+   When decompressing, clzip attempts to guess the name for the
+decompressed file from that of the compressed file as follows:
+
+filename.lz    becomes   filename
+filename.tlz   becomes   filename.tar
+anyothername   becomes   anyothername.out
+
+   As a self-check for your protection, clzip stores in the member
+trailer the 32-bit CRC of the original data and the size of the
+original data, to make sure that the decompressed version of the data
+is identical to the original. This guards against corruption of the
+compressed data, and against undetected bugs in clzip (hopefully very
+unlikely). The chances of data corruption going undetected are
+microscopic, less than one chance in 4000 million for each member
+processed. Be aware, though, that the check occurs upon decompression,
+so it can only tell you that something is wrong. It can't help you
+recover the original uncompressed data.
+
+   Return values: 0 for a normal exit, 1 for environmental problems
+(file not found, invalid flags, I/O errors, etc), 2 to indicate a
+corrupt or invalid input file, 3 for an internal consistency error (eg,
+bug) which caused clzip to panic.
+
+
+File: clzip.info,  Node: Algorithm,  Next: Invoking Clzip,  Prev: Introduction,  Up: Top
+
+2 Algorithm
+***********
+
+Clzip implements a simplified version of the LZMA (Lempel-Ziv-Markov
+chain-Algorithm) algorithm. The high compression of LZMA comes from
+combining two basic, well-proven compression ideas: sliding dictionaries
+(LZ77/78) and markov models (the thing used by every compression
+algorithm that uses a range encoder or similar order-0 entropy coder as
+its last stage) with segregation of contexts according to what the bits
+are used for.
+
+   Clzip is a two stage compressor. The first stage is a Lempel-Ziv
+coder, which reduces redundancy by translating chunks of data to their
+corresponding distance-length pairs. The second stage is a range encoder
+that uses a different probability model for each type of data;
+distances, lengths, literal bytes, etc.
+
+   The match finder, part of the LZ coder, is the most important piece
+of the LZMA algorithm, as it is in many Lempel-Ziv based algorithms.
+Most of clzip's execution time is spent in the match finder, and it has
+the greatest influence on the compression ratio.
+
+   Here is how it works, step by step:
+
+   1) The member header is written to the output stream.
+
+   2) The first byte is coded literally, because there are no previous
+bytes to which the match finder can refer to.
+
+   3) The main encoder advances to the next byte in the input data and
+calls the match finder.
+
+   4) The match finder fills an array with the minimum distances before
+the current byte where a match of a given length can be found.
+
+   5) Go back to step 3 until a sequence (formed of pairs, repeated
+distances and literal bytes) of minimum price has been formed. Where the
+price represents the number of output bits produced.
+
+   6) The range encoder encodes the sequence produced by the main
+encoder and sends the produced bytes to the output stream.
+
+   7) Go back to step 3 until the input data is finished or until the
+member or volume size limits are reached.
+
+   8) The range encoder is flushed.
+
+   9) The member trailer is written to the output stream.
+
+   10) If there are more data to compress, go back to step 1.
+
+
+The ideas embodied in clzip are due to (at least) the following people:
+Abraham Lempel and Jacob Ziv (for the LZ algorithm), Andrey Markov (for
+the definition of Markov chains), G.N.N. Martin (for the definition of
+range encoding), Igor Pavlov (for putting all the above together in
+LZMA), and Julian Seward (for bzip2's CLI and the idea of unzcrash).
+
+
+File: clzip.info,  Node: Invoking Clzip,  Next: File Format,  Prev: Algorithm,  Up: Top
+
+3 Invoking Clzip
+****************
+
+The format for running clzip is:
+
+     clzip [OPTIONS] [FILES]
+
+   Clzip supports the following options:
+
+`-h'
+`--help'
+     Print an informative help message describing the options and exit.
+
+`-V'
+`--version'
+     Print the version number of clzip on the standard output and exit.
+
+`-b SIZE'
+`--member-size=SIZE'
+     Produce a multimember file and set the member size limit to SIZE
+     bytes. Minimum member size limit is 100kB. Small member size may
+     degrade compression ratio, so use it only when needed. The default
+     is to produce single-member files.
+
+`-c'
+`--stdout'
+     Compress or decompress to standard output. Needed when reading
+     from a named pipe (fifo) or from a device. Use it to recover as
+     much of the uncompressed data as possible when decompressing a
+     corrupt file.
+
+`-d'
+`--decompress'
+     Decompress.
+
+`-f'
+`--force'
+     Force overwrite of output file.
+
+`-F'
+`--recompress'
+     Force recompression of files whose name already has the `.lz' or
+     `.tlz' suffix.
+
+`-k'
+`--keep'
+     Keep (don't delete) input files during compression or
+     decompression.
+
+`-m LENGTH'
+`--match-length=LENGTH'
+     Set the match length limit in bytes. After a match this long is
+     found, the search is finished. Valid values range from 5 to 273.
+     Larger values usually give better compression ratios but longer
+     compression times.
+
+`-o FILE'
+`--output=FILE'
+     When reading from standard input and `--stdout' has not been
+     specified, use `FILE' as the virtual name of the uncompressed
+     file. This produces a file named `FILE' when decompressing, a file
+     named `FILE.lz' when compressing, and several files named
+     `FILE00001.lz', `FILE00002.lz', etc, when compressing and
+     splitting the output in volumes.
+
+`-q'
+`--quiet'
+     Quiet operation. Suppress all messages.
+
+`-s SIZE'
+`--dictionary-size=SIZE'
+     Set the dictionary size limit in bytes. Valid values range from
+     4KiB to 512MiB. Clzip will use the smallest possible dictionary
+     size for each member without exceeding this limit. Note that
+     dictionary sizes are quantized. If the specified size does not
+     match one of the valid sizes, it will be rounded upwards by adding
+     up to (SIZE / 16) to it.
+
+     For maximum compression you should use a dictionary size limit as
+     large as possible, but keep in mind that the decompression memory
+     requirement is affected at compression time by the choice of
+     dictionary size limit.
+
+`-S SIZE'
+`--volume-size=SIZE'
+     Split the compressed output into several volume files with names
+     `original_name00001.lz', `original_name00002.lz', etc, and set the
+     volume size limit to SIZE bytes. Each volume is a complete, maybe
+     multimember, lzip file. Minimum volume size limit is 100kB. Small
+     volume size may degrade compression ratio, so use it only when
+     needed.
+
+`-t'
+`--test'
+     Check integrity of the specified file(s), but don't decompress
+     them.  This really performs a trial decompression and throws away
+     the result.  Use it together with `-v' to see information about
+     the file.
+
+`-v'
+`--verbose'
+     Verbose mode.  When compressing, show the compression ratio for
+     each file processed.  When decompressing or testing, further -v's
+     (up to 4) increase the verbosity level, showing status, dictionary
+     size, compression ratio, and trailer contents (CRC, data size,
+     member size).
+
+`-1 .. -9'
+     Set the compression parameters (dictionary size and match length
+     limit) as shown in the table below. Note that `-9' can be much
+     slower than `-1'. These options have no effect when decompressing.
+
+     The bidimensional parameter space of LZMA can't be mapped to a
+     linear scale optimal for all files. If your files are large, very
+     repetitive, etc, you may need to use the `--match-length' and
+     `--dictionary-size' options directly to achieve optimal
+     performance.
+
+     Level   Dictionary size   Match length limit
+     -1      1 MiB             5 bytes
+     -2      1.5 MiB           6 bytes
+     -3      2 MiB             8 bytes
+     -4      3 MiB             12 bytes
+     -5      4 MiB             20 bytes
+     -6      8 MiB             36 bytes
+     -7      16 MiB            68 bytes
+     -8      24 MiB            132 bytes
+     -9      32 MiB            273 bytes
+
+`--fast'
+`--best'
+     Aliases for GNU gzip compatibility.
+
+
+
+   Numbers given as arguments to options may be followed by a multiplier
+and an optional `B' for "byte".
+
+   Table of SI and binary prefixes (unit multipliers):
+
+Prefix   Value                     |   Prefix   Value
+k        kilobyte  (10^3 = 1000)   |   Ki       kibibyte (2^10 = 1024)
+M        megabyte  (10^6)          |   Mi       mebibyte (2^20)
+G        gigabyte  (10^9)          |   Gi       gibibyte (2^30)
+T        terabyte  (10^12)         |   Ti       tebibyte (2^40)
+P        petabyte  (10^15)         |   Pi       pebibyte (2^50)
+E        exabyte   (10^18)         |   Ei       exbibyte (2^60)
+Z        zettabyte (10^21)         |   Zi       zebibyte (2^70)
+Y        yottabyte (10^24)         |   Yi       yobibyte (2^80)
+
+
+File: clzip.info,  Node: File Format,  Next: Examples,  Prev: Invoking Clzip,  Up: Top
+
+4 File Format
+*************
+
+In the diagram below, a box like this:
++---+
+|   | <-- the vertical bars might be missing
++---+
+
+   represents one byte; a box like this:
++==============+
+|              |
++==============+
+
+   represents a variable number of bytes.
+
+
+   A lzip file consists of a series of "members" (compressed data sets).
+The members simply appear one after another in the file, with no
+additional information before, between, or after them.
+
+   Each member has the following structure:
++--+--+--+--+----+----+=============+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| ID string | VN | DS | Lzma stream | CRC32 |   Data size   |  Member size  |
++--+--+--+--+----+----+=============+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   All multibyte values are stored in little endian order.
+
+`ID string'
+     A four byte string, identifying the lzip format, with the value
+     "LZIP".
+
+`VN (version number, 1 byte)'
+     Just in case something needs to be modified in the future. Valid
+     values are 0 and 1. Version 0 files are deprecated. They can
+     contain only one member and lack the `Member size' field.
+
+`DS (coded dictionary size, 1 byte)'
+     Bits 4-0 contain the base 2 logarithm of the base dictionary size.
+     Bits 7-5 contain the number of "wedges" to substract from the base
+     dictionary size to obtain the dictionary size. The size of a wedge
+     is (base dictionary size / 16).
+     Valid values for dictionary size range from 4KiB to 512MiB.
+
+`Lzma stream'
+     The lzma stream, finished by an end of stream marker. Uses default
+     values for encoder properties.
+
+`CRC32 (4 bytes)'
+     CRC of the uncompressed original data.
+
+`Data size (8 bytes)'
+     Size of the uncompressed original data.
+
+`Member size (8 bytes)'
+     Total size of the member, including header and trailer. This
+     facilitates safe recovery of undamaged members from multimember
+     files.
+
+
+
+File: clzip.info,  Node: Examples,  Next: Problems,  Prev: File Format,  Up: Top
+
+5 A small tutorial with examples
+********************************
+
+WARNING! Even if clzip is bug-free, other causes may result in a corrupt
+compressed file (bugs in the system libraries, memory errors, etc).
+Therefore, if the data you are going to compress is important give the
+`--keep' option to clzip and do not remove the original file until you
+verify the compressed file with a command like
+`clzip -cd file.lz | cmp file -'.
+
+
+Example 1: Replace a regular file with its compressed version file.lz
+and show the compression ratio.
+
+     clzip -v file
+
+
+Example 2: Like example 1 but the created file.lz is multimember with a
+member size of 1MiB. The compression ratio is not shown.
+
+     clzip -b 1MiB file
+
+
+Example 3: Restore a regular file from its compressed version file.lz.
+If the operation is successful, file.lz is removed.
+
+     clzip -d file.lz
+
+
+Example 4: Verify the integrity of the compressed file file.lz and show
+status.
+
+     clzip -tv file.lz
+
+
+Example 5: Compress a whole floppy in /dev/fd0 and send the output to
+file.lz.
+
+     clzip -c /dev/fd0 > file.lz
+
+
+Example 6: Decompress file.lz partially until 10KiB of decompressed data
+are produced.
+
+     clzip -cd file.lz | dd bs=1024 count=10
+
+
+Example 7: Create a multivolume compressed tar archive with a volume
+size of 1440KiB.
+
+     tar -c some_directory | clzip -S 1440KiB -o volume_name
+
+
+Example 8: Extract a multivolume compressed tar archive.
+
+     clzip -cd volume_name*.lz | tar -xf -
+
+
+Example 9: Create a multivolume compressed backup of a big database file
+with a volume size of 650MB, where each volume is a multimember file
+with a member size of 32MiB.
+
+     clzip -b 32MiB -S 650MB big_database
+
+
+File: clzip.info,  Node: Problems,  Next: Concept Index,  Prev: Examples,  Up: Top
+
+6 Reporting Bugs
+****************
+
+There are probably bugs in clzip. There are certainly errors and
+omissions in this manual. If you report them, they will get fixed. If
+you don't, no one will ever know about them and they will remain unfixed
+for all eternity, if not longer.
+
+   If you find a bug in clzip, please send electronic mail to
+<lzip-bug@nongnu.org>. Include the version number, which you can find
+by running `clzip --version'.
+
+
+File: clzip.info,  Node: Concept Index,  Prev: Problems,  Up: Top
+
+Concept Index
+*************
+
+ [index ]
+* Menu:
+
+* algorithm:                             Algorithm.             (line 6)
+* bugs:                                  Problems.              (line 6)
+* examples:                              Examples.              (line 6)
+* file format:                           File Format.           (line 6)
+* getting help:                          Problems.              (line 6)
+* introduction:                          Introduction.          (line 6)
+* invoking:                              Invoking Clzip.        (line 6)
+* options:                               Invoking Clzip.        (line 6)
+* usage:                                 Invoking Clzip.        (line 6)
+* version:                               Invoking Clzip.        (line 6)
+
+
+
+Tag Table:
+Node: Top226
+Node: Introduction903
+Node: Algorithm4480
+Node: Invoking Clzip7004
+Node: File Format12275
+Node: Examples14269
+Node: Problems16038
+Node: Concept Index16564
+
+End Tag Table

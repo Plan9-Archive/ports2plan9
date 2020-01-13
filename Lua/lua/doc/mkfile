@@ -1,0 +1,11 @@
+</$objtype/mkfile
+
+nuke:V:
+	rm -f /sys/man/1/luac
+	rm -f /sys/man/1/lua
+	;
+
+install:V:
+	cp luac.1 /sys/man/1/luac
+	cp lua.1 /sys/man/1/lua
+

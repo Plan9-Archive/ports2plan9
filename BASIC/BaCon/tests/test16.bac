@@ -1,0 +1,21 @@
+REM Testing BASIC compiler
+PRINT "======================="
+PRINT "Test 16: Testing SERVER"
+PRINT "======================="
+PRINT
+
+PRINT "Connect from another terminal with 'telnet localhost 51000' and enter text - 'quit' ends."
+
+OPEN "localhost:51000" FOR SERVER AS mynet
+
+WHILE NOT(EQUAL(LEFT$(dat$, 4), "quit")) DO
+
+    RECEIVE dat$ FROM mynet
+
+    PRINT "Found: ", dat$;
+
+WEND
+
+CLOSE SERVER mynet
+
+PRINT "Server mode finished!"

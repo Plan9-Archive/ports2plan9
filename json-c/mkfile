@@ -1,0 +1,44 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libjson.a
+OFILES=arraylist.$O debug.$O json_object.$O json_tokener.$O json_util.$O linkhash.$O \
+	printbuf.$O 
+HFILES=debug.h /sys/include/ape/string.h /sys/include/ape/stdlib.h /sys/include/ape/stdio.h \
+	config.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -B -D_POSIX_SOURCE -D_BSD_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE 
+
+printbuf.$O: printbuf.h bits.h 
+linkhash.$O: linkhash.h /sys/include/ape/limits.h /sys/include/ape/stddef.h /386/include/ape/stdarg.h 
+json_util.$O: json_object.h json_util.h json_tokener.h json_object.h printbuf.h \
+	bits.h /sys/include/ape/unistd.h /sys/include/ape/sys/types.h /sys/include/ape/fcntl.h \
+	/sys/include/ape/sys/stat.h /sys/include/ape/sys/types.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/limits.h /sys/include/ape/limits.h /sys/include/ape/stddef.h 
+json_tokener.$O: json_tokener.h json_object.h arraylist.h printbuf.h bits.h /sys/include/ape/ctype.h \
+	/sys/include/ape/stddef.h 
+json_object.$O: json_object.h /sys/include/ape/stddef.h json_tokener.h json_object_private.h \
+	json_object.h arraylist.h linkhash.h printbuf.h /sys/include/ape/stddef.h 
+debug.$O: /sys/include/ape/sys/param.h /sys/include/ape/bsd.h /sys/include/ape/unistd.h \
+	/386/include/ape/stdarg.h 
+arraylist.$O: arraylist.h bits.h 
+
+
+install:V:
+    mkdir -p /sys/include/ape/json
+    cp json.h /sys/include/ape/json/
+    cp bits.h /sys/include/ape/json/
+    cp debug.h /sys/include/ape/json/
+    cp linkhash.h /sys/include/ape/json/
+    cp arraylist.h /sys/include/ape/json/
+    cp json_util.h /sys/include/ape/json/
+    cp json_object.h /sys/include/ape/json/
+    cp json_tokener.h /sys/include/ape/json/
+
+nuke:V:
+    mk clean
+    rm -rf   /sys/include/ape/json
+    rm -f $LIB

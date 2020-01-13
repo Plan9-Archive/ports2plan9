@@ -1,0 +1,32 @@
+/*
+ * libgen.h - defined by XPG4
+ */
+
+#ifndef _LIBGEN_H_
+#define _LIBGEN_H_
+
+#pragma lib "/$M/lib/ape/libgen.a"
+
+/* remove residual headers from newlib in installed header */
+/* #include "_ansi.h"
+#include <sys/reent.h> */
+
+/* stuff needed from the newlib headers */
+
+#ifndef _SYS_REENT_H_
+#include <sys/types.h>
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+char *basename(char *);
+char *dirname(char *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _LIBGEN_H_ */
+

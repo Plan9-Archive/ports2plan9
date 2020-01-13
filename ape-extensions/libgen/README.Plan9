@@ -1,0 +1,8 @@
+this is a mini extension library providing libgen.h functionality to APE.
+
+The source has been copied from newlib and is subjec to whatever the upstream library requires.
+
+As a proof-of-concept, these files were used to build working executeable binaries from the www.suckless.org sbase package.
+
+
+mkmk -l libgen -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x sys > mkfile

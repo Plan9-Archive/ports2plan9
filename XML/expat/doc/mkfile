@@ -1,0 +1,16 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp xmlwf.1 /sys/man/1/xmlwf
+

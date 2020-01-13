@@ -1,0 +1,31 @@
+</$objtype/mkfile
+DIRS=lst.lib
+MKFILES=base lib bmake
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+	for (i in $MKFILES)
+		@{mk -f mkfile.$MKFILES }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	for (i in $MKFILES)
+		@{mk -f mkfile.$MKFILES $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	for (i in $MKFILES)
+		@{mk -f mkfile.$MKFILES $target }
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+
+install:V:
+	cp bmake.1 /sys/man/1/bmake
+

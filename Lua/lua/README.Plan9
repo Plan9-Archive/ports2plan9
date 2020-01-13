@@ -1,0 +1,5 @@
+This is a port of lua for Plan9/APE
+
+The lua C-libraries and headers are in the APE directories whereas the binaries are in the /$cputype/bin directory just like the pcc compiler. The lua libraries are put in /sys/lib/lua (the closest possible to /usr/share/lua).
+
+Since the Makefile is actually pretty nice, I decided to edit it in such a way that one optionally can use ape/make to build lua whereas the default still is mk.

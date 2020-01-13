@@ -1,0 +1,22 @@
+REM Testing BASIC compiler
+
+PRINT "=========================="
+PRINT "Test 5: Testing WHILE/WEND"
+PRINT "=========================="
+PRINT
+
+DECLARE a TYPE double
+
+LET a = 0
+
+WHILE a < 16 DO
+
+    LET a = a + 1
+    PRINT a;
+    PRINT " square rooted: ";
+    PRINT SQR(a)
+    PRINT a;
+    PRINT " raised to the power of 3: ";
+    PRINT POW(a, 3)
+
+WEND

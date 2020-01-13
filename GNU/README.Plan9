@@ -1,0 +1,33 @@
+The GNU ports aim to offer a "short cut" to pass configure scripts etc that expects GNU-specific behavior.
+
+As far as possible, every GNU port should be buildable with either native pcc and mk or with gcc (/n/sources/extra/gcc) and gmake.
+
+GNU binaries will have their normal names but be put into
+
+/$objtype/bin/gnu
+
+not to conflict with any native or ape tools.
+
+Similarly, GNU headers will be isolated to
+
+/sys/include/gnu
+
+and libraries to
+
+/$objtype/lib/gnu
+
+architecture-independent scripts are put at:
+
+/rc/bin/gnu
+
+The ports are made to gradually replace/update the "gnubin.tgz" package found at /n/sources/extra/gcc
+but also to complement it with packages that often are needed for configuring / building packages.
+
+an important difference to "gnubin" is that each utility will be built and packaged individually, increasing flexibility and choice.
+
+Another important difference is that the new ports aim to be as architecture-independent as possible (when built with pcc. GCC is i386 only for now...)
+
+In the root of this directory, the "gsh" script from "gnubin" is included for those that would like to run some GNU utilities without installing the "gnubin.tgz" first.
+
+This can be copied to
+/rc/bin/gnu 

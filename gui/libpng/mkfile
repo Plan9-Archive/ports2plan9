@@ -1,0 +1,21 @@
+</$objtype/mkfile
+LIB=libpng15.a
+OFILES=pngset.$O pngpread.$O pngmem.$O pngrtran.$O pngwutil.$O pngrio.$O pngwrite.$O \
+	pngget.$O png.$O pngerror.$O pngwio.$O pngwtran.$O pngrutil.$O pngtrans.$O \
+	pngread.$O 
+HFILES=pngpriv.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_CONFIG_H -DPNG_CONFIGURE_LIBPNG 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+install:V:
+	cp libpng.3 /sys/man/1/libpng
+	cp libpngpf.3 /sys/man/1/libpngpf
+

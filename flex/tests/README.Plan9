@@ -1,0 +1,5 @@
+Due to dependencies of the tests, the m4 directory has been restored.
+
+Makefiles are updated so that /bin/flex is used for the tests.
+
+We use "make" for the tests since we need to be in the APE environment anyway to run flex

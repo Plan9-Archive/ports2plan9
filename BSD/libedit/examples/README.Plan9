@@ -1,0 +1,7 @@
+Compiling these binaries is a good test of the libedit library.
+
+mkmk -m -S -B -I.. -I../src -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -H../src/libedit.a -x .deps > mkfile
+
+because of lack of system headers
+
+only "mk $O.tc1" has a chance to build at the moment.

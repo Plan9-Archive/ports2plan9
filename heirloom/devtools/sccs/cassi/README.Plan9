@@ -1,0 +1,4 @@
+
+mkmk -l libcassi -I../hdr -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTESNION > mkfile
+
+manually modified mkfile to install libcassi.a

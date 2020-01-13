@@ -1,0 +1,17 @@
+</$objtype/mkfile
+TARG=p2c
+OFILES=citmods.$O comment.$O decl.$O dir.$O expr.$O funcs.$O hpmods.$O lex.$O out.$O \
+	parse.$O pexpr.$O stuff.$O trans.$O 
+BIN=/$objtype/bin/ape
+HFILES=trans.h /sys/include/ape/ctype.h /sys/include/ape/string.h /sys/include/ape/limits.h \
+	/sys/include/ape/stddef.h /sys/include/ape/stdlib.h /sys/include/ape/stdio.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I.. -I../proto -I/sys/include/ape -I/386/include/ape -B -DPLAN9 -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -DBSD 
+
+trans.$O: /sys/include/ape/time.h 
+out.$O: /sys/include/ape/sys/time.h 

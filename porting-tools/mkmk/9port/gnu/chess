@@ -1,0 +1,30 @@
+#!/bin/rc
+
+ver=`{pwd | sed 's/^.*\/([a-zA-Z0-9]+)-(.*)$/"\2"/'}
+pkg=`{pwd | sed 's/^.*\/([a-zA-Z0-9]+)-(.*)$/"\1"/'}
+
+rm -f AUTHORS Makefile.am TODO config.guess depcomp
+rm -f COPYING Makefile.in acinclude.m4 config.sub mkinstalldirs
+rm -f ChangeLog NEWS aclocal.m4 configure install-sh
+rm -f INSTALL README configure.ac missing
+
+test -d book && mv book/README .
+rm -fr book
+
+test -d src && mv src/* .
+rm -rf src
+
+rm config.h
+rm -f Makefile.in Makefile.am config.h.in gnuchessx
+
+echo '#include <inttypes.h>' > GCint.h
+echo 'typedef int pthread_t;' >> pthread.h
+
+mkmk -I. -B \
+	'-DVERSION='^$ver \
+	'-DPACKAGE='^$pkg \
+	-D_POSIX_SOURCE \
+	-D_BSD_EXTENSION \
+	-D_SUSV2_SOURCE \
+	-o chess  > mkfile
+

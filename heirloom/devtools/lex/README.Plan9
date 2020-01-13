@@ -1,0 +1,22 @@
+generate libl.a and lex
+
+The libl.a is in conflict with a native APE library, but all functions exposed by libl.h are also present in these sources.
+
+
+mkmk -l libl -B -S -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_LIMITS_EXTENSION -Dunix allprint.c libmain.c reject.c yyless.c yywrap.c allprint_w.c reject_w.c yyless_w.c reject_e.c yyless_e.c ldefs.c > mkfile.lib
+
+OK I am lazy... copy the source files and define the EFLAGS and WFLAGS at the top. to make the object files needed.
+_w and _e objects
+
+
+mkmk -o lex -B -S -a -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_LIMITS_EXTENSION -D'FORMPATH="/sys/lib/heirloom"' -Dunix -H./liblex.a8 main.c sub1.c sub2.c sub3.c header.c wcio.c parser.y getopt.c lsearch.c ldefs.c > mkfile.bin
+
+386 changed to $objtype in mkfile and .a8 to .a$O
+
+for some strange reason, wcstol did not get linked in from libwchar (need to check that port?) Strangely, this function is not present in heirloom toolchest libwchar.
+Because of this, GNU libutf8 was built for APE to provide libwchar functions.
+
+
+master mkfile:
+install library in /$objtype/lib/ape
+install lex scripts ncform, nrform, nceucform in /rc/bin/ape

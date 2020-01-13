@@ -1,0 +1,22 @@
+</$objtype/mkfile
+DIRS=src 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mkdir -p /sys/include/ape/hubbub
+	cp include/hubbub/* /sys/include/ape/hubbub/
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -rf /sys/include/ape/hubbub
+

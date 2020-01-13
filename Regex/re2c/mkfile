@@ -1,0 +1,53 @@
+</$objtype/mkfile
+DIRS=bootstrap doc examples 
+TARG=re2c
+OFILES=actions.$O code.$O dfa.$O main.$O mbo_getopt.$O parser.$O scanner.$O substr.$O \
+	translate.$O 
+BIN=/$objtype/bin
+HFILES=globals.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -D_POSIX_SOURCE 
+
+substr.$O: substr.h /sys/include/ape/string.h 
+scanner.$O: parser.h parse.h scanner.h /sys/include/ape/string.h /sys/include/ape/stdlib.h 
+parser.$O: parser.h parse.h /sys/include/ape/stdlib.h /sys/include/ape/string.h \
+	/sys/include/ape/stdio.h /sys/include/ape/time.h 
+mbo_getopt.$O: mbo_getopt.h /sys/include/ape/stdlib.h /sys/include/ape/assert.h \
+	/sys/include/ape/string.h /sys/include/ape/stdio.h 
+main.$O: mbo_getopt.h dfa.h parse.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/stdio.h 
+dfa.$O: dfa.h substr.h /sys/include/ape/string.h /sys/include/ape/ctype.h /sys/include/ape/stdlib.h 
+code.$O: parse.h dfa.h substr.h /sys/include/ape/ctype.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h 
+actions.$O: re.h /sys/include/ape/stdio.h dfa.h basics.h ins.h token.h /sys/include/ape/stdio.h \
+	re.h basics.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h /sys/include/ape/stdio.h \
+	substr.h token.h /sys/include/ape/stdio.h scanner.h /sys/include/ape/stdio.h \
+	parse.h /sys/include/ape/ctype.h /sys/include/ape/sys/types.h /sys/include/ape/stddef.h \
+	/386/include/ape/stdarg.h /sys/include/ape/stdio.h /sys/include/ape/stddef.h \
+	/sys/include/ape/string.h /sys/include/ape/stddef.h /sys/include/ape/time.h 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+
+install:V:
+	cp re2c.1 /sys/man/1ape/re2c
+

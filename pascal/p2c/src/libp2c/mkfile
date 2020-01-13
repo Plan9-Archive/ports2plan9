@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libp2c.a
+OFILES=loc.p2clib.$O p2clib.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I.. -I/sys/include/ape -I/386/include/ape -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_BSD_EXTENSION -DHAVE_ISATTY 
+
+p2clib.$O: /sys/include/ape/stddef.h /sys/include/ape/time.h /sys/include/ape/assert.h \
+	/sys/include/ape/setjmp.h /386/include/ape/math.h /sys/include/ape/ctype.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	/sys/include/ape/stddef.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/sys/types.h /sys/include/ape/stddef.h /386/include/ape/stdarg.h \
+	/sys/include/ape/stdio.h ../p2c.h 
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,27 @@
+REM Testing BASIC compiler
+PRINT "==============================="
+PRINT "Test 13: Testing OPEN DIRECTORY"
+PRINT "==============================="
+PRINT
+
+OPTION BASE 1
+
+DECLARE list$[200]
+
+OPEN "." FOR DIRECTORY AS mydir
+
+d = 0
+
+REPEAT
+    INCR d
+    GETFILE list$[d] FROM mydir
+    IF ISTRUE(LEN(list$[d])) THEN
+        PRINT list$[d]
+    END IF
+UNTIL ISFALSE(LEN(list$[d]))
+
+CLOSE DIRECTORY mydir
+
+SORT list$ DOWN
+
+PRINT list$[d]

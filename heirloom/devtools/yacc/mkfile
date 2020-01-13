@@ -1,0 +1,23 @@
+</$objtype/mkfile
+MKFILES=mkfile.lib mkfile.bin
+
+all:V:
+	for (i in $MKFILES)
+		@{ mk -f $i }
+
+install:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+	mv liby.a$O /$objtype/lib/ape/liby.a
+	cp yacc.1 /sys/man/1ape/yacc
+	cp yaccpar /sys/lib/heirloom/
+
+
+clean:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+
+nuke:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+

@@ -1,0 +1,2 @@
+
+mkmk -o m4 -a -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DXPG4 -x m4y.y > mkfile

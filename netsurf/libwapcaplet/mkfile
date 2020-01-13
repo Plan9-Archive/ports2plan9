@@ -1,0 +1,26 @@
+</$objtype/mkfile
+DIRS=test 
+LIB=/$objtype/lib/ape/libwapcaplet.a$O
+OFILES=libwapcaplet.$O 
+HFILES=libwapcaplet.h /sys/include/ape/inttypes.h /sys/include/ape/stdbool.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/assert.h /sys/include/ape/string.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/stddef.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -D_POSIX_SOURCE -D_BSD_EXTENSION \
+	-D_SUSV2_SOURCE 
+
+install:V:
+	mv /$objtype/lib/ape/libwapcaplet.a$O /$objtype/lib/ape/libwapcaplet.a
+	mkdir -p /sys/include/ape/libwapcaplet
+	cp libwapcaplet.h /sys/include/ape/libwapcaplet/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -rf /sys/include/ape/libwapcaplet
+

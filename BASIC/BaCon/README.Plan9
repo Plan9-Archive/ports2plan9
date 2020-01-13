@@ -1,0 +1,18 @@
+This is a port of a BASIC -to-C- converter and compiler using ksh syntax to Plan9/APE
+
+Why? For fun :)
+
+And who knows - there may be legacy BASIC code out there that is still being used in production... 
+(any C64 games open source?)
+
+In the test and toys directories, you can find a couple of examples of programs to play with.
+
+More programs, and perhaps more importantly, examples of native C bindings to various functions can be found at:
+
+http://www.basic-converter.org/
+
+Based on that one can play with making alternative graphics bindings etc for running BASIC programs natively :)
+
+Current status:
+
+Stuff WORKS, but there are some issues related to missing header files and possibly additional C flags to be added.

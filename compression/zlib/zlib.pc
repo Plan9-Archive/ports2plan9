@@ -1,0 +1,13 @@
+prefix=/sys/lib/libz
+exec_prefix=/386
+libdir=/386/lib/ape
+sharedlibdir=${libdir}
+includedir=/sys/include/ape
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.7
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

@@ -1,0 +1,43 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libuxre.a
+OFILES=_collelem.$O _collmult.$O bracket.$O regcomp.$O regdfa.$O regerror.$O regexec.$O \
+	regfree.$O regnfa.$O regparse.$O stubs.$O 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -B -D_POSIX_SOURCE -D_BSD_EXTENSION \
+	-D_SUSV2_SOURCE 
+
+stubs.$O: wcharm.h colldata.h 
+regparse.$O: re.h /sys/include/ape/ctype.h /sys/include/ape/stdlib.h 
+regnfa.$O: /sys/include/ape/ctype.h /sys/include/ape/stddef.h re.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/string.h 
+regfree.$O: re.h 
+regexec.$O: re.h 
+regerror.$O: re.h /sys/include/ape/string.h 
+regdfa.$O: re.h regdfa.h /sys/include/ape/ctype.h /sys/include/ape/string.h /sys/include/ape/stdlib.h 
+regcomp.$O: re.h 
+bracket.$O: colldata.h /sys/include/ape/sys/types.h regex.h /sys/include/ape/limits.h \
+	re.h /sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/ctype.h 
+_collmult.$O: /sys/include/ape/stddef.h colldata.h 
+_collelem.$O: /sys/include/ape/stddef.h /sys/include/ape/limits.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/wchar.h /sys/include/ape/ctype.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/wctype.h /sys/include/ape/sys/types.h /sys/include/ape/stddef.h \
+	/386/include/ape/stdarg.h /sys/include/ape/stdio.h /386/include/ape/stdarg.h \
+	/sys/include/ape/stddef.h /sys/include/ape/stdlib.h /sys/include/ape/inttypes.h \
+	/sys/include/ape/wchar.h wcharm.h colldata.h 
+
+install:V:
+	cp *.h /sys/include/ape/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/colldata.h
+	rm -f /sys/include/ape/re.h
+	rm -f /sys/include/ape/regdfa.h
+	rm -f /sys/include/ape/regex.h
+	rm -f /sys/include/ape/wcharm.h

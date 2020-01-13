@@ -1,0 +1,91 @@
+</$objtype/mkfile
+TARG=cat chmod chown cksum cmp basename date echo false \
+	fold grep head kill cp ls mc mkdir mkfifo mv \
+	nl nohup pwd rm seq sleep sort tail tee test \
+	touch true tty uname uniq wc yes dirname 
+LIB=./util/libutil.a 
+BIN=/$objtype/bin/ape
+HFILES=util.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE \
+	-D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION
+
+dirname.$O: libgen.h 
+yes.$O: 
+wc.$O: stdbool.h 
+uniq.$O: text.h stdbool.h 
+uname.$O: stdbool.h 
+tty.$O: 
+true.$O: 
+touch.$O: stdbool.h 
+test.$O: stdbool.h 
+tee.$O: stdbool.h 
+tail.$O: text.h 
+sort.$O: text.h stdbool.h 
+sleep.$O: 
+seq.$O: stdbool.h 
+rm.$O: stdbool.h fs.h stdbool.h 
+pwd.$O: 
+nohup.$O: 
+nl.$O: text.h 
+mv.$O: stdbool.h fs.h 
+mkfifo.$O: 
+mkdir.$O: stdbool.h 
+mc.$O: text.h stdbool.h 
+ls.$O: stdbool.h 
+cp.$O: stdbool.h fs.h stdbool.h 
+kill.$O: strings.h stdbool.h 
+head.$O: 
+grep.$O: text.h stdbool.h 
+fold.$O: text.h stdbool.h 
+false.$O: 
+echo.$O: stdbool.h 
+date.$O: 
+basename.$O: _ansi.h sys/reent.h _ansi.h libgen.h 
+cmp.$O: stdbool.h 
+cksum.$O: 
+chown.$O: stdbool.h 
+chmod.$O: stdbool.h 
+cat.$O: text.h 
+install:V:
+	cp basename.1 /sys/man/1ape/basename
+	cp cat.1 /sys/man/1ape/cat
+	cp chmod.1 /sys/man/1ape/chmod
+	cp chown.1 /sys/man/1ape/chown
+	cp cksum.1 /sys/man/1ape/cksum
+	cp cmp.1 /sys/man/1ape/cmp
+	cp cp.1 /sys/man/1ape/cp
+	cp date.1 /sys/man/1ape/date
+	cp echo.1 /sys/man/1ape/echo
+	cp false.1 /sys/man/1ape/false
+	cp fold.1 /sys/man/1ape/fold
+	cp grep.1 /sys/man/1ape/grep
+	cp head.1 /sys/man/1ape/head
+	cp kill.1 /sys/man/1ape/kill
+	cp dirname.1 /sys/man/1ape/dirname
+	cp ls.1 /sys/man/1ape/ls
+	cp mc.1 /sys/man/1ape/mc
+	cp mkdir.1 /sys/man/1ape/mkdir
+	cp mkfifo.1 /sys/man/1ape/mkfifo
+	cp mv.1 /sys/man/1ape/mv
+	cp nl.1 /sys/man/1ape/nl
+	cp nohup.1 /sys/man/1ape/nohup
+	cp pwd.1 /sys/man/1ape/pwd
+	cp rm.1 /sys/man/1ape/rm
+	cp seq.1 /sys/man/1ape/seq
+	cp sleep.1 /sys/man/1ape/sleep
+	cp sort.1 /sys/man/1ape/sort
+	cp tail.1 /sys/man/1ape/tail
+	cp tee.1 /sys/man/1ape/tee
+	cp touch.1 /sys/man/1ape/touch
+	cp true.1 /sys/man/1ape/true
+	cp tty.1 /sys/man/1ape/tty
+	cp uname.1 /sys/man/1ape/uname
+	cp uniq.1 /sys/man/1ape/uniq
+	cp wc.1 /sys/man/1ape/wc
+	cp yes.1 /sys/man/1ape/yes
+

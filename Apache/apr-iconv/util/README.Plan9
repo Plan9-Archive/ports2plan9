@@ -1,0 +1,6 @@
+utilize "kitchen sink options" to get full exposure of APE.
+
+mkmk -o apriconv -S -B -I. -I../lib -I../include -I/sys/include/ape/apr-1 -DHAVE_SOCK_OPTS -D_REENTRANT_SOURCE -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION -D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -H../libapriconv-1.a8 > mkfile
+
+change .a8 to .a$O in mkfile...
+

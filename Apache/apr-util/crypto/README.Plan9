@@ -1,0 +1,1 @@
+mkmk -l ../libaprutil-1 -S -B -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 > mkfile

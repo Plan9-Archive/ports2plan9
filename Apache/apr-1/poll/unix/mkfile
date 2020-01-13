@@ -1,0 +1,29 @@
+</$objtype/mkfile
+LIB=../../libapr-1.a$O
+OFILES=port.$O poll.$O select.$O pollcb.$O pollset.$O epoll.$O kqueue.$O 
+HFILES=../../include/arch/unix/apr_arch_poll_private.h ../../include/arch/unix/apr_arch_networkio.h \
+	../../include/arch/unix/apr_arch_file_io.h ../../include/apr_portable.h \
+	../../include/apr_time.h ../../include/apr_poll.h ../../include/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../../ -I../../include -I../../include/arch/unix -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION 
+
+kqueue.$O: ../../include/arch/unix/apr_arch_inherit.h 
+epoll.$O: ../../include/arch/unix/apr_arch_inherit.h 
+pollset.$O: ../../include/arch/unix/apr_arch_inherit.h 
+poll.$O: ../../include/apr_getopt.h ../../include/apr_errno.h ../../include/apr_file_io.h \
+	../../include/apr_thread_proc.h ../../include/apr_pools.h ../../include/apr_getopt.h \
+	../../include/apr_pools.h ../../include/apr_general.h ../../include/apr_private.h \
+	../../include/arch/unix/apr_arch_misc.h 
+port.$O: ../../include/apr_inherit.h ../../include/arch/unix/apr_arch_inherit.h \
+	../../include/apr_pools.h ../../include/apr_atomic.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,18 @@
+This is an updated and less hacky port of gmake 3.82 including functionality like putenv() .
+
+Some differences are:
+
+* This package installs "make" at /$objtype/bin/gnu/
+* For use within APE, a "gmake" script is made
+* the package version is 3.82
+* the manfile has changed name from "make" to "gmake"
+* unused files are trimmed away to make a lighter and easier-to-understand package.
+
+All source code changes clearly commented in the source and normally a small reversion back to how it looked in the Plan9 port of 3.81.
+
+source code changes.
+getopt.c : undefined _BSD_EXTENSION to avoid conflicts with bsd.h
+main.c : included putenv() from APE libbsd.
+
+Makefile: build with gcc under gnu/gsh (i386 only)
+mkfile: build with APE libraries and pcc (any architecture)

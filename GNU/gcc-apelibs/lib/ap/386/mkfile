@@ -1,0 +1,26 @@
+<../../mkconfig
+CRT0=/$objtype/lib/gnu/crt0.$O
+LIB=/$objtype/lib/gnu/libap.a
+
+OFILES=\
+	lock.$O\
+	notetramp.$O\
+	setjmp.$O\
+	tas.$O\
+	vlrt.$O\
+
+#temporarily excluded from build:
+# 	vlop.$O\
+#	main9p.$O\
+
+<../../mksyslib
+
+CFLAGS=-c -D_POSIX_SOURCE -D_PLAN9_SOURCE
+
+all:V:	$CRT0
+install:V:	$CRT0
+
+$CRT0: crt0.$O
+	cp $prereq $target
+
+

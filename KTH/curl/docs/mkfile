@@ -1,0 +1,24 @@
+</$objtype/mkfile
+DIRS=libcurl 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+install:V:
+	cp curl-config.1 /sys/man/1/curl-config
+	cp curl.1 /sys/man/1/curl
+	cp mk-ca-bundle.1 /sys/man/1/mk-ca-bundle
+

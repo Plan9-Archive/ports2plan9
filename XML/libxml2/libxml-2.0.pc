@@ -1,0 +1,13 @@
+prefix=/sys
+exec_prefix=/386
+libdir=/386/lib/ape
+includedir=/sys/include/ape
+modules=0
+
+Name: libXML
+Version: 2.9.0
+Description: libXML library version2.
+Requires:
+Libs: -L${libdir} -lxml2
+Libs.private:   -lz  -lm  
+Cflags: -I${includedir}/libxml2 

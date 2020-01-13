@@ -1,0 +1,17 @@
+</$objtype/mkfile
+
+CC=pcc
+CFLAGS=-D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE 
+
+install:V:
+	ape/sh ape/make $target
+	dircp build/man /sys/man
+	dircp build/bin /$objtype/bin
+	dircp build/lib /$objtype/lib/ape
+
+clean:V:
+	ape/make $target
+
+distclean:V:
+	ape/make $target
+

@@ -1,0 +1,22 @@
+</$objtype/mkfile
+TARG=which
+OFILES=getopt1.$O getopt.$O bash.$O which.$O 
+LIB=./tilde/libtilde.$O 
+BIN=/$objtype/bin/ape
+HFILES=getopt.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./tilde -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -DHAVE_SYSCONF 
+
+which.$O: bash.h tilde/tilde.h config.h sys.h 
+bash.$O: bash.h posixstat.h config.h sys.h 
+getopt.$O: config.h 
+getopt1.$O: config.h 
+install:V:
+	cp which.1 /sys/man/1/which
+

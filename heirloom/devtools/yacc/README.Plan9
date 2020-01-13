@@ -1,0 +1,4 @@
+
+mkmk -l liby -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D'PARSER="/sys/lib/yaccpar"' libmai.c libzer.c > mkfile.lib
+
+mkmk -o yacc -S -B -a -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D'PARSER="/sys/lib/yaccpar"'  -H./liby.a8 -x libmai.c -x libzer.c > mkfile.bin

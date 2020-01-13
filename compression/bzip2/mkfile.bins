@@ -1,0 +1,13 @@
+</$objtype/mkfile
+TARG=bzip2 bzip2recover 
+LIB=./libbz2.a 
+BIN=/$objtype/bin/ape
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+bzip2recover.$O: 
+bzip2.$O: bzlib.h 

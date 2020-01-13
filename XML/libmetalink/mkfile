@@ -1,0 +1,28 @@
+</$objtype/mkfile
+DIRS=lib doc/man3
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp lib/libmetalink.a$O /$objtype/lib/ape/libmetalink.a
+	mkdir -p /sys/include/ape/metalink
+	cp apeheaders/*.h /sys/include/ape/metalink/
+	mkdir -p /$objtype/lib/ape/pkgconfig
+	cp lib/libmetalink.pc /$objtype/lib/ape/pkgconfig/
+
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /$objtype/lib/ape/libmetalink.a
+	rm -f /$objtype/lib/ape/pkgconfig/libmetalink.pc
+	rm -rf /sys/include/ape/metalink
+

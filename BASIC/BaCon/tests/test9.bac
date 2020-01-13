@@ -1,0 +1,20 @@
+REM Testing BASIC compiler
+
+PRINT "================================="
+PRINT "Test 9: Testing string comparison"
+PRINT "================================="
+PRINT
+
+a$ = "12345"
+
+b$ = "67890"
+
+c$ = a$
+
+IF NOT(EQUAL(a$, b$)) THEN
+    PRINT "These are not equal."
+ENDIF
+
+IF EQUAL(a$, c$) THEN
+    PRINT "These are equal."
+ENDIF

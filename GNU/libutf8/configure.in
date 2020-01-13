@@ -1,0 +1,247 @@
+dnl Copyright (C) 1999-2001 Free Software Foundation, Inc.
+dnl This file is part of the GNU UTF-8 Library.
+dnl
+dnl The GNU UTF-8 Library is free software; you can redistribute it and/or
+dnl modify it under the terms of the GNU Library General Public License as
+dnl published by the Free Software Foundation; either version 2 of the
+dnl License, or (at your option) any later version.
+dnl
+dnl The GNU UTF-8 Library is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+dnl Library General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU Library General Public
+dnl License along with the GNU UTF-8 Library; see the file COPYING.LIB.  If not,
+dnl write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+dnl Boston, MA 02111-1307, USA.
+
+AC_PREREQ(2.12)
+
+AC_INIT(src/caseconv/noppage.c)
+AC_CONFIG_AUX_DIR(autoconf)
+AC_CONFIG_HEADER(include/utf8/config.h src/config.h)
+AC_PROG_MAKE_SET
+
+AC_ARG_WITH(traditional-mbstowcs,
+[  --with-traditional-mbstowcs   mbrtowc, mbrlen, mbsrtowcs, mbsnrtowcs
+                                functions which don't accumulate partial
+                                multibyte characters],
+  MBSTOWCS_TRAD="trad-", MBSTOWCS_TRAD="")
+AC_SUBST(MBSTOWCS_TRAD)
+AC_ARG_WITH(nontraditional-wcstombs,
+[  --with-nontraditional-wcstombs  wcsrtombs, wcsnrtombs functions which
+                                produce partial multibyte characters],
+  WCSTOMBS_TRAD="", WCSTOMBS_TRAD="trad-")
+AC_SUBST(WCSTOMBS_TRAD)
+
+dnl           checks for programs
+
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_GCC_TRADITIONAL
+CL_PROG_RANLIB
+CL_PROG_INSTALL
+CL_PROG_CP
+CL_PROG_LN
+CL_PROG_LN_S
+
+dnl           check for host type
+
+CL_CANONICAL_HOST(autoconf)
+
+dnl           checks for UNIX variants that set DEFS
+
+AC_AIX
+AC_MINIX
+AC_ISC_POSIX
+
+dnl           check for build configuration
+
+PACKAGE=libutf8
+AM_DISABLE_STATIC
+AM_PROG_LIBTOOL
+
+dnl           checks for header files
+
+AC_CHECK_HEADERS(inttypes.h stdint.h wchar.h wctype.h langinfo.h)
+if test $ac_cv_header_inttypes_h = yes; then
+  INCLUDE_INTTYPES_H="#include <inttypes.h>"
+else
+  INCLUDE_INTTYPES_H=""
+fi
+AC_SUBST(INCLUDE_INTTYPES_H)
+if test $ac_cv_header_stdint_h = yes; then
+  INCLUDE_STDINT_H="#include <stdint.h>"
+else
+  INCLUDE_STDINT_H=""
+fi
+AC_SUBST(INCLUDE_STDINT_H)
+if test $ac_cv_header_wchar_h = yes; then
+  INCLUDE_WCHAR_H="#include <wchar.h>"
+else
+  INCLUDE_WCHAR_H=""
+fi
+AC_SUBST(INCLUDE_WCHAR_H)
+if test $ac_cv_header_wctype_h = yes; then
+  INCLUDE_WCTYPE_H="#include <wctype.h>"
+else
+  INCLUDE_WCTYPE_H=""
+fi
+AC_SUBST(INCLUDE_WCTYPE_H)
+
+AC_CACHE_CHECK(for wchar_t size, u8_cv_wchar_bits, [
+if test $cross_compiling = no; then
+cat > conftest.$ac_ext <<EOF
+#include "confdefs.h"
+#include <stddef.h>
+#include <stdlib.h>
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+#endif
+#ifdef HAVE_WCHAR_H
+#include <wchar.h>
+#endif
+#ifdef HAVE_WCTYPE_H
+#include <wctype.h>
+#endif
+int main () {
+  printf("%d\n", sizeof(wchar_t)*8);
+  return 0;
+}
+EOF
+AC_TRY_EVAL(ac_link)
+if test -s conftest; then
+  u8_cv_wchar_bits=`./conftest`" bits"
+else
+  u8_cv_wchar_bits=none
+fi
+else
+u8_cv_wchar_bits=unknown
+fi
+rm -f conftest*
+])
+wchar_bits=`echo "$u8_cv_wchar_bits" | sed -e 's, bits,,'`
+AC_DEFINE_UNQUOTED(WCHAR_T_BITS,$wchar_bits)
+
+AC_CACHE_CHECK(for u_wchar_t type, u8_cv_wchar_unsigned, [
+if test $cross_compiling = no; then
+cat > conftest.$ac_ext <<EOF
+#include "confdefs.h"
+#include <stddef.h>
+#include <stdlib.h>
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+#endif
+#ifdef HAVE_WCHAR_H
+#include <wchar.h>
+#endif
+#ifdef HAVE_WCTYPE_H
+#include <wctype.h>
+#endif
+int main () {
+  if (sizeof(wchar_t) == sizeof(char))
+    printf("%s\n", "unsigned char");
+  else if (sizeof(wchar_t) == sizeof(short))
+    printf("%s\n", "unsigned short");
+  else if (sizeof(wchar_t) == sizeof(int))
+    printf("%s\n", "unsigned int");
+  else 
+    printf("%s\n", "unsigned long");
+  return 0;
+}
+EOF
+AC_TRY_EVAL(ac_link)
+if test -s conftest; then
+  u8_cv_wchar_unsigned=`./conftest`
+else
+  u8_cv_wchar_unsigned=none
+fi
+else
+u8_cv_wchar_unsigned=unknown
+fi
+rm -f conftest*
+])
+AC_DEFINE_UNQUOTED(u_wchar_t,$u8_cv_wchar_unsigned)
+
+AC_CACHE_CHECK(for long long, u8_cv_c_long_long,
+[if test "$GCC" = yes; then
+  u8_cv_c_long_long=yes
+else
+AC_TRY_COMPILE([long long foo = 0LL;
+int array [2*(sizeof(long long) >= sizeof(long)) - 1];
+], ,
+u8_cv_c_long_long=yes, u8_cv_c_long_long=no)
+fi])
+if test $u8_cv_c_long_long = yes; then
+  AC_DEFINE(HAVE_LONG_LONG)
+  HAVE_LONG_LONG=1
+else
+  HAVE_LONG_LONG=0
+fi
+AC_SUBST(HAVE_LONG_LONG)
+
+AC_CACHE_CHECK(for long double, u8_cv_c_long_double,
+[if test "$GCC" = yes; then
+  u8_cv_c_long_double=yes
+else
+AC_TRY_COMPILE([
+/* The Stardent Vistra knows sizeof(long double), but does not support it.  */
+long double foo = 0.0;
+/* On Ultrix 4.3 cc, long double is 4 and double is 8.  */
+int array [2*(sizeof(long double) >= sizeof(double)) - 1];
+], ,
+u8_cv_c_long_double=yes, u8_cv_c_long_double=no)
+fi])
+if test $u8_cv_c_long_double = yes; then
+  AC_DEFINE(HAVE_LONG_DOUBLE)
+  HAVE_LONG_DOUBLE=1
+else
+  HAVE_LONG_DOUBLE=0
+fi
+AC_SUBST(HAVE_LONG_DOUBLE)
+
+AC_CACHE_CHECK(for intmax_t, u8_cv_c_intmax_t,
+[AC_TRY_COMPILE([
+#include <stddef.h>
+#include <stdlib.h>
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+#endif
+], [intmax_t x = -1;], u8_cv_c_intmax_t=yes, u8_cv_c_intmax_t=no)
+if test $u8_cv_c_intmax_t = yes; then
+  AC_DEFINE(HAVE_INTMAX_T)
+fi])
+
+dnl           checks for functions and declarations
+
+AC_CHECK_FUNCS(strtof strtold strtoll strtoull vfprintf vsprintf vsnprintf)
+CL_ALLOCA
+
+dnl           check whether OS supports plug libraries
+
+OS=""
+case "$host_os" in
+  linux*)   OS="linux" ;;
+  solaris*) OS="solaris" ;;
+  osf*)     OS="osf" ;;
+esac
+if test -n "$OS"; then
+  AC_SUBST(OS)
+  PLUGLIB="libutf8_plug.so"
+else
+  PLUGLIB=""
+fi
+AC_SUBST(PLUGLIB)
+
+test -d include || mkdir include
+AC_OUTPUT(Makefile src/Makefile man/Makefile include/utf8/types.h include/utf8/wchar.h)

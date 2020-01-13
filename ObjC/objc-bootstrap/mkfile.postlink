@@ -1,0 +1,36 @@
+</$objtype/mkfile
+TARG=postlink
+OFILES=Block.$O OutOfMem.$O _plink.$O array.$O arydecl.$O aryvar.$O assign.$O assoc.$O \
+	badvers.$O binxpr.$O casestmt.$O classdef.$O cltnseq.$O commaxpr.$O compstmt.$O \
+	contstmt.$O cppdirec.$O dasmstmt.$O datadef.$O def.$O dfltstmt.$O dictnary.$O \
+	dostmt.$O enumsp.$O expr.$O forstmt.$O funcall.$O gasmstmt.$O gatrdecl.$O \
+	idarray.$O identxpr.$O ifstmt.$O indexxpr.$O initdecl.$O keyseq.$O keywdecl.$O \
+	listxpr.$O methdef.$O namedecl.$O notfound.$O objcrt.$O ocstring.$O options.$O \
+	pfixdecl.$O pfixxpr.$O pointer.$O postlink.$O precdecl.$O precxpr.$O rtrnstmt.$O \
+	scalar.$O selector.$O selxpr.$O sequence.$O sizeof.$O stclass.$O stkframe.$O \
+	stmt.$O treeseq.$O type.$O typeof.$O valueseq.$O yacc.$O Exceptn.$O Message.$O \
+	Object.$O addrof.$O arrowxpr.$O ascfiler.$O bflddecl.$O blockxpr.$O btincall.$O \
+	castxpr.$O cltn.$O compdef.$O condxpr.$O constxpr.$O decl.$O deref.$O dotxpr.$O \
+	enumtor.$O exprstmt.$O funbody.$O fundecl.$O fundef.$O gasmop.$O gattrib.$O \
+	globdef.$O gotostmt.$O keywxpr.$O lblstmt.$O lex.$O lexfiltr.$O method.$O \
+	msgxpr.$O node.$O ordcltn.$O outofbnd.$O parmdef.$O parmlist.$O point.$O \
+	relxpr.$O set.$O setseq.$O sortcltn.$O stardecl.$O structsp.$O switstmt.$O \
+	symbol.$O trlunit.$O typeinc.$O unknownt.$O unyxpr.$O util.$O var.$O whilstmt.$O 
+BIN=/$objtype/bin
+HFILES=/sys/include/ape/string.h /sys/include/ape/stddef.h /sys/include/ape/stdio.h \
+	/sys/include/ape/stdio.h /sys/include/ape/assert.h /sys/include/ape/stdlib.h \
+	/386/include/ape/stdarg.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_BSD_EXTENSION 
+
+util.$O: /sys/include/ape/ctype.h 
+trlunit.$O: /sys/include/ape/ctype.h 
+node.$O: /sys/include/ape/ctype.h 
+lex.$O: /sys/include/ape/bsd.h /sys/include/ape/unistd.h /sys/include/ape/errno.h 
+ocstring.$O: /sys/include/ape/ctype.h 
+Block.$O: /sys/include/ape/setjmp.h 

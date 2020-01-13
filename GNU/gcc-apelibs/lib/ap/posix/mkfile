@@ -1,0 +1,15 @@
+<../../mkconfig
+LIB=/$objtype/lib/gnu/libap.a
+OFILES=\
+	getgrent.$O\
+	getpwent.$O\
+	locale.$O\
+	mkfifo.$O\
+	pathconf.$O\
+	sigset.$O\
+	sysconf.$O\
+	tzset.$O\
+
+<../../mksyslib
+
+CFLAGS=-c -D_POSIX_SOURCE

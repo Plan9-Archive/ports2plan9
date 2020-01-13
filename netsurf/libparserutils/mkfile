@@ -1,0 +1,85 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libparserutils.a
+OFILES=aliases.$O buffer.$O codec.$O codec_8859.$O codec_ascii.$O codec_ext8.$O \
+	codec_utf16.$O codec_utf8.$O errors.$O filter.$O inputstream.$O stack.$O \
+	utf16.$O utf8.$O vector.$O 
+HFILES=/sys/include/ape/string.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./include -I/sys/include/ape -I/sys/include/ape/apr-1 -I/386/include/ape \
+	-B -DPLAN9 -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION 
+
+vector.$O: /sys/include/ape/stdio.h include/parserutils/functypes.h include/parserutils/errors.h \
+	/sys/include/ape/stddef.h include/parserutils/utils/vector.h /sys/include/ape/inttypes.h 
+utf8.$O: utf8impl.h include/parserutils/charset/utf8.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/stdbool.h 
+utf16.$O: include/parserutils/charset/utf16.h /sys/include/ape/stdlib.h /sys/include/ape/stdbool.h 
+stack.$O: /sys/include/ape/stdio.h include/parserutils/functypes.h include/parserutils/errors.h \
+	/sys/include/ape/stddef.h include/parserutils/utils/stack.h /sys/include/ape/inttypes.h 
+inputstream.$O: utils.h filter.h include/parserutils/utils/buffer.h include/parserutils/charset/utf8.h \
+	include/parserutils/types.h include/parserutils/functypes.h include/parserutils/errors.h \
+	/sys/include/ape/inttypes.h /sys/include/ape/stdlib.h /sys/include/ape/stdio.h \
+	/sys/include/ape/stdbool.h include/parserutils/input/inputstream.h include/parserutils/errors.h \
+	/sys/include/ape/inttypes.h include/parserutils/charset/utf8.h include/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/assert.h 
+filter.$O: utils.h include/parserutils/functypes.h include/parserutils/errors.h \
+	/sys/include/ape/inttypes.h filter.h include/parserutils/charset/codec.h \
+	include/parserutils/charset/mibenum.h /sys/include/ape/stddef.h /sys/include/ape/apr-1/apr_iconv_private.h \
+	/sys/include/ape/stddef.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_iconv.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/signal.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/limits.h \
+	/sys/include/ape/sys/wait.h /sys/include/ape/inttypes.h /sys/include/ape/stdint.h \
+	/sys/include/ape/sys/socket.h /sys/include/ape/sys/types.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/iconv.h /sys/include/ape/stdlib.h /sys/include/ape/stdbool.h \
+	/sys/include/ape/errno.h 
+errors.$O: include/parserutils/errors.h 
+codec_utf8.$O: utils.h endian.h /sys/include/ape/stdlib.h /sys/include/ape/stdbool.h \
+	utf8impl.h codec_impl.h include/parserutils/charset/mibenum.h /sys/include/ape/stdlib.h 
+codec_utf16.$O: utils.h endian.h codec_impl.h include/parserutils/errors.h /sys/include/ape/inttypes.h \
+	include/parserutils/charset/utf16.h include/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdlib.h 
+codec_ext8.$O: ext8_tables.h utils.h endian.h codec_impl.h include/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/assert.h 
+codec_ascii.$O: utils.h endian.h codec_impl.h include/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/assert.h 
+codec_8859.$O: 8859_tables.h utils.h endian.h codec_impl.h include/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/assert.h 
+codec.$O: include/parserutils/functypes.h include/parserutils/errors.h /sys/include/ape/inttypes.h \
+	include/parserutils/charset/codec.h /sys/include/ape/inttypes.h /sys/include/ape/stdbool.h \
+	codec_impl.h aliases.h 
+buffer.$O: include/parserutils/functypes.h include/parserutils/errors.h include/parserutils/utils/buffer.h 
+aliases.$O: utils.h /sys/include/ape/inttypes.h /sys/include/ape/stdbool.h include/parserutils/types.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/inttypes.h /sys/include/ape/stdint.h \
+	/sys/include/ape/stdbool.h include/parserutils/functypes.h /sys/include/ape/stddef.h \
+	include/parserutils/errors.h /sys/include/ape/stdbool.h /sys/include/ape/inttypes.h \
+	include/parserutils/charset/mibenum.h /sys/include/ape/inttypes.h aliases.h \
+	/sys/include/ape/assert.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/sys/types.h /sys/include/ape/stddef.h /386/include/ape/stdarg.h \
+	/sys/include/ape/stdio.h /sys/include/ape/stddef.h /sys/include/ape/stdbool.h \
+	/sys/include/ape/ctype.h 
+
+install:V:
+	mkdir -p /sys/include/ape/parserutils
+	cp include/parserutils/*.h /sys/include/ape/parserutils/
+	mkdir -p /sys/include/ape/parserutils/charset
+	cp include/parserutils/charset/*.h /sys/include/ape/parserutils/charset/
+	mkdir -p /sys/include/ape/parserutils/input
+	cp include/parserutils/input/*.h /sys/include/ape/parserutils/input/
+	mkdir -p /sys/include/ape/parserutils/utils
+	cp include/parserutils/utils/*.h /sys/include/ape/parserutils/utils/
+
+nuke:V:
+	rm -rf /sys/include/ape/parserutils
+
+nuke:V:
+	mk clean
+	rm -f $LIB

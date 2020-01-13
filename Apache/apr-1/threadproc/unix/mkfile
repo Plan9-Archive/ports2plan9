@@ -1,0 +1,32 @@
+</$objtype/mkfile
+LIB=../../libapr-1.a$O
+OFILES=proc.$O thread.$O threadpriv.$O procsup.$O signals.$O 
+HFILES=../../include/arch/unix/apr_arch_threadproc.h ../../include/arch/unix/apr_arch_file_io.h \
+	../../include/apr_file_io.h ../../include/apr_thread_proc.h ../../include/apr_private.h \
+	../../include/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../../ -I../../include -I../../include/arch/unix -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION 
+
+signals.$O: ../../include/apr_strings.h ../../include/apr_signal.h ../../include/apr_pools.h 
+threadpriv.$O: ../../include/apr_portable.h 
+thread.$O: ../../include/apr_portable.h 
+proc.$O: ../../include/apr_pools.h ../../include/apr_random.h ../../include/apr_pools.h \
+	../../include/apr_signal.h ../../include/apr_errno.h ../../include/apr_pools.h \
+	../../include/apr_shm.h ../../include/apr_errno.h ../../include/apr_pools.h \
+	../../include/apr_dso.h ../../include/apr_time.h ../../include/apr_proc_mutex.h \
+	../../include/apr_errno.h ../../include/apr_pools.h ../../include/apr_errno.h \
+	../../include/apr_pools.h ../../include/apr_proc_mutex.h ../../include/apr_global_mutex.h \
+	../../include/apr_errno.h ../../include/apr_network_io.h ../../include/apr_pools.h \
+	../../include/apr_portable.h ../../include/apr_want.h ../../include/apr_pools.h \
+	../../include/apr_errno.h ../../include/apr_strings.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

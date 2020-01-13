@@ -1,0 +1,68 @@
+'
+' Simple Command Line Shell emulation to directly execute some BaCon commands.
+'
+' Usage: ./shell [bacon.bash]
+'        ./shell [bacon.ksh]
+'
+' (Without argument 'bacon' is assumed to be the converter.)
+'
+' October 2010, PvE - GPL.
+'----------------------------------------------------------------------------------------------------------------
+
+TRAP LOCAL
+
+' Get the arguments
+SPLIT ARGUMENT$ BY " " TO arg$ SIZE amount
+
+' Name of temporary directory to store generated C files
+tmp_dir$ = CONCAT$("/tmp/", arg$[0], "/")
+
+' Name of tmp file for direct mode
+tmp_file$ = CONCAT$(arg$[0], ".tmp.bac")
+
+' Determine compiler binary
+IF amount EQ 2 THEN bacon$ = arg$[1]
+ELSE bacon$ = "./bacon"
+
+' Default prompt
+prompt$ = "-> "
+
+PRINT NL$, "---= Entering BaCon Shell v0.1 using BaCon version ", VERSION$, " with 65535 bytes free ;-) =---", NL$
+
+' Create the temporary directory
+MAKEDIR tmp_dir$
+
+' Endless loop
+WHILE TRUE
+
+    ' Get data from user
+    INPUT prompt$, command$
+
+    ' EXIT command?
+    IF EQUAL(CHOP$(UCASE$(command$)), "EXIT") THEN END
+
+    ' No, assume BaCon code
+    ELIF LEN(command$) > 0 THEN
+
+        ' Cleanup temporary directory
+        IF FILEEXISTS(CONCAT$(tmp_dir$, tmp_file$)) THEN DELETE FILE CONCAT$(tmp_dir$, tmp_file$)
+        IF FILEEXISTS(CONCAT$(tmp_dir$, tmp_file$, ".c")) THEN DELETE FILE CONCAT$(tmp_dir$, tmp_file$, ".c")
+        IF FILEEXISTS(CONCAT$(tmp_dir$, tmp_file$, ".h")) THEN DELETE FILE CONCAT$(tmp_dir$, tmp_file$, ".h")
+
+        ' Write command to temporary file
+        OPEN CONCAT$(tmp_dir$, tmp_file$) FOR WRITING AS tmp_file
+            WRITELN command$ TO tmp_file
+        CLOSE FILE tmp_file
+
+        ' Convert and compile
+        result$ = EXEC$(CONCAT$(bacon$, " -d ", tmp_dir$, " ", CONCAT$(tmp_dir$, tmp_file$)))
+
+        ' Check result
+        IF NOT(INSTR(result$, "ready")) THEN
+            PRINT "? ERROR"
+        ELSE
+            SYSTEM CONCAT$(tmp_dir$, LEFT$(tmp_file$, LEN(tmp_file$) - 4))
+        END IF
+
+    END IF
+WEND

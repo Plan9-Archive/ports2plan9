@@ -1,0 +1,30 @@
+</$objtype/mkfile
+DIRS=libp2c p2c 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /sys/man/1ape/p2c
+	rm -f /sys/man/1ape/p2cc
+	rm -f /sys/include/ape/p2c.h
+	rm -f /rc/bin/ape/p2cc
+	rm -rf /sys/lib/p2c
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp p2c.man /sys/man/1ape/p2c
+	cp p2cc.man /sys/man/1ape/p2cc
+	cp p2c.h /sys/include/ape/
+	cp p2cc.perl /rc/bin/ape/p2cc
+	mkdir -p /sys/lib/p2c
+	cp sys.p2crc /sys/lib/p2c/p2crc
+

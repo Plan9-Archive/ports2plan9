@@ -1,0 +1,14 @@
+REM Testing BASIC compiler
+
+PRINT "========================"
+PRINT "Test 8: Testing file I/O"
+PRINT "========================"
+PRINT
+
+OPEN "testfile.txt" FOR APPENDING AS handle
+
+WRITELN "Hello cruel world" TO handle
+
+CLOSE FILE handle
+
+SYSTEM "cat testfile.txt"

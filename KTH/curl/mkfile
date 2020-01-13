@@ -1,0 +1,24 @@
+</$objtype/mkfile
+DIRS=lib src docs
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp curl-config /rc/bin/ape/
+	mkdir -p /$objtype/lib/ape/pkgconfig
+	cp libcurl.pc /$objtype/lib/ape/pkgconfig/
+	mkdir -p /sys/include/ape/curl
+	cp apeheaders/*.h /sys/include/ape/curl
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+

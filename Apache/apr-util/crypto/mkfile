@@ -1,0 +1,67 @@
+</$objtype/mkfile
+LIB=../libaprutil-1.a$O
+OFILES=apr_passwd.$O getuuid.$O apr_md4.$O apr_crypto_nss.$O uuid.$O apr_crypto_openssl.$O \
+	crypt_blowfish.$O apr_sha1.$O apr_md5.$O apr_crypto.$O 
+HFILES=/sys/include/ape/apr-1/apr_lib.h /sys/include/ape/apr-1/apr_strings.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE \
+	-D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 
+
+apr_crypto.$O: /sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_hash.h \
+	/sys/include/ape/apr-1/apr_pools.h ../include/apu.h ../include/private/apu_config.h 
+apr_md5.$O: ../include/private/apu_config.h ../include/apr_md5.h 
+apr_sha1.$O: /sys/include/ape/apr-1/apr_general.h ../include/apu.h ../include/apr_base64.h \
+	../include/apr_sha1.h 
+crypt_blowfish.$O: crypt_blowfish.h 
+apr_crypto_openssl.$O: ../include/private/apr_crypto_internal.h ../include/apr_buckets.h \
+	/sys/include/ape/apr-1/apr_time.h ../include/apu_errno.h ../include/apu.h 
+uuid.$O: /sys/include/ape/apr-1/apr_errno.h ../include/apr_uuid.h /sys/include/ape/apr-1/apr.h 
+apr_crypto_nss.$O: ../include/apu_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_hash.h \
+	/sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	../include/apu.h ../include/apr_crypto.h ../include/private/apr_crypto_internal.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_ring.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr_ring.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_mmap.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_network_io.h \
+	../include/apu.h ../include/apr_buckets.h /sys/include/ape/apr-1/apr_time.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h ../include/apu_errno.h \
+	../include/private/apu_config.h ../include/apu.h 
+apr_md4.$O: ../include/apr_xlate.h ../include/apu.h ../include/apr_md4.h 
+getuuid.$O: /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_shm.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_dso.h \
+	/sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_proc_mutex.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_proc_mutex.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_global_mutex.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_inherit.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_file_io.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_network_io.h \
+	/sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_inherit.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_thread_proc.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_portable.h /sys/include/ape/apr-1/apr_general.h \
+	../include/apr_md5.h /sys/include/ape/apr-1/apr_errno.h ../include/apu.h \
+	../include/apr_uuid.h /sys/include/ape/apr-1/apr.h 
+apr_passwd.$O: crypt_blowfish.h ../include/private/apu_config.h /sys/include/ape/apr-1/apr_general.h \
+	../include/apu.h ../include/apr_sha1.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h ../include/apu.h ../include/apr_xlate.h \
+	../include/apu.h ../include/apr_md5.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

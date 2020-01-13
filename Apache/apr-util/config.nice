@@ -1,0 +1,18 @@
+#! /bin/sh
+#
+# Created by configure
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION"; export CFLAGS
+"./configure" \
+"--prefix=/sys/lib/apr" \
+"--exec-prefix=/386" \
+"--sbindir=/386/bin" \
+"--libexecdir=/386/bin" \
+"--libdir=/386/lib/ape" \
+"--includedir=/sys/include/ape" \
+"--mandir=/sys/man" \
+"--disable-util-dso" \
+"--without-ldap" \
+"--with-apr=/rc/bin/ape/apr-config" \
+"CFLAGS=-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION" \
+"$@"

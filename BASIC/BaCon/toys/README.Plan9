@@ -1,0 +1,14 @@
+This is a collection of toys written in BASIC that can be played with.
+
+Additional toys and examples of C-library bindings to BASIC programs and graphics interfaces etc can be found at:
+
+http://www.basic-converter.org/
+
+After installing bacon (having the executeable bacon script in your namespace /bin), just run
+
+
+ape/psh
+bacon (.bac file)
+
+
+This will convert the BASIC source to C, which subsequently is compiled by your compiler

@@ -1,0 +1,23 @@
+This is a set of tests published at 
+
+http://www.basic-converter.org/
+
+To compile a test just run:
+
+ape/psh
+bacon (.bac file)
+
+For more linker and CFLAGS options, see documentation
+
+(prerequisite: the "bacon" script executeable and in your namespace)
+
+The following tests have been tested:
+
+
+The following tests compile:
+
+
+The following tests run and seem to do what they should:
+
+
+

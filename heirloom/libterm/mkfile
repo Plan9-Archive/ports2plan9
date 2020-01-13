@@ -1,0 +1,24 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libterm.a
+OFILES=termcap.$O tgoto.$O tputs.$O 
+HFILES=libterm.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+tputs.$O: 
+tgoto.$O: 
+termcap.$O: 
+
+install:V:
+	cp libterm.h /sys/include/ape/ 
+	cp termcap.src /lib/termcap
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /sys/include/ape/libterm.h
+	rm -f /lib/termcap

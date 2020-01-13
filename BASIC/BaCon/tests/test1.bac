@@ -1,0 +1,21 @@
+REM Testing BASIC compiler
+
+PRINT "============================="
+PRINT "Test 1: Testing FOR/NEXT/STEP"
+PRINT "============================="
+PRINT
+
+DECLARE x[5] TYPE int
+
+PRINT "Counting up..."
+FOR x[1] = 1 TO 10
+    PRINT x[1], " - ";
+NEXT
+
+PRINT
+PRINT
+
+PRINT "Counting down..."
+FOR y = 10 TO 1 STEP -1
+    PRINT y
+NEXT y

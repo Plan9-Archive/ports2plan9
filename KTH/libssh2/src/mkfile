@@ -1,0 +1,47 @@
+</$objtype/mkfile
+LIB=libssh2.a
+OFILES=libgcrypt.$O pem.$O channel.$O kex.$O crypt.$O userauth.$O transport.$O \
+	publickey.$O comp.$O knownhost.$O sftp.$O version.$O agent.$O packet.$O \
+	mac.$O scp.$O misc.$O session.$O hostkey.$O keepalive.$O global.$O openssl.$O \
+	alloca.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE \
+	-D_PLAN9_SOURCE -D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-DHAVE_CONFIG_H 
+
+alloca.$O: alloca.h libssh2_config.h 
+openssl.$O: libssh2_priv.h 
+global.$O: libssh2_priv.h 
+keepalive.$O: transport.h libssh2_priv.h 
+hostkey.$O: misc.h libssh2_priv.h 
+session.$O: misc.h mac.h channel.h session.h transport.h libssh2_priv.h 
+misc.$O: misc.h libssh2_priv.h 
+scp.$O: session.h channel.h libssh2_priv.h 
+mac.$O: mac.h libssh2_priv.h 
+packet.$O: packet.h channel.h transport.h libssh2_priv.h 
+agent.$O: session.h userauth.h misc.h libssh2_priv.h 
+version.$O: libssh2_priv.h 
+sftp.$O: sftp.h session.h channel.h ../include/libssh2_sftp.h libssh2_priv.h 
+knownhost.$O: misc.h libssh2_priv.h 
+comp.$O: comp.h libssh2_priv.h 
+publickey.$O: session.h channel.h ../include/libssh2_publickey.h libssh2_priv.h 
+transport.$O: mac.h transport.h libssh2_priv.h 
+userauth.$O: userauth.h session.h transport.h libssh2_priv.h 
+crypt.$O: libssh2_priv.h 
+kex.$O: libssh2_priv.h mac.h libssh2_priv.h comp.h transport.h libssh2_priv.h 
+channel.$O: session.h packet.h packet.h libssh2_priv.h transport.h channel.h libssh2_priv.h 
+pem.$O: libssh2_priv.h 
+libgcrypt.$O: openssl.h crypto.h misc.h ../include/libssh2.h ../include/libssh2_sftp.h \
+	../include/libssh2.h ../include/libssh2_publickey.h ../include/libssh2.h \
+	libssh2_config.h libssh2_priv.h 
+
+install:V:
+	cp libssh2.a /$objtype/lib/ape/
+
+nuke:V:
+	mk clean
+	rm -f $LIB

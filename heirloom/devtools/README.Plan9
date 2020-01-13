@@ -1,0 +1,18 @@
+
+Recent porting attempts have highlighted some issues especially with the Plan9 lex in building some applications.
+
+Hopefully porting the heirloom devtools could make APE more capable.
+
+Whenever there is an option to make an "extended" variant, that option is activated.
+
+DEPENDENCIES:
+- lex needs a more capable libwchar than the Heirloom one
+ --> libutf8 from GNU works
+
+- m4 needs a more capable yacc than the native Plan9 one
+ --> byacc works, possibly also the Heirloom one included here.
+
+
+- make: is written in c++. We do have a cfront port for Plan9, but I have not tried using it on these sources yet.
+For now, make is excluded. Ports of gmake and bmake are already available, and APE make does a good job.
+

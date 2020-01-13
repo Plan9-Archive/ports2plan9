@@ -1,0 +1,17 @@
+Makefile assumes gcc so I just make some mkfiles instead
+
+mkmk -l libbz2 -S -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x bzip2.c -x bzip2recover.c -x dlltest.c -x unzcrash.c -x spewG.c -x mk251.c > mkfile
+
+install:V:
+	mk -f mkfile.bins installall
+	cp libbz2.a /$objtype/lib/ape/
+	cp bzlib.h.ape /sys/include/ape/bzlib.h
+	cp bzmore /rc/bin/ape/
+	cp bzgrep /rc/bin/ape/
+	cp bzdiff /rc/bin/ape/
+	cp bzip2.1 /sys/man/1ape/bzip2
+	cp bzdiff.1 /sys/man/1ape/bzdiff
+	cp bzmore.1 /sys/man/1ape/bzmore
+	cp bzgrep.1 /sys/man/1ape/bzgrep 
+
+mkmk -m -S -B -a -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x blocksort.c -x huffman.c -x crctable.c -x randtable.c -x compress.c -x decompress.c -x bzlib.c -x bzip2.1 -x bzdiff.1 -x bzmore.1 -x bzgrep.1 -x dlltest.c -x unzcrash.c -x spewG.c -x mk251.c -H./libbz2.a > mkfile.bins

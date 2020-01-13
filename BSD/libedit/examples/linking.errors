@@ -1,0 +1,16 @@
+original libedit build:
+unvis: undefined: u_char
+el_init: undefined: nl_langinfo
+el_editmode: undefined: wcscmp
+ce__isword: undefined: wcschr
+wcsdup: undefined: wmemcpy
+terminal_echotc: undefined: wcstol
+el_match: undefined: wcsstr
+c_setpat: undefined: wcsncpy
+parse_line: undefined: tok_winit
+parse_line: undefined: tok_wstr
+parse_line: undefined: tok_wend
+hist_command: undefined: history_w
+vi_match: undefined: wcscspn
+vi_histedit: undefined: mkstemp
+pcc: 8l: 8l 1015: error

@@ -1,0 +1,35 @@
+.TH SEQ 1 sbase\-VERSION
+.SH NAME
+seq \- print a sequence of numbers
+.SH SYNOPSIS
+.B seq 
+.RB [ \-w ]
+.RB [ \-f
+.IR fmt ]
+.RB [ \-s
+.IR separator ]
+.RI [ start
+.RI [ step ]]
+.RI end
+.SH DESCRIPTION
+.B seq 
+will print a sequence of numbers from 
+.I start
+(default 1) to
+.IR end ,
+in
+.IR step
+intervals (default 1).
+.SH OPTIONS
+.TP
+.BI \-f " format"
+specifies the format used for output lines, as per
+.IR printf (3).
+.TP
+.BI \-s " separator"
+specifies the separator to print between output lines
+.TP
+.BI \-w
+tells seq to print out lines in equal width
+.TP
+

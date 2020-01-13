@@ -1,0 +1,42 @@
+</$objtype/mkfile
+LIB=.libs/libtiff.a$O
+OFILES=tif_jpeg.$O tif_flush.$O tif_jpeg_12.$O tif_extension.$O tif_packbits.$O \
+	tif_thunder.$O tif_ojpeg.$O tif_open.$O tif_warning.$O mkg3states.$O tif_dirinfo.$O \
+	tif_dirread.$O tif_compress.$O tif_close.$O tif_zip.$O tif_version.$O tif_lzma.$O \
+	tif_predict.$O tif_pixarlog.$O tif_next.$O tif_fax3.$O tif_read.$O tif_lzw.$O \
+	tif_strip.$O tif_print.$O tif_dirwrite.$O tif_tile.$O tif_jbig.$O tif_dir.$O \
+	tif_swab.$O tif_color.$O tif_dumpmode.$O tif_getimage.$O tif_codec.$O tif_error.$O \
+	tif_fax3sm.$O tif_luv.$O tif_aux.$O tif_write.$O tif_unix.$O 
+HFILES=tiffiop.h tif_dir.h tiffvers.h tiffconf.h tiff.h tiffio.h tif_config.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_CONFIG_H 
+
+tif_unix.$O: 
+tif_write.$O: 
+tif_aux.$O: tif_predict.h 
+tif_luv.$O: uvcode.h 
+tif_fax3sm.$O: tif_fax3.h 
+tif_getimage.$O: 
+tif_color.$O: 
+tif_print.$O: 
+tif_lzw.$O: tif_predict.h 
+tif_read.$O: 
+tif_fax3.$O: t4.h tif_fax3.h 
+tif_pixarlog.$O: tif_predict.h 
+tif_predict.$O: tif_predict.h 
+tif_zip.$O: tif_predict.h 
+tif_close.$O: 
+tif_dirinfo.$O: 
+mkg3states.$O: tif_fax3.h 
+tif_ojpeg.$O: 
+tif_thunder.$O: 
+tif_packbits.$O: 
+tif_jpeg.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,13 @@
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS" GREP=grep configure --prefix=/sys --exec-prefix=/$objtype --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --datadir=/sys --disable-cpp
+
+16- and 32-bit characters not supported. C++ not supported
+
+compiling PCRE:
+
+mkmk -l libpcre -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -x .deps -x cmake -x doc -x m4 -x slask -x sljit -x testdata -x pcreposix.c -x pcretest.c -x pcregrep.c -x pcredemo.c -x pcre_jit_test.c -x pcre_printit.c -x dftables.c > mkfile.libpcre
+
+mkmk -l libpcreposix -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -H./libpcre.a8 pcreposix.c > mkfile.libpcreposix
+
+mkmk -o pcregrep -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -H./libpcre.a8 -H./libpcreposix.a8 pcregrep.c > mkfile.pcregrep
+
+mkmk -o pcretest -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -DPLAN9 -H./libpcre.a8 -H./libpcreposix.a8 pcretest.c > mkfile.pcretest

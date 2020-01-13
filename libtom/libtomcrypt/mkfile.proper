@@ -1,0 +1,286 @@
+</$objtype/mkfile
+
+#mkfile for Plan9
+
+LIB=/$objtype/lib/ape/libtomcrypt.a
+
+OFILES=aes_enc.$O aes.$O anubis.$O blowfish.$O \
+cast5.$O des.$O kasumi.$O khazad.$O kseed.$O \
+multi2.$O noekeon.$O rc2.$O rc5.$O rc6.$O \
+safer.$O saferp.$O safer_tab.$O \
+skipjack.$O twofish.$O xtea.$O ccm_memory.$O \
+ccm_test.$O eax_addheader.$O eax_decrypt.$O \
+eax_decrypt_verify_memory.$O eax_done.$O \
+eax_encrypt_authenticate_memory.$O eax_encrypt.$O \
+eax_init.$O eax_test.$O gcm_add_aad.$O \
+gcm_add_iv.$O gcm_done.$O gcm_gf_mult.$O \
+gcm_init.$O gcm_memory.$O gcm_mult_h.$O \
+gcm_process.$O gcm_reset.$O gcm_test.$O \
+ocb_decrypt.$O ocb_decrypt_verify_memory.$O \
+ocb_done_decrypt.$O ocb_done_encrypt.$O \
+ocb_encrypt_authenticate_memory.$O ocb_encrypt.$O \
+ocb_init.$O ocb_ntz.$O ocb_shift_xor.$O \
+ocb_test.$O s_ocb_done.$O chc.$O \
+hash_file.$O hash_filehandle.$O hash_memory.$O \
+hash_memory_multi.$O md2.$O md4.$O md5.$O \
+rmd128.$O rmd160.$O rmd256.$O rmd320.$O sha1.$O \
+sha256.$O sha512.$O tiger.$O whirl.$O \
+f9_done.$O f9_file.$O f9_init.$O f9_memory.$O \
+f9_memory_multi.$O f9_process.$O f9_test.$O hmac_done.$O \
+hmac_file.$O hmac_init.$O hmac_memory.$O \
+hmac_memory_multi.$O hmac_process.$O hmac_test.$O \
+omac_done.$O omac_file.$O omac_init.$O omac_memory.$O \
+omac_memory_multi.$O omac_process.$O omac_test.$O \
+pelican.$O pelican_memory.$O pelican_test.$O \
+pmac_done.$O pmac_file.$O pmac_init.$O pmac_memory.$O \
+pmac_memory_multi.$O pmac_ntz.$O pmac_process.$O \
+pmac_shift_xor.$O pmac_test.$O src/mac/xcbc/xcbc_done.$O \
+xcbc_file.$O xcbc_init.$O xcbc_memory.$O \
+xcbc_memory_multi.$O xcbc_process.$O xcbc_test.$O \
+ltc_ecc_fp_mulmod.$O gmp_desc.$O ltm_desc.$O multi.$O \
+rand_prime.$O tfm_desc.$O base64_decode.$O \
+base64_encode.$O burn_stack.$O crypt_argchk.$O \
+crypt.$O crypt_cipher_descriptor.$O crypt_cipher_is_valid.$O \
+crypt_find_cipher_any.$O crypt_find_cipher.$O \
+crypt_find_cipher_id.$O crypt_find_hash_any.$O \
+crypt_find_hash.$O crypt_find_hash_id.$O \
+crypt_find_hash_oid.$O crypt_find_prng.$O crypt_fsa.$O \
+crypt_hash_descriptor.$O crypt_hash_is_valid.$O \
+crypt_ltc_mp_descriptor.$O crypt_prng_descriptor.$O \
+crypt_prng_is_valid.$O crypt_register_cipher.$O \
+crypt_register_hash.$O crypt_register_prng.$O \
+crypt_unregister_cipher.$O crypt_unregister_hash.$O \
+crypt_unregister_prng.$O error_to_string.$O pkcs_5_1.$O \
+pkcs_5_2.$O zeromem.$O cbc_decrypt.$O cbc_done.$O \
+cbc_encrypt.$O cbc_getiv.$O cbc_setiv.$O \
+cbc_start.$O cfb_decrypt.$O cfb_done.$O \
+cfb_encrypt.$O cfb_getiv.$O cfb_setiv.$O \
+cfb_start.$O ctr_decrypt.$O ctr_done.$O \
+ctr_encrypt.$O ctr_getiv.$O ctr_setiv.$O \
+ctr_start.$O ctr_test.$O ecb_decrypt.$O ecb_done.$O \
+ecb_encrypt.$O ecb_start.$O f8_decrypt.$O f8_done.$O \
+f8_encrypt.$O f8_getiv.$O f8_setiv.$O f8_start.$O \
+f8_test_mode.$O lrw_decrypt.$O lrw_done.$O \
+lrw_encrypt.$O lrw/lrw_getiv.$O lrw_process.$O \
+lrw_setiv.$O lrw_start.$O lrw_test.$O \
+ofb_decrypt.$O ofb_done.$O ofb_encrypt.$O \
+ofb_getiv.$O ofb_setiv.$O ofb_start.$O \
+xts_decrypt.$O xts_done.$O xts_encrypt.$O \
+xts_init.$O xts_mult_x.$O xts_test.$O \
+der_decode_bit_string.$O der_encode_bit_string.$O \
+der_length_bit_string.$O der_decode_boolean.$O \
+der_encode_boolean.$O der_length_boolean.$O \
+der_decode_choice.$O der_decode_ia5_string.$O \
+der_encode_ia5_string.$O der_length_ia5_string.$O \
+der_decode_integer.$O der_encode_integer.$O \
+der_length_integer.$O \
+der_decode_object_identifier.$O \
+der_encode_object_identifier.$O \
+der_length_object_identifier.$O \
+der_decode_octet_string.$O der_encode_octet_string.$O \
+der_length_octet_string.$O \
+der_decode_printable_string.$O \
+der_encode_printable_string.$O \
+der_length_printable_string.$O \
+der_decode_sequence_ex.$O \
+der_decode_sequence_flexi.$O \
+der_decode_sequence_multi.$O \
+der_encode_sequence_ex.$O \
+der_encode_sequence_multi.$O der_length_sequence.$O \
+der_sequence_free.$O der_encode_set.$O \
+der_encode_setof.$O der_decode_short_integer.$O \
+der_encode_short_integer.$O \
+der_length_short_integer.$O der_decode_utctime.$O \
+der_encode_utctime.$O der_length_utctime.$O \
+der_decode_utf8_string.$O der_encode_utf8_string.$O \
+der_length_utf8_string.$O dsa_decrypt_key.$O \
+dsa_encrypt_key.$O dsa_export.$O dsa_free.$O dsa_import.$O \
+dsa_make_key.$O dsa_shared_secret.$O dsa_sign_hash.$O \
+dsa_verify_hash.$O dsa_verify_key.$O ecc_ansi_x963_export.$O \
+ecc_ansi_x963_import.$O ecc.$O ecc_decrypt_key.$O \
+ecc_encrypt_key.$O ecc_export.$O ecc_free.$O ecc_get_size.$O \
+ecc_import.$O ecc_make_key.$O ecc_shared_secret.$O \
+ecc_sign_hash.$O ecc_sizes.$O ecc_test.$O ecc_verify_hash.$O \
+ltc_ecc_is_valid_idx.$O ltc_ecc_map.$O ltc_ecc_mul2add.$O \
+ltc_ecc_mulmod.$O ltc_ecc_mulmod_timing.$O ltc_ecc_points.$O \
+ltc_ecc_projective_add_point.$O ltc_ecc_projective_dbl_point.$O \
+katja_decrypt_key.$O katja_encrypt_key.$O katja_export.$O \
+katja_exptmod.$O katja_free.$O katja_import.$O \
+katja_make_key.$O pkcs_1_i2osp.$O pkcs_1_mgf1.$O \
+pkcs_1_oaep_decode.$O pkcs_1_oaep_encode.$O pkcs_1_os2ip.$O \
+pkcs_1_pss_decode.$O pkcs_1_pss_encode.$O pkcs_1_v1_5_decode.$O \
+pkcs_1_v1_5_encode.$O rsa_decrypt_key.$O rsa_encrypt_key.$O \
+rsa_export.$O rsa_exptmod.$O rsa_free.$O rsa_import.$O \
+rsa_make_key.$O rsa_sign_hash.$O rsa_verify_hash.$O fortuna.$O \
+rc4.$O rng_get_bytes.$O rng_make_prng.$O sober128.$O \
+sprng.$O yarrow.$O 
+
+%.$O:	src/ciphers/aes/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/ciphers/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/ciphers/safer/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/ciphers/twofish/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/encauth/ccm/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/encauth/eax/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/encauth/gcm/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/encauth/ocb/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/hashes/chc/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/hashes/helper/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/hashes/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/hashes/sha2/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/hashes/whirl/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/f9/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/hmac/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/omac/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/pelican/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/pmac/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/mac/xcbc/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/math/fp/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/math/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/misc/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/misc/base64/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/misc/crypt/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/misc/pkcs5/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/cbc/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/cfb/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/ctr/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/ecb/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/f8/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/lrw/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/ofb/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/modes/xts/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/bit/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/boolean/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/choice/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/ia5/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/integer/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/object_identifier/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/octet/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/printable_string/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/sequence/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/set/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/short_integer/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/uctime/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/asn1/der/utf8/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/dsa/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/ecc/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/katja/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/pkcs1/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/pk/rsa/%.c
+	$CC $CFLAGS $prereq
+
+%.$O:	src/prngs/%.c
+	$CC $CFLAGS $prereq
+
+
+# installed headers have been modified with an APE "#pragma lib /$M/lib/ape/libtomcrypt.a"
+# for upstream adoption the best would be if the mkfile had automatic modification of the headers
+# in that case, the only thing needed to adopt upstream is the mkfile.
+
+all:V:
+
+
+install:V:
+
+clean:V:
+
+nuke:V:

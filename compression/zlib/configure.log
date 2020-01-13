@@ -1,0 +1,191 @@
+--------------------
+./configure --help
+Thu Dec 20 16:40:16 CET 2012
+usage:
+  configure [--zprefix] [--prefix=PREFIX]  [--eprefix=EXPREFIX]
+    [--static] [--64] [--libdir=LIBDIR] [--sharedlibdir=LIBDIR]
+    [--includedir=INCLUDEDIR] [--archs="-arch i386 -arch x86_64"]
+--------------------
+./configure --prefix=/sys/lib/libz --exec-prefix=/386 --includedir=/sys/include/ape --libdir=/386/lib/ape
+Thu Dec 20 16:42:29 CET 2012
+./configure --help for help
+--------------------
+./configure --prefix=/sys/lib/libz --eprefix=/386 --includedir=/sys/include/ape --libdir=/386/lib/ape
+Thu Dec 20 16:43:19 CET 2012
+
+Checking for gcc...
+=== ztest779.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+gcc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+./configure[328]: gcc: not found
+... using cc
+
+Checking for shared library support...
+=== ztest779.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+cc -w -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+cc -shared -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -o ztest779.so ztest779.o
+cc: flag -h ignored
+cc: flag -a ignored
+cc: flag -r ignored
+cc: flag -e ignored
+cc: flag -d ignored
+_main: undefined: main
+cc: 8l: 8l 813: error
+(exit code 1)
+No shared library support; try without defining CC and CFLAGS
+Building static library libz.a version 1.2.7 with cc.
+
+
+=== ztest779.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -D_LARGEFILE64_SOURCE=1 ztest779.c
+/usr/jens/dvl/zlib-1.2.7/ztest779.c:2[stdin:50] not a function
+/usr/jens/dvl/zlib-1.2.7/ztest779.c:2[stdin:50] syntax error, last name: dummy
+cc: cpp: 8c 821: error
+(exit code 1)
+Checking for off64_t... No.
+
+=== ztest779.c ===
+#include <stdio.h>
+int main(void) {
+  fseeko(NULL, 0, 0);
+  return 0;
+}
+===
+cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -o ztest779 ztest779.c
+Checking for fseeko... Yes.
+
+=== ztest779.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -o ztest779 ztest779.c
+Checking for strerror... Yes.
+
+=== ztest779.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+Checking for unistd.h... Yes.
+
+=== ztest779.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+Checking for stdarg.h... Yes.
+
+=== ztest779.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest779.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -o ztest779 ztest779.c
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest779.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest779.c ===
+#include <stdio.h>
+#define is32(n,t) for(n=1,k=0;n;n<<=1,k++);if(k==32){puts(t);return 0;}
+int main() {
+    int k;
+    unsigned i;
+    unsigned long l;
+    unsigned short s;
+    is32(i, "unsigned")
+    is32(l, "unsigned long")
+    is32(s, "unsigned short")
+    return 1;
+}
+===
+cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION ztest779.c -o ztest779
+Looking for a four-byte integer type... Found.
+
+ALL = static
+AR = ar
+ARFLAGS = rc
+CC = cc
+CFLAGS = -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION
+CPP = cc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = cc
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION
+SHAREDLIB =
+SHAREDLIBM =
+SHAREDLIBV =
+STATICLIB = libz.a
+TEST = all teststatic
+VER = 1.2.7
+Z_U4 = unsigned
+exec_prefix = /386
+includedir = /sys/include/ape
+libdir = /386/lib/ape
+mandir = ${prefix}/share/man
+prefix = /sys/lib/libz
+sharedlibdir = ${libdir}
+uname = Plan9 4
+--------------------
+
+

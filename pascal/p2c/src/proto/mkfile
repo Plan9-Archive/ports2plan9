@@ -1,0 +1,16 @@
+</$objtype/mkfile
+TARG=makeproto
+OFILES=makeproto.$O 
+BIN=.
+HFILES=/sys/include/ape/string.h /sys/include/ape/bsd.h /sys/include/ape/stddef.h \
+	/sys/include/ape/time.h /sys/include/ape/stddef.h /sys/include/ape/ctype.h \
+	/sys/include/ape/stdio.h /sys/include/ape/sys/types.h /sys/include/ape/stddef.h \
+	/386/include/ape/stdarg.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I/sys/include/ape -I/386/include/ape -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_BSD_EXTENSION 
+

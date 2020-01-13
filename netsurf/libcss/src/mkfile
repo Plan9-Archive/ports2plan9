@@ -1,0 +1,106 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libcss.a
+OFILES=azimuth.$O background.$O background_attachment.$O background_color.$O background_image.$O \
+	background_position.$O background_repeat.$O border.$O border_bottom_color.$O \
+	border_bottom_style.$O border_bottom_width.$O border_collapse.$O border_color.$O \
+	border_left_color.$O border_left_style.$O border_left_width.$O border_right_color.$O \
+	border_right_style.$O border_right_width.$O border_spacing.$O border_style.$O \
+	border_top_color.$O border_top_style.$O border_top_width.$O border_width.$O \
+	bottom.$O caption_side.$O clear.$O clip.$O color.$O computed.$O content.$O \
+	counter_increment.$O counter_reset.$O css_property_parser_gen.$O cue.$O \
+	cue_after.$O cue_before.$O cursor.$O detect.$O direction.$O dispatch.$O \
+	display.$O elevation.$O font.$O font_family.$O font_weight.$O hash.$O important.$O \
+	language.$O list_style.$O list_style_type.$O margin.$O opacity.$O outline.$O \
+	padding.$O pause.$O play_during.$O properties.$O propstrings.$O quotes.$O \
+	select.$O stylesheet.$O text_decoration.$O utils.$O voice_family.$O empty_cells.$O \
+	errors.$O float.$O font_size.$O font_style.$O font_variant.$O height.$O \
+	helpers.$O left.$O letter_spacing.$O line_height.$O list_style_image.$O \
+	list_style_position.$O margin_bottom.$O margin_left.$O margin_right.$O \
+	margin_top.$O max_height.$O max_width.$O min_height.$O min_width.$O orphans.$O \
+	outline_color.$O outline_style.$O outline_width.$O overflow.$O padding_bottom.$O \
+	padding_left.$O padding_right.$O padding_top.$O page_break_after.$O page_break_before.$O \
+	page_break_inside.$O pause_after.$O pause_before.$O pitch.$O pitch_range.$O \
+	position.$O richness.$O right.$O speak.$O speak_header.$O speak_numeral.$O \
+	speak_punctuation.$O speech_rate.$O stress.$O table_layout.$O text_align.$O \
+	text_indent.$O text_transform.$O top.$O unicode_bidi.$O uutils.$O vertical_align.$O \
+	visibility.$O volume.$O white_space.$O width.$O windows.$O word_spacing.$O \
+	z_index.$O 
+HFILES=select/properties/helpers.h select/properties/properties.h utils/utils.h \
+	select/propget.h select/propset.h bytecode/opcodes.h bytecode/bytecode.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../include -I/sys/include/ape -I/386/include/ape -I. -B -DPLAN9 -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+helpers.$O: /sys/include/ape/assert.h 
+errors.$O: ../include/libcss/errors.h /sys/include/ape/string.h 
+utils.$O: utils/parserutilserror.h parse/properties/utils.h parse/properties/properties.h \
+	stylesheet.h /sys/include/ape/string.h /sys/include/ape/assert.h 
+text_decoration.$O: /sys/include/ape/assert.h 
+stylesheet.$O: select/dispatch.h utils/parserutilserror.h parse/language.h stylesheet.h \
+	/386/include/ape/stdarg.h /sys/include/ape/string.h /sys/include/ape/assert.h 
+select.$O: utils/parserutilserror.h select/select.h select/hash.h select/dispatch.h \
+	select/computed.h stylesheet.h ../include/libcss/select.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+propstrings.$O: parse/propstrings.h 
+properties.$O: parse/properties/properties.h 
+pause.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+padding.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+outline.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+margin.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+list_style.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+language.$O: ../include/libcss/errors.h /sys/include/ape/parserutils/errors.h utils/parserutilserror.h \
+	parse/properties/utils.h parse/properties/properties.h parse/propstrings.h \
+	parse/parse.h parse/language.h parse/important.h lex/lex.h stylesheet.h \
+	/sys/include/ape/parserutils/utils/stack.h /sys/include/ape/string.h /sys/include/ape/assert.h 
+important.$O: parse/language.h stylesheet.h parse/important.h /sys/include/ape/assert.h 
+hash.$O: select/hash.h stylesheet.h /sys/include/ape/string.h /sys/include/ape/stdio.h 
+font.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+dispatch.$O: select/dispatch.h 
+detect.$O: /sys/include/ape/parserutils/errors.h ../include/libcss/types.h ../include/libcss/functypes.h \
+	../include/libcss/errors.h /sys/include/ape/inttypes.h charset/detect.h \
+	/sys/include/ape/parserutils/functypes.h /sys/include/ape/parserutils/errors.h \
+	/sys/include/ape/stdbool.h /sys/include/ape/inttypes.h /sys/include/ape/parserutils/charset/mibenum.h \
+	/sys/include/ape/string.h /sys/include/ape/stdbool.h 
+cue.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+css_property_parser_gen.$O: /sys/include/ape/stdbool.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/string.h /sys/include/ape/stdio.h 
+computed.$O: select/select.h stylesheet.h ../include/libcss/computed.h ../include/libcss/errors.h \
+	/sys/include/ape/inttypes.h /sys/include/ape/stdint.h select/dispatch.h \
+	../include/libcss/hint.h ../include/libcss/computed.h select/computed.h \
+	/sys/include/ape/string.h 
+border_width.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+border_style.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+border_color.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+border.$O: parse/properties/utils.h parse/properties/properties.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+background.$O: parse/language.h parse/properties/utils.h parse/propstrings.h parse/propstrings.h \
+	parse/parse.h lex/lex.h ../include/libcss/types.h ../include/libcss/functypes.h \
+	/sys/include/ape/parserutils/utils/vector.h /sys/include/ape/parserutils/functypes.h \
+	/sys/include/ape/parserutils/errors.h /sys/include/ape/stddef.h /sys/include/ape/parserutils/utils/stack.h \
+	parse/language.h /sys/include/ape/parserutils/functypes.h /sys/include/ape/parserutils/errors.h \
+	/sys/include/ape/parserutils/utils/buffer.h /sys/include/ape/parserutils/errors.h \
+	/sys/include/ape/inttypes.h /sys/include/ape/parserutils/charset/utf8.h \
+	/sys/include/ape/parserutils/types.h /sys/include/ape/parserutils/functypes.h \
+	/sys/include/ape/parserutils/errors.h /sys/include/ape/inttypes.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/stdio.h /sys/include/ape/stdbool.h /sys/include/ape/parserutils/input/inputstream.h \
+	../include/libcss/types.h ../include/libcss/functypes.h ../include/libcss/errors.h \
+	/sys/include/ape/libwapcaplet/libwapcaplet.h lex/lex.h stylesheet.h parse/properties/properties.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	/sys/include/ape/assert.h 
+nuke:V:
+	mk clean
+	rm -f $LIB

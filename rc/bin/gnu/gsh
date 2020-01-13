@@ -1,0 +1,10 @@
+#!/bin/rc
+
+rfork en
+fn sigterm{}
+HOME=$home
+bind -b /rc/bin/ape /bin
+bind -b /$cputype/bin/ape /bin
+bind -b /rc/bin/gnu /bin
+bind -b /$cputype/bin/gnu /bin
+/bin/sh $*

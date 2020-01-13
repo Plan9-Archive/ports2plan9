@@ -1,0 +1,2 @@
+
+mkmk -l libmetalink -S -B -I.. -I. -I./includes -I/sys/include/ape/libxml2 -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -x .deps -x includes > mkfile

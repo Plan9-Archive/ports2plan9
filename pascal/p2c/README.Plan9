@@ -1,0 +1,11 @@
+This is a port of the old pascal-to-c translator/compiler to Plan9/APE
+
+Why?
+
+For fun :)
+I hope to get BASIC (BaCon), ObjC, and COBOL (OpenCobol) ported too... if I ever manage to get enough time.
+
+BASIC and Pascal are the two with least external dependencies.
+
+
+The actual work resides under src/

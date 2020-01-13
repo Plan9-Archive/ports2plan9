@@ -1,0 +1,3 @@
+:
+# pre-processor for .c files
+cpp_c='cc -E'

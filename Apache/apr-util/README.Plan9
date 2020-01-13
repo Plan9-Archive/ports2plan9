@@ -1,0 +1,17 @@
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION" GREP=grep configure --prefix=/sys/lib/apr --exec-prefix=/$objtype --sbindir=/$objtype/bin --libexecdir=/$objtype/bin --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --mandir=/sys/man --disable-util-dso --without-ldap --with-apr=/rc/bin/ape/apr-config
+
+for now I do the "lazy thing" and do a gmake / gmake DESTDIR=/path/to/package/root install and then post-install modifications before archiving.
+
+OK so the library is most likely corrupt after gmake
+
+let's try a mkbased approach:
+
+gleaned from Makefile in the Makefile, only a single object is added. It seems like apr-util really wants BDB and openldap and apr-1 needs to be rebuilt to support some of it.
+
+
+mkmk -x build -x docs -x include -x test > mkfile
+
+for now, the resulting library is copied into the file system adjusted from the gmake-based approach above.
+
+instead of embedding libapr-1.a in libaprutil-1.a, I add another #pragma to apu.h.

@@ -1,0 +1,23 @@
+</$objtype/mkfile
+TARG=mksh
+OFILES=funcs.$O syn.$O tree.$O eval.$O lex.$O misc.$O histrap.$O jobs.$O shf.$O \
+	lalloc.$O strlcpy.$O expr.$O var.$O main.$O exec.$O edit.$O 
+BIN=/$objtype/bin/ape
+HFILES=sh.h sh_flags.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DMKSH_ASSUME_UTF8 \
+	-DMKSH_S_NOVI -DMKSH_BUILDSH -DHAVE_SYS_PARAM_H -DHAVE_SYS_SELECT_H -DHAVE_GRP_H \
+	-DHAVE_FLOCK_DECL -DHAVE_SYS_SIGLIST_DECL -DMKSH_NOPROSPECTOFWORK -DHAVE_SELECT 
+
+edit.$O: emacsfn.h emacsfn.h emacsfn.h 
+var.$O: var_spec.h var_spec.h var_spec.h 
+misc.$O: 
+funcs.$O: 
+install:V:
+	cp mksh.1 /sys/man/1ape/mksh
+

@@ -1,0 +1,14 @@
+mkmk -l ../libcurl -I, -I.. -I../include -I../include/curl -S -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DPLAN9 -x .deps > mkfile
+
+manual modifications:
+
+Made a config-plan9.h referring curl_config.h + some wrappers
+manually activate use of c-ares
+We can only enable libmetalink in curl_config.h whenever a working crypto library is included.
+
+select.h: this header got inactivated by previous definitions -reactivated it.
+
+ssluse.c contained functions with undefined behavior during linking:
+	rand_enough
+	ossl_seed
+	cert_stuff

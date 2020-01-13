@@ -1,0 +1,12 @@
+This directory creates the "makeproto" utility, which in turn generates
+
+p2c.hdrs
+./makeproto -n -m -h -t16 -a35 -s0 -x $(SRCS) -o p2c.hdrs
+
+p2c.proto
+./makeproto -n -m -h -t16 -a35 -s1 -i $(SRCS) -o p2c.proto
+
+
+mkmk -o makeproto -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION > mkfile
+
+change destination directory to "."

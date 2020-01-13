@@ -1,0 +1,50 @@
+trimming out some Plan9/APE incompatibilities from configure file
+
+cat configure | sed 's/ls -di/ls/g' > configure2
+mv configure2 configure
+
+cat configure | sed 's/mv -f/mv/g' > configure2
+mv configure2 configure
+
+cat configure | sed 's/cp -r/dircp/g' > configure2
+mv configure2 configure
+
+edit config.sub to recognize plan9
+
+GREP=grep AWK=awk CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION" configure --prefix=/sys --exec-prefix=/$objtype --bindir=/$objtype/bin/bsd --sbindir=/$objtype/bin/bsd --libexecdir=/$objtype/bin/bsd --sysconfdir=/sys/lib/bsd --sharedstatedir=/sys/lib/bsd --localstatedir=/sys/log --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --datarootdir=/sys/lib/bsd --mandir=/sys/man --docdir=/sys/doc --enable-bsd-getopt
+
+##############################################################
+I tried to use bmake and change the Makefile to have the correct object files by adding:
+
+CC=pcc
+cat Makefile | sed 's/\.o/\.8/g' > Makefile2
+bmake -f Makefile2
+##############################################################
+
+A parallel attempt was do work with an mkfile:
+
+mkmk -l libnbcompat -S -B -I. -I./nbcompat -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_CONFIG_H > mkfile
+
+##############################################################
+
+both with mk using pcc and with bmake using ape/cc for "vanilla" Makefile there are a number of errors due to mixed old and ANSI C-code in the headers under nbcompat/
+
+Apparently the generation of config.h was not working properly. Hopefully this will be a non-issue in the bootstrapped pkgsrc where NetBSD utilities are used in the pkgsrc (bsd) namespace.
+Fixing nbcompat/config.h made stuff work.
+
+incompatible return values in sha2hl.c fixed. Apparently lots of confusion between *char and *unsigned char.
+vis.c : has a problem with MAKEEXTRALIST and types - solved by (char *) alloca.
+statvfs.c : plan9 lacks struct statfs. Generated a mock header. Need to point the struct members to native functions later...
+
+
+#############################################################
+manually made sure that the Makefile points to the correct destination directories.
+
+post build/install:
+Installed libnbcompat.h is modified with
+
+#pragma lib "/$M/lib/ape/libnbcompat.a"
+
+before packaging.
+
+wrapper headers are made for functions provided by libnbcompat that are missing in APE

@@ -1,0 +1,196 @@
+</$objtype/mkfile
+LIB=../libcurl.a$O
+OFILES=curl_memrchr.$O hash.$O krb5.$O share.$O llist.$O curl_sasl.$O curl_fnmatch.$O \
+	splay.$O escape.$O inet_pton.$O transfer.$O rawstr.$O openldap.$O hmac.$O \
+	md4.$O strdup.$O cookie.$O asyn-ares.$O non-ascii.$O sendf.$O strtoofft.$O \
+	ssluse.$O hostsyn.$O select.$O hostip.$O file.$O if2ip.$O hostip6.$O mprintf.$O \
+	nwos.$O nss.$O hostip4.$O parsedate.$O tftp.$O hostcheck.$O cyassl.$O imap.$O \
+	strequal.$O version.$O http_negotiate_sspi.$O curl_rtmp.$O curl_threads.$O \
+	hostasyn.$O netrc.$O getenv.$O inet_ntop.$O curl_darwinssl.$O slist.$O \
+	http_proxy.$O idn_win32.$O http.$O curl_addrinfo.$O ftp.$O ssh.$O http_negotiate.$O \
+	amigaos.$O curl_rand.$O url.$O ldap.$O content_encoding.$O nwlib.$O nonblock.$O \
+	sslgen.$O curl_ntlm.$O http_chunks.$O speedcheck.$O pingpong.$O easy.$O \
+	curl_ntlm_wb.$O curl_multibyte.$O timeval.$O wildcard.$O gopher.$O progress.$O \
+	telnet.$O krb4.$O qssl.$O strtok.$O gtls.$O socks_gssapi.$O polarssl.$O \
+	strerror.$O md5.$O warnless.$O curl_gssapi.$O formdata.$O getinfo.$O multi.$O \
+	curl_gethostname.$O pop3.$O curl_ntlm_core.$O axtls.$O rtsp.$O socks_sspi.$O \
+	smtp.$O http_digest.$O connect.$O curl_sspi.$O memdebug.$O base64.$O dict.$O \
+	curl_ntlm_msgs.$O ftplistparser.$O asyn-thread.$O socks.$O curl_schannel.$O \
+	security.$O fileinfo.$O 
+HFILES=setup.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I, -I.. -I../include -I../include/curl -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION \
+	-D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS \
+	-DPLAN9 -DHAVE_LIBSSH2_H -DHAVE_STRDUP -DHAVE_STRTOK_R -DHAVE_GMTIME_R \
+	-DHAVE_STRCASECMP -DHAVE_STRNCASECMP -DHAVE_LIBSSH2_VERSION -DHAVE_STRERROR_R \
+	-DHAVE_GETHOSTNAME 
+
+fileinfo.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h fileinfo.h strdup.h 
+socks.$O: memdebug.h socks.h timeval.h connect.h select.h strequal.h sendf.h urldata.h 
+asyn-thread.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_threads.h \
+	inet_ntop.h inet_pton.h multiif.h url.h strerror.h share.h hash.h hostip.h \
+	sendf.h urldata.h 
+ftplistparser.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_fnmatch.h \
+	ftplistparser.h ftp.h rawstr.h strtoofft.h llist.h fileinfo.h urldata.h \
+	../include/curl/curl.h 
+dict.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h rawstr.h dict.h strequal.h \
+	progress.h sendf.h transfer.h ../include/curl/curl.h urldata.h 
+base64.$O: memdebug.h non-ascii.h curl_memory.h curl_base64.h warnless.h urldata.h \
+	../include/curl/mprintf.h 
+connect.$O: memdebug.h warnless.h progress.h sslgen.h inet_pton.h inet_ntop.h sockaddr.h \
+	multiif.h url.h select.h curl_memory.h connect.h strerror.h if2ip.h sendf.h \
+	urldata.h ../include/curl/mprintf.h 
+http_digest.$O: memdebug.h ../include/curl/mprintf.h warnless.h non-ascii.h curl_memory.h \
+	url.h strtok.h http_digest.h curl_md5.h curl_base64.h rawstr.h sendf.h \
+	urldata.h 
+smtp.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h warnless.h curl_sasl.h \
+	curl_gethostname.h rawstr.h url.h multiif.h select.h strerror.h connect.h \
+	sslgen.h strequal.h strtoofft.h smtp.h socks.h http.h escape.h transfer.h \
+	progress.h hostip.h if2ip.h sendf.h urldata.h ../include/curl/curl.h 
+rtsp.$O: memdebug.h ../include/curl/mprintf.h connect.h select.h curl_memory.h \
+	rawstr.h rtsp.h progress.h url.h http.h multiif.h sendf.h transfer.h ../include/curl/curl.h \
+	urldata.h 
+pop3.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h warnless.h curl_md5.h \
+	curl_sasl.h rawstr.h url.h multiif.h select.h strerror.h connect.h sslgen.h \
+	strequal.h strtoofft.h pop3.h socks.h http.h escape.h transfer.h progress.h \
+	hostip.h if2ip.h sendf.h urldata.h ../include/curl/curl.h 
+curl_gethostname.$O: curl_gethostname.h 
+multi.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h speedcheck.h warnless.h \
+	select.h http.h timeval.h sendf.h multiif.h easyif.h progress.h connect.h \
+	url.h transfer.h urldata.h ../include/curl/curl.h 
+getinfo.$O: memdebug.h progress.h connect.h sslgen.h curl_memory.h getinfo.h urldata.h \
+	../include/curl/curl.h 
+formdata.$O: memdebug.h ../include/curl/mprintf.h sendf.h curl_memory.h strequal.h \
+	curl_rand.h formdata.h urldata.h ../include/curl/curl.h 
+warnless.$O: warnless.h 
+md5.$O: memdebug.h curl_memory.h warnless.h curl_hmac.h curl_md5.h 
+strerror.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h strerror.h ../include/curl/curl.h 
+telnet.$O: memdebug.h warnless.h rawstr.h strequal.h select.h curl_memory.h arpa_telnet.h \
+	../include/curl/mprintf.h progress.h connect.h telnet.h sendf.h transfer.h \
+	../include/curl/curl.h urldata.h 
+progress.$O: ../include/curl/mprintf.h progress.h sendf.h urldata.h 
+gopher.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h warnless.h url.h \
+	select.h rawstr.h gopher.h strequal.h progress.h sendf.h transfer.h ../include/curl/curl.h \
+	urldata.h 
+wildcard.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h fileinfo.h llist.h \
+	wildcard.h 
+timeval.$O: timeval.h 
+easy.$O: memdebug.h ../include/curl/mprintf.h warnless.h non-ascii.h curl_rand.h \
+	amigaos.h slist.h connect.h curl_ntlm.h sendf.h select.h easyif.h progress.h \
+	curl_memory.h strdup.h share.h hostip.h getinfo.h url.h sslgen.h transfer.h \
+	../include/curl/curl.h urldata.h strequal.h 
+pingpong.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h non-ascii.h multiif.h \
+	pingpong.h speedcheck.h progress.h select.h sendf.h urldata.h 
+speedcheck.$O: speedcheck.h multiif.h sendf.h urldata.h ../include/curl/curl.h 
+http_chunks.$O: memdebug.h ../include/curl/mprintf.h non-ascii.h curl_memory.h \
+	http.h content_encoding.h sendf.h urldata.h 
+sslgen.$O: memdebug.h share.h progress.h curl_memory.h url.h rawstr.h sendf.h curl_darwinssl.h \
+	curl_schannel.h cyassl.h axtls.h polarssl.h urldata.h qssl.h nssg.h gtls.h \
+	ssluse.h sslgen.h urldata.h 
+nonblock.$O: nonblock.h 
+content_encoding.$O: memdebug.h curl_memory.h content_encoding.h sendf.h ../include/curl/curl.h \
+	urldata.h 
+url.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h http_proxy.h gopher.h \
+	curl_rtmp.h socks.h curl_ntlm_wb.h curl_ntlm.h inet_ntop.h connect.h url.h \
+	imap.h ssh.h curl_ldap.h file.h http.h tftp.h telnet.h dict.h ftp.h inet_pton.h \
+	non-ascii.h warnless.h rawstr.h speedcheck.h easyif.h multiif.h select.h \
+	http_negotiate.h http_digest.h content_encoding.h share.h strtok.h escape.h \
+	strerror.h strequal.h cookie.h progress.h sendf.h transfer.h hostip.h sslgen.h \
+	formdata.h netrc.h urldata.h 
+curl_rand.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_rand.h ../include/curl/curl.h 
+ftp.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h non-ascii.h http_proxy.h \
+	warnless.h speedcheck.h rawstr.h url.h multiif.h sockaddr.h parsedate.h \
+	select.h inet_pton.h inet_ntop.h strerror.h connect.h sslgen.h strequal.h \
+	strtoofft.h ftplistparser.h ../include/curl/curl.h fileinfo.h ftp.h socks.h \
+	http.h escape.h transfer.h progress.h hostip.h if2ip.h sendf.h urldata.h \
+	../include/curl/curl.h 
+curl_addrinfo.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h warnless.h \
+	inet_pton.h curl_addrinfo.h ../include/curl/curl.h 
+http.$O: memdebug.h ../include/curl/mprintf.h non-ascii.h warnless.h http_proxy.h \
+	content_encoding.h rawstr.h multiif.h strtoofft.h parsedate.h select.h \
+	curl_memory.h http.h hostip.h share.h url.h http_negotiate.h curl_ntlm_wb.h \
+	curl_ntlm.h http_digest.h sslgen.h strequal.h cookie.h curl_base64.h progress.h \
+	formdata.h sendf.h transfer.h ../include/curl/curl.h urldata.h 
+http_proxy.$O: memdebug.h curl_memory.h warnless.h nonblock.h timeval.h strtoofft.h \
+	strequal.h ../include/curl/mprintf.h curlx.h ../include/curl/mprintf.h \
+	connect.h non-ascii.h progress.h rawstr.h select.h url.h http.h sendf.h \
+	http_proxy.h ../include/curl/curl.h urldata.h 
+slist.$O: memdebug.h slist.h curl_memory.h 
+inet_ntop.$O: inet_ntop.h ../include/curl/mprintf.h 
+getenv.$O: memdebug.h curl_memory.h ../include/curl/curl.h 
+netrc.$O: memdebug.h ../include/curl/mprintf.h rawstr.h curl_memory.h strtok.h \
+	strequal.h netrc.h ../include/curl/curl.h 
+hostasyn.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h url.h strerror.h \
+	share.h hash.h hostip.h sendf.h urldata.h 
+curl_threads.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_threads.h 
+version.$O: ../include/curl/mprintf.h sslgen.h urldata.h ../include/curl/curl.h 
+strequal.$O: strequal.h 
+imap.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h rawstr.h url.h multiif.h \
+	select.h strerror.h connect.h sslgen.h strequal.h strtoofft.h imap.h socks.h \
+	http.h escape.h transfer.h progress.h hostip.h if2ip.h sendf.h urldata.h \
+	../include/curl/curl.h 
+tftp.$O: memdebug.h select.h curl_memory.h ../include/curl/mprintf.h rawstr.h url.h \
+	multiif.h sockaddr.h strerror.h connect.h progress.h tftp.h sendf.h transfer.h \
+	../include/curl/curl.h urldata.h 
+parsedate.$O: parsedate.h warnless.h rawstr.h ../include/curl/curl.h 
+hostip4.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h inet_pton.h url.h \
+	strerror.h share.h hash.h hostip.h sendf.h urldata.h 
+mprintf.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h 
+hostip6.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h connect.h inet_pton.h \
+	url.h strerror.h share.h hash.h hostip.h sendf.h urldata.h 
+if2ip.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h if2ip.h strequal.h \
+	inet_ntop.h 
+file.$O: memdebug.h ../include/curl/mprintf.h warnless.h parsedate.h curl_memory.h \
+	url.h transfer.h getinfo.h speedcheck.h file.h escape.h sendf.h progress.h \
+	../include/curl/curl.h urldata.h strtoofft.h 
+hostip.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h warnless.h inet_ntop.h \
+	url.h strerror.h share.h hash.h hostip.h sendf.h urldata.h 
+select.$O: warnless.h select.h connect.h urldata.h ../include/curl/curl.h 
+hostsyn.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h url.h strerror.h \
+	share.h hash.h hostip.h sendf.h urldata.h 
+ssluse.$O: ../include/curl/mprintf.h ../include/curl/curl.h hostcheck.h rawstr.h \
+	sslgen.h select.h strequal.h connect.h ssluse.h inet_pton.h url.h formdata.h \
+	sendf.h urldata.h 
+strtoofft.$O: strtoofft.h 
+sendf.$O: memdebug.h urldata.h strerror.h curl_memory.h ../include/curl/mprintf.h \
+	non-ascii.h multiif.h ssh.h sslgen.h connect.h sendf.h urldata.h ../include/curl/curl.h 
+asyn-ares.$O: 
+cookie.$O: memdebug.h curl_memrchr.h rawstr.h strtoofft.h share.h curl_memory.h \
+	sendf.h strtok.h strequal.h cookie.h urldata.h ../include/curl/mprintf.h 
+strdup.$O: strdup.h 
+hmac.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_hmac.h 
+rawstr.$O: rawstr.h 
+transfer.$O: memdebug.h ../include/curl/mprintf.h non-ascii.h sockaddr.h ../include/curl/curl.h \
+	nonblock.h connect.h multiif.h select.h curl_memory.h share.h http_negotiate.h \
+	curl_ntlm.h http_digest.h sslgen.h getinfo.h url.h http.h timeval.h progress.h \
+	timeval.h speedcheck.h sendf.h transfer.h hostip.h content_encoding.h netrc.h \
+	../include/curl/curl.h urldata.h ../include/curl/curl.h rawstr.h ../include/curl/curl.h \
+	strequal.h strtoofft.h 
+inet_pton.$O: inet_pton.h 
+escape.$O: memdebug.h ../include/curl/mprintf.h escape.h non-ascii.h warnless.h \
+	urldata.h curl_memory.h ../include/curl/curl.h 
+splay.$O: splay.h 
+curl_fnmatch.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h curl_fnmatch.h 
+curl_sasl.$O: memdebug.h ../include/curl/mprintf.h curl_memory.h warnless.h pingpong.h \
+	curl_sasl.h curl_ntlm_msgs.h curl_hmac.h curl_rand.h curl_hmac.h curl_md5.h \
+	curl_base64.h urldata.h ../include/curl/curl.h 
+llist.$O: memdebug.h curl_memory.h llist.h 
+share.$O: memdebug.h curl_memory.h sslgen.h urldata.h cookie.h ../include/curl/curl.h \
+	share.h ../include/curl/curl.h wildcard.h rtsp.h http.h ssh.h file.h pingpong.h \
+	ftp.h pingpong.h smtp.h pop3.h pingpong.h imap.h splay.h hash.h curl_addrinfo.h \
+	asyn.h curl_addrinfo.h hash.h hostip.h http_chunks.h ../include/curl/curl.h \
+	timeval.h formdata.h ../include/curl/curl.h cookie.h urldata.h ../include/curl/curl.h 
+hash.$O: memdebug.h curl_memory.h ../include/curl/mprintf.h llist.h llist.h hash.h 
+curl_memrchr.$O: memdebug.h ../include/curl/curl.h curl_memory.h ../include/curl/curl.h \
+	../include/curl/multi.h ../include/curl/easy.h ../include/curl/curlrules.h \
+	../include/curl/curlbuild.h ../include/curl/curlver.h ../include/curl/curl.h \
+	../include/curl/mprintf.h curl_memrchr.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

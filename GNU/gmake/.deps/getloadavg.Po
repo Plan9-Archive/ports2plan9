@@ -1,0 +1,26 @@
+getloadavg.o getloadavg.o: getloadavg.c config.h \
+  /sys/include/ape/sys/types.h /sys/include/ape/errno.h \
+  /sys/include/ape/locale.h /386/include/gnu/stddef.h \
+  /sys/include/ape/unistd.h /sys/include/gnu/bsd.h \
+  /sys/include/gnu/stdio.h /386/include/gnu/stdarg.h \
+  /sys/include/ape/fcntl.h
+
+config.h:
+
+/sys/include/ape/sys/types.h:
+
+/sys/include/ape/errno.h:
+
+/sys/include/ape/locale.h:
+
+/386/include/gnu/stddef.h:
+
+/sys/include/ape/unistd.h:
+
+/sys/include/gnu/bsd.h:
+
+/sys/include/gnu/stdio.h:
+
+/386/include/gnu/stdarg.h:
+
+/sys/include/ape/fcntl.h:

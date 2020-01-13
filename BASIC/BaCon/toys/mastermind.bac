@@ -1,0 +1,238 @@
+REM
+REM The mastermind game - requires ANSI terminal for colors
+REM http://en.wikipedia.org/wiki/Mastermind_(board_game)
+REM
+REM June 8, 2009 - (c) PvE - GPL.
+REM Revised May 2010.
+REM
+
+REM Generate secret code
+SUB Generate_Code
+
+    LOCAL i
+
+    FOR i = 0 TO 3
+        REPEAT
+            code[i] = RND & 7
+        UNTIL code[i] < 7 AND code[i] > 0
+    NEXT
+
+END SUB
+
+REM Show the board
+SUB Print_Board
+
+    LOCAL i, j
+
+    PRINT
+
+    FOR i = 0 TO 11
+
+        PRINT TAB$(1);
+
+        FOR j = 0 TO 3
+
+            COLOR INTENSE
+            COLOR BG TO BLACK
+
+            SELECT board[i][j]
+                CASE 0
+                    COLOR FG TO WHITE
+                    PRINT " . ";
+                CASE 1
+                    COLOR FG TO WHITE
+                    PRINT "[W]";
+                CASE 2
+                    COLOR FG TO RED
+                    PRINT "[R]";
+                CASE 3
+                    COLOR FG TO GREEN
+                    PRINT "[G]";
+                CASE 4
+                    COLOR FG TO YELLOW
+                    PRINT "[Y]";
+                CASE 5
+                    COLOR FG TO BLUE
+                    PRINT "[B]";
+                CASE 6
+                    COLOR FG TO CYAN
+                    PRINT "[C]";
+            END SELECT
+
+        NEXT
+
+        COLOR RESET
+        PRINT " - ";
+
+        FOR j = 0 TO 3
+            COLOR BG TO WHITE
+            IF hint[i][j] EQ 0 THEN
+                COLOR FG TO BLACK
+                PRINT ".";
+            ELIF hint[i][j] EQ 1 THEN
+                COLOR INTENSE
+                COLOR FG TO WHITE
+                PRINT "O";
+                COLOR NORMAL
+            ELIF hint[i][j] EQ 2 THEN
+                COLOR FG TO BLACK
+                PRINT "O";
+            END IF
+        NEXT
+
+        COLOR RESET
+        PRINT
+
+    NEXT
+
+END SUB
+
+REM Check and produce answer
+SUB Generate_Answer
+
+    LOCAL i, j, pos
+    LOCAL check[4], line[4] TYPE NUMBER
+
+    pos = 0
+
+    REM Reset checked spots
+    FOR i = 0 TO 3
+        check[i] = code[i]
+        line[i] = board[row][i]
+    NEXT
+
+    REM Check equals
+    FOR i = 0 TO 3
+        IF line[i] EQ check[i] THEN
+            hint[row][pos] = 2
+            check[i] = 0
+            line[i] = -1
+            INCR pos
+        END IF
+    NEXT
+
+    REM Check occurence
+    FOR i = 0 TO 3
+        FOR j = 0 TO 3
+            IF line[i] EQ check[j] THEN
+                hint[row][pos] = 1
+                check[j] = 0
+                line[i] = -1
+                INCR pos
+            END IF
+        NEXT
+    NEXT i
+
+    REM Check status
+    status = 0
+
+    FOR i = 0 TO 3
+        INCR status, hint[row][i]
+    NEXT
+
+END SUB
+
+REM Set the correct colors based on input
+SUB Parse_Input
+
+    LOCAL i, wrong
+
+    wrong = 0
+
+    IF LEN(col$) EQ 4 THEN
+        FOR i = 1 TO LEN(col$)
+            SELECT UCASE$(MID$(col$, i, 1))
+                CASE "W"
+                    board[row][i-1] = 1
+                CASE "R"
+                    board[row][i-1] = 2
+                CASE "G"
+                    board[row][i-1] = 3
+                CASE "Y"
+                    board[row][i-1] = 4
+                CASE "B"
+                    board[row][i-1] = 5
+                CASE "C"
+                    board[row][i-1] = 6
+                DEFAULT
+                    FOR j = 0 TO 3
+                        board[row][j] = 0
+                    NEXT
+                    wrong = 1
+            END SELECT
+        NEXT
+    ELSE
+        wrong = 1
+    END IF
+
+    IF wrong EQ 1 THEN
+        COLOR FG TO RED
+        PRINT NL$, TAB$(1), "Invalid input!"
+        COLOR RESET
+    ELSE
+        Generate_Answer
+        INCR row
+    END IF
+
+END SUB
+
+REM Main program starts here
+DECLARE code[4], board[12][4], hint[12][4] TYPE NUMBER
+
+REM Keep track of turn
+row = 0
+
+REM Guessed status
+status = 0
+
+Generate_Code
+
+PRINT "+------------------------------------------------------------+"
+PRINT "|                   M A S T E R M I N D                      |"
+PRINT "+------------------------------------------------------------+"
+PRINT "|                      - Usage -                             |"
+PRINT "| Enter colorcombination using one of the following letters: |"
+PRINT "| (W)hite (R)ed (G)reen (Y)ellow (B)lue (C)yan - (S) to quit |"
+PRINT "|                      - Hints -                             |"
+PRINT "| A white O means color occurs, a black O means correct spot.|"
+PRINT "+------------------------------------------------------------+"
+
+WHILE NOT(EQUAL(col$, "stop")) AND row < 12 AND status < 8 DO
+    INPUT NL$, "Enter combination... ", col$
+    IF EQUAL(UCASE$(col$), "S") THEN END
+    Parse_Input
+    Print_Board
+WEND
+
+IF status EQ 8 THEN
+    PRINT NL$, "Congratulations, guessed!"
+ELSE
+    PRINT NL$, "You lost! The code was: ";
+    FOR i = 0 TO 3
+        SELECT code[i]
+            CASE 1
+                COLOR FG TO WHITE
+                PRINT "W";
+            CASE 2
+                COLOR FG TO RED
+                PRINT "R";
+            CASE 3
+                COLOR FG TO GREEN
+                PRINT "G";
+            CASE 4
+                COLOR FG TO YELLOW
+                PRINT "Y";
+            CASE 5
+                COLOR FG TO BLUE
+                PRINT "B";
+            CASE 6
+                COLOR FG TO CYAN
+                PRINT "C";
+        END SELECT
+    NEXT
+    COLOR RESET
+    PRINT
+END IF
+
+PRINT
+END

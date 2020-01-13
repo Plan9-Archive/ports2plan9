@@ -1,0 +1,31 @@
+</$objtype/mkfile
+LIB=../libaprutil-1.a$O
+OFILES=apr_buckets_heap.$O apr_buckets_alloc.$O apr_buckets_eos.$O apr_buckets_flush.$O \
+	apr_buckets_simple.$O apr_buckets.$O apr_buckets_socket.$O apr_buckets_mmap.$O \
+	apr_buckets_pipe.$O apr_buckets_refcount.$O apr_buckets_pool.$O apr_brigade.$O \
+	apr_buckets_file.$O 
+HFILES=../include/apr_buckets.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_NET_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION 
+
+apr_buckets_file.$O: /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h 
+apr_brigade.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_tables.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_strings.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_lib.h /sys/include/ape/apr-1/apr.h 
+apr_buckets_pool.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h 
+apr_buckets_alloc.$O: /sys/include/ape/apr-1/apr_allocator.h 
+apr_buckets_heap.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

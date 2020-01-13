@@ -1,0 +1,29 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp admin.1 /sys/man/1ape/admin
+	cp cdc.1 /sys/man/1ape/cdc
+	cp comb.1 /sys/man/1ape/comb
+	cp delta.1 /sys/man/1ape/delta
+	cp get.1 /sys/man/1ape/get
+	cp help.1 /sys/man/1ape/help
+	cp prs.1 /sys/man/1ape/prs
+	cp rmdel.1 /sys/man/1ape/rmdel
+	cp sact.1 /sys/man/1ape/sact
+	cp sccsdiff.1 /sys/man/1ape/sccsdiff
+	cp unget.1 /sys/man/1ape/unget
+	cp val.1 /sys/man/1ape/val
+	cp vc.1 /sys/man/1ape/vc
+	cp what.1 /sys/man/1ape/what
+

@@ -1,0 +1,20 @@
+fnmatch.o fnmatch.o: fnmatch.c ../config.h /sys/include/ape/errno.h \
+  fnmatch.h /sys/include/ape/ctype.h /sys/include/ape/string.h \
+  /386/include/gnu/stddef.h /sys/include/gnu/bsd.h \
+  /sys/include/gnu/stdlib.h
+
+../config.h:
+
+/sys/include/ape/errno.h:
+
+fnmatch.h:
+
+/sys/include/ape/ctype.h:
+
+/sys/include/ape/string.h:
+
+/386/include/gnu/stddef.h:
+
+/sys/include/gnu/bsd.h:
+
+/sys/include/gnu/stdlib.h:

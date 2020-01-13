@@ -1,0 +1,53 @@
+</$objtype/mkfile
+LIB=libedit.a
+OFILES=chared.$O chartype.$O common.$O el.$O emacs.$O fgetln.$O filecomplete.$O \
+	hist.$O keymacro.$O map.$O parse.$O prompt.$O read.$O readline.$O refresh.$O \
+	search.$O sig.$O strlcat.$O strlcpy.$O terminal.$O tty.$O unvis.$O vi.$O \
+	vis.$O fcns.$O help.$O tokenizern.$O historyn.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE \
+	-D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-D_REGEXP_EXTENSION -DHAVE_CONFIG_H -D__STDC_ISO_10646__
+
+history.$O: chartype.h histedit.h vis.h 
+tokenizer.$O: chartype.h histedit.h 
+historyn.$O: chartype.h histedit.h vis.h history.c sys.h ../config.h 
+tokenizern.$O: chartype.h histedit.h tokenizer.c sys.h ../config.h 
+help.$O: chartype.h el.h sys.h ../config.h 
+fcns.$O: el.h sys.h ../config.h 
+vis.$O: vis.h sys.h ../config.h 
+vi.$O: el.h sys.h ../config.h 
+unvis.$O: vis.h sys.h ../config.h 
+tty.$O: tty.h el.h strings.h sys.h ../config.h 
+terminal.$O: el.h sys.h ../config.h 
+strlcpy.$O: sys.h ../config.h 
+strlcat.$O: sys.h ../config.h 
+sig.$O: el.h sys.h ../config.h 
+search.$O: el.h sys.h ../config.h 
+refresh.$O: el.h sys.h ../config.h 
+readline.$O: filecomplete.h histedit.h fcns.h el.h editline/readline.h vis.h sys.h \
+	../config.h 
+read.$O: el.h sys.h ../config.h 
+prompt.$O: el.h sys.h ../config.h 
+parse.$O: el.h sys.h ../config.h 
+map.$O: el.h sys.h ../config.h 
+keymacro.$O: el.h sys.h ../config.h 
+hist.$O: el.h sys.h ../config.h 
+filecomplete.$O: filecomplete.h histedit.h fcns.h el.h vis.h sys.h ../config.h 
+fgetln.$O: sys.h ../config.h 
+emacs.$O: el.h sys.h ../config.h 
+el.$O: el.h langinfo.h sys.h ../config.h 
+common.$O: el.h sys.h ../config.h 
+chartype.$O: el.h sys.h ../config.h 
+chared.$O: read.h help.h histedit.h sig.h parse.h map.h histedit.h hist.h search.h \
+	common.h fcns.h histedit.h search.h emacs.h vi.h common.h histedit.h chared.h \
+	histedit.h refresh.h histedit.h terminal.h keymacro.h histedit.h prompt.h \
+	histedit.h sys.h tty.h chartype.h histedit.h el.h sys.h ../config.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

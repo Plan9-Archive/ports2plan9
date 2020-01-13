@@ -1,0 +1,13 @@
+fwscanf
+swscanf
+vfwscanf
+vswscanf
+vwscanf
+wscanf
+wcstol
+wcstoul
+wcstoll
+wcstoull
+wcstof
+wcstod
+wcstold

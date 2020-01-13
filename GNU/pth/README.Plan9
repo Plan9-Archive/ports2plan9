@@ -1,0 +1,30 @@
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS" GREP=grep configure --prefix=/$objtype --enable-pthread --disable-shared
+
+___________________________________________________
+
+manual edits:
+
+pth-config and pthread-config : fixed APE-paths.
+
+pth_p.h and other headers are generated after execution of gmake on the configured sources.
+made 9hack.h header, which is included in pth_p.h
+
+As detailed in PORTING, pth_mctx.c needed to be adjusted.
+Compiling "vanilla" worked for everything except pth_mctx.c
+
+The build defaults to "VARIANT2 : SIGNAL STACK TRICK"
+"unknown mctx stack setup" and that SA_ONSTACK needs to be defined.
+
+The correct way of solving this is to generate a new "VARIANT 9", which is a modified copy of "VARIANT X: esoteric os". To activate this alternative variant, PTH_MCTX_DSP(sjlj) needs to be redefined to PTH_MCTX_DSP(sjljp9) and VARIANT 2 must be inactivated by this variant.
+
+To get PTH_MCTX_DSP(sjljp9) as a viable option, pth_acmac.h needed to be edited. To get that thing activated was too much of a hazzle... did an ugly hack for now by defining PLAN9.
+_____________________________________________________
+
+Generation of mkfiles
+
+libpth:
+
+mkmk -l libpth -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -x test_common.c -x test_httpd.c -x test_misc.c -x test_mp.c -x test_philo.c -x test_pthread.c -x test_select.c -x test_sfio.c -x test_sig.c -x test_std.c -x test_uctx.c -x pthread.c > mkfile
+
+libpthread:
+mkmk -l libpthread -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS pthread.c > mkfile.pthread

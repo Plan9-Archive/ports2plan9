@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=dsa_decrypt_key.$O dsa_encrypt_key.$O dsa_export.$O dsa_free.$O dsa_import.$O \
+	dsa_make_key.$O dsa_shared_secret.$O dsa_sign_hash.$O dsa_verify_hash.$O \
+	dsa_verify_key.$O 
+HFILES=tomcrypt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../../testprof/ -I../../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

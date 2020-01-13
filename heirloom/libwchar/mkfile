@@ -1,0 +1,31 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libwchar.a
+OFILES=mblen.$O mbrtowc.$O mbstowcs.$O mbtowc.$O wcslen.$O wcsncmp.$O wctfunc.$O \
+	wctomb.$O wctype.$O wcwidth.$O 
+HFILES=wchar.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -B -D_POSIX_SOURCE -D_BSD_EXTENSION \
+	-D_SUSV2_SOURCE 
+
+wcwidth.$O: wctype.h 
+wctype.$O: wctype.h /sys/include/ape/ctype.h blank.h /sys/include/ape/bsd.h /sys/include/ape/stddef.h \
+	/sys/include/ape/string.h /sys/include/ape/ctype.h /sys/include/ape/stdlib.h \
+	wctype.h 
+wctfunc.$O: /sys/include/ape/ctype.h 
+mbtowc.$O: /sys/include/ape/errno.h 
+mbstowcs.$O: /sys/include/ape/errno.h 
+mbrtowc.$O: /sys/include/ape/errno.h 
+
+install:V:
+	cp wchar.h /sys/include/ape/
+	cp wctype.h /sys/include/ape/
+
+nuke:V:
+	mk clean
+	rm /sys/include/ape/wchar.h
+	rm /sys/include/ape/wctype.h
+	rm -f $LIB

@@ -1,0 +1,4 @@
+mkmk -l libutil -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION > mkfile
+
+basename.c and dirname.c are c-library functions from newlib.
+enmasse.c needs libgen.h

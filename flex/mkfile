@@ -1,0 +1,24 @@
+</$objtype/mkfile
+DIRS=doc libfl flex 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	cp FlexLexer.h /sys/include/ape/
+	cp lex.rc /rc/bin/gnu/lex
+	chmod +x /rc/bin/gnu/lex
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /sys/include/ape/FlexLexer.h
+	rm -f /rc/bin/gnu/lex
+

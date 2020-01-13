@@ -1,0 +1,28 @@
+#!/bin/rc
+
+rm -f config.h
+rm -rf ChangeLog-1990 Makefile.in bootstrap doc
+rm -rf ABOUT-NLS ChangeLog-1998 NEWS config
+rm -rf intl po AUTHORS ChangeLog-2001 README
+rm -rf config.h.in m4 regression INSTALL
+rm -rf aclocal configure  ChangeLog Makefile.am
+rm -rf aclocal.m4 configure.ac miscel
+rm -f indent-cc.gperf config.h.vc++ config.h.vms
+rm -rf indent.dsp indent.gperf
+
+
+test -d man && cp man/indent.1 . && rm -rf man
+test -d src && mv src/* . && rm -rf src
+
+# This is a bug:
+#	FILE *output;
+#  is static in the output.c and extern in the indent.h
+#
+sed 's/^static[ 	]+FILE[ 	]*\*[ 	]*output/FILE *output/' output.c > _output.c
+
+# gperf.c and gperf-cc.c are #included by lexi.c
+
+mkmk -A -xgperf.c -xgperf-cc.c -xoutput.c \
+	-D_BSD_EXTENSION  '-DLOCALEDIR=""' \
+	-B -I. -o indent > mkfile
+

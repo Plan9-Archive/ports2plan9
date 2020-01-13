@@ -1,0 +1,40 @@
+</$objtype/mkfile
+LIB=libmpw.a
+OFILES=abspath.$O any.$O cat.$O dname.$O fatal.$O fdfopen.$O fmalloc.$O getopt.$O \
+	had.$O imatch.$O index.$O lockit.$O patoi.$O repl.$O satoi.$O setsig.$O \
+	sname.$O strend.$O trnslat.$O userexit.$O xcreat.$O xlink.$O xmsg.$O xopen.$O \
+	xpipe.$O xunlink.$O zero.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../hdr -B -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D_LIMITS_EXTENSION 
+
+xunlink.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h ../hdr/i18n.h 
+xpipe.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h ../hdr/i18n.h 
+xopen.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h ../hdr/ccstypes.h \
+	../hdr/i18n.h 
+xmsg.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h 
+xlink.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h ../hdr/i18n.h 
+xcreat.$O: ../hdr/ccstypes.h ../hdr/i18n.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h \
+	../hdr/defines.h 
+sname.$O: 
+setsig.$O: ../hdr/i18n.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h 
+satoi.$O: ../hdr/macros.h 
+repl.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h 
+patoi.$O: 
+lockit.$O: ../hdr/ccstypes.h ../hdr/i18n.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h \
+	../hdr/defines.h 
+had.$O: ../hdr/had.h 
+getopt.$O: 
+fmalloc.$O: ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h ../hdr/defines.h 
+fdfopen.$O: ../hdr/macros.h 
+fatal.$O: ../hdr/had.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h \
+	../hdr/defines.h 
+dname.$O: ../hdr/macros.h 
+cat.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

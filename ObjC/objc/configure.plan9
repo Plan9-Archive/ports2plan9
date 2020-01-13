@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./configure --bindir=/${objtype}/bin --sbindir=/${objtype}/bin --libexecdir=/${objtype}/bin --sysconfdir=/sys/lib --libdir=/${objtype}/lib/ape --includedir=/sys/include/ape --mandir=/sys/man --docdir=/sys/doc

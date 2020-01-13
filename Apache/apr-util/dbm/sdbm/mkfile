@@ -1,0 +1,37 @@
+</$objtype/mkfile
+LIB=../../libaprutil-1.a$O
+OFILES=sdbm.$O sdbm_hash.$O sdbm_pair.$O sdbm_lock.$O 
+HFILES=sdbm_tune.h sdbm_private.h ../../include/apr_sdbm.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I../../include -I../../include/private -I/sys/include/ape/apr-1 \
+	-B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION \
+	-D_RESEARCH_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -UAPU_DSO_BUILD 
+
+sdbm_lock.$O: /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_file_info.h 
+sdbm_pair.$O: sdbm_pair.h 
+sdbm.$O: sdbm_pair.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_strings.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_inherit.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_io.h \
+	/sys/include/ape/apr-1/apr.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

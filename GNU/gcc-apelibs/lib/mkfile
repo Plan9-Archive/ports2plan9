@@ -1,0 +1,24 @@
+</$objtype/mkfile
+
+DIRS=9 ap bsd draw fmt l net regexp utf v
+
+none:V:
+	echo mk all, install, installall, clean, or nuke
+
+all clean:V:
+	for (i in $DIRS) @{
+		cd $i
+		mk $target
+	}
+
+install:V:
+	for (i in $DIRS) @{
+		cd $i
+		mk $target
+	}
+
+nuke:V:
+	for (i in $DIRS) @{
+		cd $i
+		mk $target
+	}

@@ -1,0 +1,65 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp pcre_maketables.3 /sys/man/3/pcre_maketables
+	cp pcre_utf32_to_host_byte_order.3 /sys/man/3/pcre_utf32_to_host_byte_order
+	cp pcre_get_substring_list.3 /sys/man/3/pcre_get_substring_list
+	cp pcreposix.3 /sys/man/3/pcreposix
+	cp pcrebuild.3 /sys/man/3/pcrebuild
+	cp pcreperform.3 /sys/man/3/pcreperform
+	cp pcreapi.3 /sys/man/3/pcreapi
+	cp pcrecpp.3 /sys/man/3/pcrecpp
+	cp pcrejit.3 /sys/man/3/pcrejit
+	cp pcre_get_substring.3 /sys/man/3/pcre_get_substring
+	cp pcre_free_substring.3 /sys/man/3/pcre_free_substring
+	cp pcrepattern.3 /sys/man/3/pcrepattern
+	cp pcre_pattern_to_host_byte_order.3 /sys/man/3/pcre_pattern_to_host_byte_order
+	cp pcregrep.1 /sys/man/1/pcregrep
+	cp pcre_free_study.3 /sys/man/3/pcre_free_study
+	cp pcre_jit_stack_alloc.3 /sys/man/3/pcre_jit_stack_alloc
+	cp pcre_dfa_exec.3 /sys/man/3/pcre_dfa_exec
+	cp pcre_free_substring_list.3 /sys/man/3/pcre_free_substring_list
+	cp pcre_version.3 /sys/man/3/pcre_version
+	cp pcre_utf16_to_host_byte_order.3 /sys/man/3/pcre_utf16_to_host_byte_order
+	cp pcrecompat.3 /sys/man/3/pcrecompat
+	cp pcretest.1 /sys/man/1/pcretest
+	cp pcre_exec.3 /sys/man/3/pcre_exec
+	cp pcrecallout.3 /sys/man/3/pcrecallout
+	cp pcre_copy_substring.3 /sys/man/3/pcre_copy_substring
+	cp pcresyntax.3 /sys/man/3/pcresyntax
+	cp pcrestack.3 /sys/man/3/pcrestack
+	cp pcre_study.3 /sys/man/3/pcre_study
+	cp pcrematching.3 /sys/man/3/pcrematching
+	cp pcre_get_named_substring.3 /sys/man/3/pcre_get_named_substring
+	cp pcre.3 /sys/man/3/pcre
+	cp pcre_compile.3 /sys/man/3/pcre_compile
+	cp pcre16.3 /sys/man/3/pcre16
+	cp pcre32.3 /sys/man/3/pcre32
+	cp pcre_config.3 /sys/man/3/pcre_config
+	cp pcre_jit_stack_free.3 /sys/man/3/pcre_jit_stack_free
+	cp pcre_get_stringnumber.3 /sys/man/3/pcre_get_stringnumber
+	cp pcre_compile2.3 /sys/man/3/pcre_compile2
+	cp pcrelimits.3 /sys/man/3/pcrelimits
+	cp pcre_get_stringtable_entries.3 /sys/man/3/pcre_get_stringtable_entries
+	cp pcreprecompile.3 /sys/man/3/pcreprecompile
+	cp pcrepartial.3 /sys/man/3/pcrepartial
+	cp pcre_assign_jit_stack.3 /sys/man/3/pcre_assign_jit_stack
+	cp pcre_copy_named_substring.3 /sys/man/3/pcre_copy_named_substring
+	cp pcre_fullinfo.3 /sys/man/3/pcre_fullinfo
+	cp pcre_jit_exec.3 /sys/man/3/pcre_jit_exec
+	cp pcreunicode.3 /sys/man/3/pcreunicode
+	cp pcresample.3 /sys/man/3/pcresample
+	cp pcre-config.1 /sys/man/1/pcre-config
+	cp pcre_refcount.3 /sys/man/3/pcre_refcount
+

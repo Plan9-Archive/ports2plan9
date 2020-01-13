@@ -1,0 +1,33 @@
+</$objtype/mkfile
+DIRS=$objtype sys
+
+all:V:
+	mkdir -p /$objtype/lib/gnu
+	mkdir -p /$objtype/include/gnu
+	cp $objtype/*.h /$objtype/include/gnu/
+	mkdir -p /sys/include/gnu/arpa
+	mkdir -p /sys/include/gnu/netinet
+	mkdir -p /sys/include/gnu/sys
+	cp sys/*.h /sys/include/gnu/
+	cp sys/arpa/*.h /sys/include/gnu/arpa/
+	cp sys/netinet/*.h /sys/include/gnu/netinet/
+	cp sys/sys/*.h /sys/include/gnu/sys/
+
+install:V:
+	mkdir -p /$objtype/lib/gnu
+	mkdir -p /$objtype/include/gnu
+	cp $objtype/*.h /$objtype/include/gnu/
+	mkdir -p /sys/include/gnu/arpa
+	mkdir -p /sys/include/gnu/netinet
+	mkdir -p /sys/include/gnu/sys
+	cp sys/*.h /sys/include/gnu/
+	cp sys/arpa/*.h /sys/include/gnu/arpa/
+	cp sys/netinet/*.h /sys/include/gnu/netinet/
+	cp sys/sys/*.h /sys/include/gnu/sys/
+
+clean:V:
+	echo "nothing to do"
+
+nuke:V:
+	echo "please remove headers manually"
+

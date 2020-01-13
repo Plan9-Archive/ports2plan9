@@ -1,0 +1,31 @@
+</$objtype/mkfile
+LIB=libutil.a
+OFILES=afgets.$O agetcwd.$O apathmax.$O concat.$O cp.$O enmasse.$O eprintf.$O estrtol.$O \
+	fnck.$O getlines.$O putword.$O recurse.$O rm.$O dirname.$O basename.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_REGEXP_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION 
+
+basename.$O: ../_ansi.h ../sys/reent.h ../_ansi.h ../libgen.h 
+dirname.$O: ../_ansi.h ../sys/reent.h ../_ansi.h ../libgen.h 
+rm.$O: ../util.h ../stdbool.h ../fs.h ../stdbool.h 
+recurse.$O: ../util.h 
+putword.$O: ../util.h ../stdbool.h 
+getlines.$O: ../util.h ../text.h 
+fnck.$O: ../util.h 
+estrtol.$O: ../util.h 
+eprintf.$O: ../util.h 
+enmasse.$O: ../util.h ../_ansi.h ../sys/reent.h ../_ansi.h ../libgen.h 
+cp.$O: ../util.h ../text.h ../stdbool.h ../fs.h ../stdbool.h 
+concat.$O: ../util.h ../text.h 
+apathmax.$O: ../util.h 
+agetcwd.$O: ../util.h 
+afgets.$O: ../util.h ../text.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,20 @@
+configure:
+- 'ls -di' and 'mv -f' was removed using sed
+- GREP=grep
+
+config.h:
+- manually generated based on header information in APE
+
+study "make-bootstrap.sh" to generate mkfile-based build.
+
+mkfile.base
+
+mkmk -l base -I. -I./missing -DHAVE_CONFIG_H -x main.c -x realpath.c -x dirname.c -x stresep.c -x strlcpy.c -x getenv.c -x meta.c -x setenv.c -x stresep.c -x PSD.doc -x cvs -x lst.lib -x missing -x unit-tests -x bmake.1 > mkfile.base
+
+mkfile.lib
+
+mkmk -l lib -I. -I./missing -DHAVE_CONFIG_H -x main.c -x arch.c -x buf.c -x compat.c -x cond.c -x dir.c -x for.c -x getopt.c -x hash.c -x job.c -x make.c -x make_malloc.c -x parse.c -x sigcompat.c -x str.c -x strlist.c -x suff.c -x targ.c -x trace.c -x var.c -x util.c -x PSD.doc -x cvs -x lst.lib -x missing -x unit-tests -x bmake.1 > mkfile.lib 
+
+mkfile.bmake
+
+mkmk -o bmake -I. -I./missing -DHAVE_CONFIG_H -x arch.c -x buf.c -x compat.c -x cond.c -x dir.c -x for.c -x getopt.c -x hash.c -x job.c -x make.c -x make_malloc.c -x parse.c -x sigcompat.c -x str.c -x strlist.c -x suff.c -x getenv.c -x meta.c -x setenv.c -x stresep.c -x targ.c -x trace.c -x var.c -x util.c  -x realpath.c -x dirname.c -x strresep.c -x strlcpy.c -x PSD.doc -x cvs -x lst.lib -x missing -x unit-tests -x bmake.1 -H./base.a -H./lib.a -H./lst.lib/lst.a > mkfile.bmake 

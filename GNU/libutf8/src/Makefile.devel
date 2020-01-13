@@ -1,0 +1,19 @@
+# This is the developer's makefile, not the user's makefile.
+# Don't use it unless you know exactly what you do!
+
+SHELL = /bin/sh
+MAKE = make
+CC = gcc -O -Wall
+RM = rm -f
+
+all : caseconv/toupper.h caseconv/tolower.h attribute/attribute.h attribute/nonspacing.h
+
+caseconv/toupper.h caseconv/tolower.h attribute/attribute.h attribute/nonspacing.h : gentables.c
+	$(CC) gentables.c -o gentables
+	gentables /home/bruno/chs/unicode.org-data/3.0/UnicodeData-3.0.0.txt
+	mv toupper.h caseconv/toupper.h
+	mv tolower.h caseconv/tolower.h
+	mv attribute.h attribute/attribute.h
+	mv nonspacing.h attribute/nonspacing.h
+	$(RM) gentables
+

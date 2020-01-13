@@ -1,0 +1,19 @@
+REM Testing BASIC compiler
+
+PRINT "==============================="
+PRINT "Test 3: Testing SUB/ENDSUB/CALL"
+PRINT "==============================="
+PRINT
+
+REM SUb is defined here
+SUB test(STRING nr$)
+
+PRINT VAL(nr$)
+
+ENDSUB
+
+nr$ = "456"
+PRINT nr$
+
+REM Call the sub at the end of the program
+CALL test(nr$)

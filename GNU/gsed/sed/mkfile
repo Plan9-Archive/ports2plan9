@@ -1,0 +1,43 @@
+</$objtype/mkfile
+TARG=sed
+OFILES=compile.$O execute.$O fmt.$O mbcs.$O regexp.$O sed.$O utils.$O 
+LIB=../lib/libsed.a$O 
+BIN=/$objtype/bin/gnu
+HFILES=/sys/include/ape/sys/types.h ../lib/stdlib.h /sys/include/ape/stdlib.h ../lib/string.h \
+	/sys/include/ape/string.h ../lib/stdio.h /sys/include/ape/stdio.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I../lib -I/sys/include/ape -I/$objtype/include/ape -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_EXPERIMENTAL_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-DHAVE_CONFIG_H -DPLAN9 -D_LIMITS_EXTENSION -DHAVE_WCHAR_H -DHAVE_WCTYPE_H \
+	-DHAVE_MEMMOVE -DHAVE_STRERROR 
+
+utils.$O: /sys/include/ape/limits.h /sys/include/ape/unistd.h ../lib/unistd.h ../lib/pathmax.h \
+	../basicdefs.h utils.h /sys/include/ape/limits.h /sys/include/ape/unistd.h \
+	../lib/unistd.h /sys/include/ape/sys/stat.h ../lib/sys/stat.h /sys/include/ape/errno.h \
+	../lib/errno.h /$objtype/include/ape/stdarg.h ../config.h 
+sed.$O: /sys/include/ape/ctype.h /sys/include/ape/unistd.h ../lib/unistd.h ../lib/getopt.h \
+	../basicdefs.h utils.h ../lib/unlocked-io.h ../lib/regex.h ../basicdefs.h \
+	../config.h sed.h 
+regexp.$O: /sys/include/ape/ctype.h ../basicdefs.h utils.h ../lib/unlocked-io.h \
+	../lib/regex.h ../basicdefs.h ../config.h sed.h 
+mbcs.$O: ../lib/localcharset.h ../basicdefs.h utils.h ../lib/unlocked-io.h ../lib/regex.h \
+	../basicdefs.h ../config.h sed.h 
+fmt.$O: /sys/include/ape/limits.h /sys/include/ape/ctype.h ../basicdefs.h utils.h \
+	../lib/unlocked-io.h ../lib/regex.h ../basicdefs.h ../config.h sed.h 
+execute.$O: ../lib/stat-macros.h /sys/include/ape/sys/stat.h ../lib/sys/stat.h \
+	/sys/include/ape/sys/stat.h ../lib/sys/stat.h ../lib/acl.h /sys/include/ape/bsd.h \
+	/sys/include/ape/unistd.h ../lib/unistd.h /sys/include/ape/errno.h ../lib/errno.h \
+	../lib/selinux/context.h /sys/include/ape/errno.h ../lib/errno.h ../lib/selinux/selinux.h \
+	/sys/include/ape/errno.h ../lib/errno.h /sys/include/ape/ctype.h /sys/include/ape/stddef.h \
+	../basicdefs.h utils.h ../lib/unlocked-io.h ../lib/regex.h ../basicdefs.h \
+	../config.h sed.h 
+compile.$O: /sys/include/ape/stddef.h ../lib/obstack.h /sys/include/ape/ctype.h \
+	../basicdefs.h utils.h ../lib/unlocked-io.h ../lib/regex.h ../lib/gettext.h \
+	../lib/stdbool.h ../lib/wctype.h /sys/include/ape/stddef.h /sys/include/ape/locale.h \
+	/sys/include/ape/stddef.h /sys/include/ape/time.h /sys/include/ape/stddef.h \
+	../lib/wchar.h /sys/include/ape/stddef.h ../lib/alloca.h ../basicdefs.h \
+	../config.h sed.h 

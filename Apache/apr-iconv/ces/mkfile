@@ -1,0 +1,31 @@
+</$objtype/mkfile
+LIB=../libapriconv-1.a$O
+OFILES=ucs2-internal.$O euc-jp.$O utf-8.$O iso-2022-jp-2.$O iso-10646-ucs-2.$O \
+	iso-10646-ucs-4.$O euc-kr.$O iso-2022-cn.$O ucs4-internal.$O gb2312.$O \
+	unicode-1-1-utf-7.$O _tbl_simple.$O iso-2022-jp.$O euc-tw.$O iso-2022-kr.$O \
+	utf-16.$O 
+HFILES=../lib/iconv.h ../lib/apr_iconv_private.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h ../include/apr_iconv.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../lib -I../include -I/sys/include/ape/apr-1 -DHAVE_SOCK_OPTS -D_REENTRANT_SOURCE \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION \
+	-D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION 
+
+unicode-1-1-utf-7.$O: 
+iso-10646-ucs-4.$O: 
+iso-10646-ucs-2.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

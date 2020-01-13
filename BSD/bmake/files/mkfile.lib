@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=lib.a
+OFILES=dirname.$O getenv.$O meta.$O realpath.$O setenv.$O stresep.$O strlcpy.$O 
+HFILES=config.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./missing -DHAVE_CONFIG_H -D_LIMITS_EXTENSION -DHAVE_LIMITS_H 
+
+strlcpy.$O: missing/sys/cdefs.h 
+stresep.$O: missing/sys/cdefs.h 
+setenv.$O: 
+realpath.$O: missing/sys/cdefs.h 
+dirname.$O: missing/sys/cdefs.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

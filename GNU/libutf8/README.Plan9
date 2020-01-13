@@ -1,0 +1,20 @@
+This is a port of libutf8 to Plan9/APE
+
+this might seem VERY backwards to port an UTF8-compatibility library to Plan9.
+
+The purpose is however to get some _working_ wchar.h wctype.h functionality.
+
+The Heirloom libwchar headers "promise too much" declairing functionality not present in the library.
+
+GREP=grep CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -D_C99_SNPRINTF_EXTENSION" configure --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --datadir=/sys --with-traditional-mbstowcs --disable-shared --enable-static
+
+post-packaging changes:¨
+correct directory structure.
+
+add #pragma lib "/$M/lib/ape/libutf8.a" to 
+
+wchar.h and wctype.h: make wrapper headers pointing to utf8/
+include pragma.
+
+for legacy support (old headers pointing to libwchar.a), copy libutf8.a to libwchar.a.
+

@@ -1,0 +1,1 @@
+GREP=grep CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION" configure --prefix=/sys --exec-prefix=/$objtype --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --disable-cxx --disable-shared

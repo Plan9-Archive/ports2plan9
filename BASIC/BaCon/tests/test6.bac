@@ -1,0 +1,16 @@
+REM Testing BASIC compiler
+
+PRINT "============================"
+PRINT "Test 6: Testing REPEAT/UNTIL"
+PRINT "============================"
+PRINT
+
+LET b = 10
+
+REPEAT
+    PRINT b
+    LET b = b - 1
+UNTIL b EQ -5
+
+LET a$ = "Hello"
+PRINT a$

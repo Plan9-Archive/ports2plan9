@@ -1,0 +1,23 @@
+</$objtype/mkfile
+DIRS=src
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+	mk -f mkfile.assemble $target
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mk -f mkfile.assemble $target
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mk -f mkfile.assemble $target
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mk -f mkfile.assemble $target
+

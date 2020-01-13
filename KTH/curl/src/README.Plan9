@@ -1,0 +1,7 @@
+mkmk -o curl -I. -I.. -I../lib -I../include -I../include/curl -S -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DPLAN9 -x .deps -x macos -H../libcurl.a8 > mkfile
+
+Old openssl port does not come with #pragma lib declarations in headers, so -lcrypto and -lopenssl need to be declared explicitly. However, also after explicit linking, some stuff are missing if libssh2 or libmetalink is used. We need a new openssl port.
+
+For libmetalink, it depends on libexpat, but to ensure that it is linked in (if not pulled in by pragmas in headers) it is also explicitly declared.
+
+libcurl.a8 can be changed to libcurl.a$O to get an arch-independent mkfile.

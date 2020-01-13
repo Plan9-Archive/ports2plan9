@@ -1,0 +1,22 @@
+</$objtype/mkfile
+DIRS=files
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mkdir -p /sys/lib/bmake/mk
+	dircp mk /sys/lib/bmake/mk
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -rf /sys/lib/bmake
+

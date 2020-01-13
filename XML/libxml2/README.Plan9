@@ -1,0 +1,31 @@
+In this basic build, we disable support for python bindings.
+
+A re-build with python bindings might be available later.
+
+GREP=grep configure --prefix=/sys --exec-prefix=/$objtype --sbindir=/$objtype/bin --libexecdir=/$objtype/bin --sysconfdir=/sys/lib/xml2 --sharedstatedir=/sys/lib/xml2 --localstatedir=/sys/lib/xml2 --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --datarootdir=/sys --disable-shared --without-modules
+
+stuff to be built/installed
+
+/$objtype/lib/ape/libxml2.a
+- gleaned from Makefile: only sources in root directory
+- all files starting with test are not included in library
+
+mkmk -l libxml2 -I. -I./include -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_SOURCE -D_C99_SNPRINTF_EXTENSION -x bakefile -x .deps -x doc -x example -x include -x m4 -x macos -x python -x vms -x VxWorks -x win32 -x xstc -x xmlcatalog.c -x xmllint.c -x testAutomata.c -x testC14N.c -x testHTML.c -x testModule.c -x testReader.c -x testRelax.c -x testSAX.c -x testSchemas.c -x testThreads.c -x testThreadsWin32.c -x testURI.c -x testXPath.c -x testapi.c -x testchar.c -x testdict.c -x testdso.c -x testlimits.c -x testrecurse.c -x runtest.c -x testRegexp.c -x runxmlconf.c -x runsuite.c -x apeheaders > mkfile
+
+/$objtype/lib/ape/pkgconfig/libxml-2.0.pc
+
+/rc/bin/ape/:
+	- xml2-config
+
+/$objtype/bin
+	- xmlcatalog
+	- xmllint
+
+mkmk -m -I. -I./include -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_SOURCE -D_C99_SNPRINTF_EXTENSION -H./libxml2.a8 xmlcatalog.c xmllint.c > mkfile.bin
+
+.a8 changed to .a$O in mkfile.bin
+
+/sys/include/ape/libxml2/libxml/:
+- the contents of include/libxml
+- the header files in include/libxml copied to apeheaders and modified with 
+#pragma lib "/$M/lib/ape/libxml2.a"

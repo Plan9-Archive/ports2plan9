@@ -1,0 +1,62 @@
+</$objtype/mkfile
+DIRS=sdbm 
+LIB=../libaprutil-1.a$O
+OFILES=apr_dbm_gdbm.$O apr_dbm.$O apr_dbm_ndbm.$O apr_dbm_sdbm.$O apr_dbm_berkeleydb.$O 
+HFILES=../include/apu.h ../include/private/apu_config.h /sys/include/ape/apr-1/apr_strings.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE \
+	-D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -UAPU_DSO_BUILD 
+
+apr_dbm_berkeleydb.$O: ../include/apu_want.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h 
+apr_dbm_sdbm.$O: /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_errno.h \
+	../include/apr_sdbm.h ../include/private/apr_dbm_private.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h 
+apr_dbm_ndbm.$O: 
+apr_dbm.$O: ../include/private/apr_dbm_private.h ../include/apr_dbm.h ../include/private/apu_select_dbm.h \
+	../include/private/apu_select_dbm.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_inherit.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	../include/apr_dbm.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h ../include/private/apr_dbm_private.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_version.h ../include/apu_version.h apr_dso.h \
+	/sys/include/ape/apr-1/apr.h ../include/private/apu_internal.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_atomic.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_hash.h \
+	apr_dso.h /sys/include/ape/apr-1/apr.h 
+apr_dbm_gdbm.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+

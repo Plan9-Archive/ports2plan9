@@ -1,0 +1,47 @@
+#!/bin/rc
+
+# cd /sys/src/cmd/ape/gmake
+
+@{
+
+	rm -f ansi2knr.1 ansi2knr.c
+	rm -f remote-cstms.c build.sh.in vms* configh.dos 	
+	rm -f Makefile.* tests amiga* config.ami
+	rm -f make.lnk *.bat make_msvc_*
+	rm -f makefile.com makefile.vms SCOPTIONS readme.vms
+	rm -f config.h* configure configure.* config
+	rm -f *.m4 SMakefile NMakefile
+	rm -f ABOUT-NLS AUTHORS ChangeLog INSTALL NEWS README README.*
+	rm -rf w32 po doc
+
+	# we know gnu make as gmake
+	test -f make.1 && mv make.1 gmake.1
+
+	# kenc cannot initialise bitfields, and so we must
+	# waste 93 bits of store - how will we cope?
+	sed '
+		s/unsigned int env:1;/unsigned int env;/
+		s/unsigned int toenv:1;/unsigned int toenv;/
+		s/unsigned int no_makefile:1;/unsigned int no_makefile;/
+	' main.c > _main.c
+
+
+	rm -f config.h
+	mkmk -A -I. -Iglob -B -o gmake \
+		-xmain.c \
+		'-DSCCS_GET="false"' \
+		'-DINCLUDEDIR="/sys/include/ape"' \
+		'-DLIBDIR="/386/lib/ape"' \
+		'-DFILE_TIMESTAMP_HI_RES=0' \
+		'-DLOCALEDIR=""' \
+		'-Dvfork=fork' \
+		-H glob/glob.a8 \
+		> mkfile
+}
+
+@{
+	cd glob
+	rm -rf ChangeLog SCOPTIONS SMakefile Makefile.* configure.bat
+	mkmk -B -I. -I .. -l glob > mkfile
+}
+

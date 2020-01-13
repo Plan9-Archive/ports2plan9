@@ -1,0 +1,19 @@
+purpose: this is a new zlib port. In contrast to the previous one available from contrib, this one keeps the core source directories clean and sources are put in /sys/src/pkg/...
+
+porting procedure:
+
+kitchen sink approach to configure:
+
+GREP=grep CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION" configure --prefix=/sys/lib/libz --eprefix=/$objtype --includedir=/sys/include/ape --libdir=/$objtype/lib/ape
+
+this thing built just fine with "make" awesome!
+
+so... basically, configure, make, make DESTDIR=(packagedir) install
+
+post- make install : manual modification of headers with
+
+#pragma lib "/$M/lib/ape/libz.a"
+
+another modification:
+
+zlib man page copied to /sys/man/3/

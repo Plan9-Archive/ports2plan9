@@ -1,0 +1,7 @@
+utilize "kitchen sink options" to get full exposure of APE.
+
+iconv_module seems to be heavily dependent on dynamic linking.
+the sad part is that the apriconv binary requires those functions to be exposed.
+to get it to compile, a local modified apr_dso header is included.
+
+mkmk -l ../libapriconv-1 -I. -I../include -I/sys/include/ape/apr-1 -DHAVE_SOCK_OPTS -D_REENTRANT_SOURCE -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION -D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -DAPI_USE_BUILTIN_ALIASES > mkfile

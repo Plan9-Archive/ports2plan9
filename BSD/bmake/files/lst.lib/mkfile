@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=lst.a
+OFILES=lstAppend.$O lstAtEnd.$O lstAtFront.$O lstClose.$O lstConcat.$O lstDatum.$O \
+	lstDeQueue.$O lstDestroy.$O lstDupl.$O lstEnQueue.$O lstFind.$O lstFindFrom.$O \
+	lstFirst.$O lstForEach.$O lstForEachFrom.$O lstInit.$O lstInsert.$O lstIsAtEnd.$O \
+	lstIsEmpty.$O lstLast.$O lstMember.$O lstNext.$O lstOpen.$O lstPrev.$O \
+	lstRemove.$O lstReplace.$O lstSucc.$O 
+HFILES=lstInt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../missing -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE \
+	-D_BSD_EXTENSION 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

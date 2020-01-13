@@ -1,0 +1,13 @@
+prefix=/sys/lib/apr
+exec_prefix=/386
+libdir=/386/lib/ape
+APRUTIL_MAJOR_VERSION=1
+includedir=/sys/include/ape
+
+Name: APR Utils
+Description: Companion library for APR
+Version: 1.5.1
+# assume that apr-util requires libapr of same major version
+Requires: apr-1
+Libs: -L${libdir} -laprutil-${APRUTIL_MAJOR_VERSION}  -lexpat      -lsqlite3        
+Cflags: -I${includedir}

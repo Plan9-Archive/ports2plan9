@@ -1,0 +1,12 @@
+<../mkconfig
+
+LIB=/$objtype/lib/gnu/libnet.a
+OFILES=dial.$O\
+	announce.$O\
+	netmkaddr.$O\
+	hangup.$O\
+	
+
+<../mksyslib
+
+CFLAGS=-c -D_POSIX_SOURCE -D_RESEARCH_SOURCE -D_NET_EXTENSION

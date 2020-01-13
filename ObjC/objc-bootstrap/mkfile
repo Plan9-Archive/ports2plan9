@@ -1,0 +1,22 @@
+</$objtype/mkfile
+MKFILES=objc1 postlink
+
+all:V:
+	for (i in $MKFILES)
+		@{ rm -f $O.out; mk -f  mkfile.$i }
+
+install:V:
+	for (i in $MKFILES)
+		@{ rm -f $O.out; mk -f  mkfile.$i  $target }
+	cp objc /rc/bin/
+	chmod +x /rc/bin/objc
+
+clean:V:
+	for (i in $MKFILES)
+		@{ rm -f $O.out; mk -f  mkfile.$i  $target }
+
+nuke:V:
+	for (i in $MKFILES)
+		@{ rm -f $O.out; mk -f  mkfile.$i  $target }
+	rm -f /rc/bin/objc
+

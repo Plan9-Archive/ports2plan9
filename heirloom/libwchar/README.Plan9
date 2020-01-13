@@ -1,0 +1,7 @@
+This is a re-port of the Heirloom wchar library.
+
+In contrib there is an alternative port made by fgb.
+
+mkmk -s libwchar -a -B -S -I. -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE > mkfile
+
+blank.h copied from libcommon.

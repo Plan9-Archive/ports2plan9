@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=../../lib/libncursesw.a
+OFILES=lib_mvcur.$O lib_twait.$O hardscroll.$O lib_vidattr.$O tty_update.$O lib_tstp.$O \
+	hashmap.$O 
+HFILES=../curses.priv.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I../../include -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE \
+	-D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION 
+
+lib_tstp.$O: ../SigAction.h 
+tty_update.$O: 
+lib_mvcur.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

@@ -1,0 +1,22 @@
+This bootstrap stage should generate two files:
+to be able to run configure, flex and byacc needed to be installed.
+
+objc sh script (generated during "configure", to be installed in /rc/bin)
+objc1 and postlink (to be compiled and installed in /$objtype/bin)
+
+The following source files are not part of the common OBjS (from Makefile):
+_objc1, objc1, _plink, postlink, bag, bagseq, intarray, objgraph, octext, paragrph, rectangl, runarray, stack, txtattr, txtstyle
+
+objc1 uses: _objc1.o, objc1.o
+postlink uses: _plink.o postlink.o
+
+
+generation of mkfile:
+
+a master mkfile for generation of objc1 and postlink
+
+mkmk -o objc1 -B -S -I. -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -x _plink.c -x postlink.c -x bag.c -x bagseq.c -x intarray.c -x objgraph.c -x octext.c -x paragrph.c -x rectangl.c -x runarray.c -x stack.c -x txtattr.c -x txtstyle.c -x util > mkfile.objc1
+
+mkmk -o postlink -B -S -I. -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -x _objc1.c -x objc1.c -x bag.c -x bagseq.c -x intarray.c -x objgraph.c -x octext.c -x paragrph.c -x rectangl.c -x runarray.c -x stack.c -x txtattr.c -x txtstyle.c -x util > mkfile.postlink
+
+Since pcc could not handle #idents and I could not be bothered to manually remove them from each file, the initial bootstrap was made with gcc and GNU make 3.82

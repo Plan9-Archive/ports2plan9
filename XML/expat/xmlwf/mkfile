@@ -1,0 +1,18 @@
+</$objtype/mkfile
+TARG=xmlwf
+OFILES=readfilemap.$O ct.$O codepage.$O xmlfile.$O xmlmime.$O xmlwf.$O 
+LIB=../libexpat.a8 
+BIN=/$objtype/bin
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I../lib -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION \
+	-DHAVE_UNISTD_H 
+
+xmlwf.$O: xmltchar.h xmlfile.h codepage.h ../lib/expat.h 
+xmlmime.$O: xmlmime.h 
+xmlfile.$O: filemap.h xmltchar.h xmlfile.h ../lib/expat_external.h ../lib/expat.h 
+codepage.$O: codepage.h 
+readfilemap.$O: filemap.h 

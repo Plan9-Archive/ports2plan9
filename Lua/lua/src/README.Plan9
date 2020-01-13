@@ -1,0 +1,24 @@
+3 things need to be built:
+1. liblua.a (all sources except lua.c luac.c)
+2. lua and luac
+3. the following headers need to be installed:
+lua.h luaconf.h lualib.h lauxlib.h lua.hpp
+
+Either -DLUA_USE_POSIX or -DLUA_USE_ANSI
+it depends if posix implies stuff not supported by APE (mkstemp ...)
+
+headers edited with:
+#pragma lib "/$M/lib/ape/liblua.a"
+
+1. generating mkfile for liblua.a
+
+mkmk -l liblua -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION -DLUA_COMPAT_ALL -DLUA_USE_ANSI -x lua.c -x luac.c > mkfile.lib
+
+2. generating mkfile for binaries
+
+mkmk -m -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION -DLUA_COMPAT_ALL -DLUA_USE_ANSI -x lapi.c -x lauxlib.c -x lbaselib.c -x lbitlib.c -x lcode.c -x lcorolib.c -x lctype.c -x ldblib.c -x ldebug.c -x ldo.c -x ldump.c -x lfunc.c -x lgc.c -x linit.c -x liolib.c -x llex.c -x lmathlib.c -x lmem.c -x loadlib.c -x lobject.c -x lopcodes.c -x loslib.c -x lparser.c -x lstate.c -x lstring.c -x lstrlib.c -x ltable.c -x ltablib.c -x ltm.c -x lundump.c -x lvm.c -x lzio.c -H liblua.a > mkfile.bin
+
+make a "main" mkfile to build first liblua.a and then binaries.
+- install liblua.a to system library
+- install headers to proper location
+- install binaries

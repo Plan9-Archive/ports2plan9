@@ -1,0 +1,52 @@
+This is a new apelib port to GCC on Plan9
+the one shipped with gnubin.tgz on /n/extra/gcc dated back to 2002-12-18
+This snapshot has the last modifications from january 2012
+A release diff of about 9 years.
+Important reasons for the upgrade: some critical functions (like vsnprinf) were not present in the previous release.
+
+Changes:
+Include files: pragmas have been changed to gnu directories
+
+library-specific modifications:
+
+9/
+$objtype/*.s assembly needs to be made gas-compatible
+- copied from old APE lib port
+setmalloctag.c: "parameter name ommitted" error fixed
+
+ap/ : 
+also copied to libc.a
+local header versions to avoid:
+- conflict with stdlib.h in gen/strtoll.c gen/strtoull.c
+- conflict with time.h in plan9/ctime.c
+- conflict with signal.h and lib.h in plan9/signal.c, sigsuspend.c
+- conflict with sys/stat.h in posix/mkfifo.c
+- conflict with signal.h in posix/sigset.c 
+conflict with tos.h in plan9/profile.c: changed profile.c
+-D__U_H to avoid u.h conflict in plan9/dir.h (9iounit.c)
+- changed u.h to u2.h in qlock.c to get definitions.
+plan9/sys9.h : changed so structs not only declared in parameter list.
+plan9/sys9.h : comment out _WRITE for conflict in plan9/9write.c
+plan9/tcgetattr.c : "parameter name ommited" error fixed.
+$objtype/*.s assembly needs to be made gas-compatible
+- copied from newlib (will it work?) i386
+- copied from old APE lib port
+
+bsd/ 
+local header versions to avoid:
+- conflict with netdb.h in gethostbyname.c gethostbyaddr.c
+	getservbyaddr.c getservbyname.c
+- conflict with sys/socket.h in getpeername.c getsockname.c
+priv.h changed so structs are not only declared in parameter list.
+socket.c : copied getsockopt and setsockopt from old APE libs gcc port.
+
+draw/
+alloc.c conflicts with system draw.h, utf.h and u.h, make local headers
+
+libraries that built without issue:
+fmt, l, net, regexp, utf, v
+
+Scary hack:
+assembly .s files failed to get processed by gnu/as
+As a temporary solution, I set AS=8a in those mkfiles.
+I have no idea if this is compatible...

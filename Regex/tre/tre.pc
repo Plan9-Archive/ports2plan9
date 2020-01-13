@@ -1,0 +1,10 @@
+prefix=/sys/lib/tre
+exec_prefix=/386
+libdir=/386/lib/ape
+includedir=/sys/include/ape
+
+Name: TRE
+Description: TRE regexp matching library
+Version: 0.8.0
+Libs: -L${libdir} -ltre   
+Cflags: -I${includedir} 

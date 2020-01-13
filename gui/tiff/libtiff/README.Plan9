@@ -1,0 +1,2 @@
+mkmk -l .libs/libtiff -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_CONFIG_H -x .deps -x .libs -x tif_win32.c > mkfile
+

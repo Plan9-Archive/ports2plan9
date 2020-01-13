@@ -1,0 +1,21 @@
+</$objtype/mkfile
+LIB=../../libapr-1.a$O
+OFILES=userinfo.$O groupinfo.$O 
+HFILES=../../include/apr_private.h ../../include/apr_user.h ../../include/apr_portable.h \
+	../../include/apr_strings.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../../ -I../../include -I../../include/arch/unix -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION \
+	-D_C99_SNPRINTF_EXTENSION 
+
+groupinfo.$O: 
+userinfo.$O: ../../include/apr.h ../../include/apr_want.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

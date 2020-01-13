@@ -1,0 +1,23 @@
+</$objtype/mkfile
+DIRS=lib ccs ces util
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mv libapriconv-1.a$O /$objtype/lib/ape/libapriconv-1.a
+	cp apeheaders/*.h /sys/include/ape/apr-1/
+	cp iconv.rc /rc/bin/ape/iconv
+	
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+

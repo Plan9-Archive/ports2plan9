@@ -1,0 +1,44 @@
+</$objtype/mkfile
+SDIRS=shmem misc mmap file_io atomic user poll memory \
+	network_io random support time locks threadproc dso
+DIRS=passwd strings tables
+
+all:V:
+	for (i in $SDIRS)
+		@{ cd $i/unix; mk }
+	for (j in $DIRS)
+		@{ cd $j; mk }
+
+install:V:
+	for (i in $SDIRS)
+		@{ cd $i/unix; mk $target }
+	for (j in $DIRS)
+		@{ cd $j; mk $target }
+	libapr-1.a$O /$objtype/lib/ape/libapr-1.a
+	mkdir -p /sys/include/ape/apr-1
+	cp apeheaders/*.h /sys/include/ape/apr-1/
+	cp apr-config.ape /rc/bin/ape/apr-config
+	chmod +x /rc/bin/ape/apr-config
+	mkdir -p /sys/lib/apr-1/build
+	cp build/make_exports.awk /sys/lib/apr-1/build/
+	cp build/make_var_export.awk /sys/lib/apr-1/build/
+	cp build/mkdir.sh /sys/lib/apr-1/build/
+	cp build/apr_rules.mk /sys/lib/apr-1/build/
+	cp build/libtool /sys/lib/apr-1/build/
+
+clean:V:
+	for (i in $SDIRS)
+		@{ cd $i/unix; mk $target }
+	for (j in $DIRS)
+		@{ cd $j; mk $target }
+
+nuke:V:
+	for (i in $SDIRS)
+		@{ cd $i/unix; mk $target }
+	for (j in $DIRS)
+		@{ cd $j; mk $target }
+	rm -f /$objtype/lib/ape/libapr-1.a
+	rm -rf /sys/include/ape/apr-1
+	rm -f /rc/bin/ape/apr-config
+	rm -rf /sys/lib/apr-1
+

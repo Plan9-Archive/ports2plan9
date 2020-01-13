@@ -1,0 +1,77 @@
+#!/bin/rc
+
+# we use fgb's "port" of zlib from the ghostscript source
+rm -rf zlib 
+
+# the manuals are not much help, and you need texinfo to build the book
+rm -rf doc man
+
+# support for other OSs
+rm -rf emx vms windows-NT os2 tools
+
+# autoconf cruft
+rm -f *.am *.in *.m4 *.el ChangeLog ChangeLog.zoo cvsnt.*
+rm -f mktemp.sh mkinstalldirs missing mdate-sh ylwrap
+rm -f install-sh decomp compile configure build.com .cvsignore
+rm -f DEVEL-CVS HACKING INSTALL PROJECTS NEWS MINOR_BUGS
+rm -f TESTS README.VMS TODO depcomp
+
+mkmk lib diff src > mkfile
+
+@{
+	cd lib
+
+	# autoconf cruft
+	test -f fnmatch.h.in && mv fnmatch.h.in fnmatch.h
+	rm -f .cvsignore Makefile.am Makefile.in build_lib.com
+	rm -f test-getdate.sh
+
+	# unsupported features
+	rm -f xgssapi.h getdate.y
+
+	# This are compatibility files but we already have the features 
+	rm -f mkdir.c fncase.c strerror.c waitpid.c rename.c dup2.c
+	rm -f memmove.c getpass.c strtoul.c strstr.c gethostname.c 
+
+	# mkmk builds this for us
+	rm -f config.h
+
+	mkmk -A -B -I. \
+		-DCLIENT_SUPPORT \
+		-xxsize.h -xxselect.h -xwait.h \
+		-l libcvs > mkfile
+
+	# cvs specific weirdness
+	extra=('RETSIGTYPE void' 'vfork fork' )
+	extra=($extra 'PRESERVE_PERMISSIONS_SUPPORT 1' )
+	extra=($extra _REGEX_RE_COMP REGEX_MALLOC)
+	for(e in $extra)
+		echo '#define' $e >> config.h
+}
+
+@{
+	cd diff
+	rm -f diagmeet.note libdiff.d?p libdiff.mak build_diff.com
+	rm -f Makefile.* ChangeLog .cvsignore
+	mkmk -B  -I../lib -l libdiff > mkfile
+}
+
+@{
+	cd src
+	rm -f config.h
+	rm -f .cvsignore ChangeLog* Makefile.* build*.com create_adm.in 
+	mkmk -A -B \
+		-DCLIENT_SUPPORT -DMY_NDBM \
+		-I. -I../lib -I../diff \
+		-H../lib/libcvs.a8 -H../diff/libdiff.a8 \
+		-o cvs > mkfile
+
+	extra=(_REGEX_RE_COMP 'CVSRC_FILENAME "lib/cvsrc"' AUTH_CLIENT_SUPPORT)
+	extra=($extra 'SIZE_MAX 0xfffffffe' 'RETSIGTYPE void' 'PACKAGE_STRING "cvs"')
+	extra=($extra 'UMASK_DFLT 0755' 'TMPDIR_DFLT "/tmp"' 'EDITOR_DFLT "B"')
+	extra=($extra 'SSH_DFLT "ssh"' 'RSH_DFLT "rx"')
+	extra=($extra 'PACKAGE_BUGREPORT ""')
+	for(e in $extra)
+		echo '#define' $e >> config.h
+}
+

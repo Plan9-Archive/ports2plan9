@@ -1,0 +1,22 @@
+<../../mkconfig
+LIB=/$objtype/lib/gnu/libap.a
+OFILES=\
+	_seek.$O\
+	cycles.$O\
+	divl.$O\
+	divq.$O\
+	getfcr.$O\
+	lock.$O\
+	main9.$O\
+	main9p.$O\
+	memcpy.$O\
+	memmove.$O\
+	memset.$O\
+	notetramp.$O\
+	setjmp.$O\
+	tas.$O\
+
+<../../mksyslib
+
+CFLAGS=-c -D_POSIX_SOURCE -D_PLAN9_SOURCE
+

@@ -1,0 +1,26 @@
+SQLite3 is built with Unix pthreads support using GNU Pth. This means that packages built with SQLite3 may expect to also link to libpthread from GNU Pth.
+
+This is the recommended release of SQLite3, which is a source code amalgamation. This means that there is a single huge object file in the library, which might cause bloat.
+
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS" GREP=grep configure --prefix=/sys --exec-prefix=/$objtype --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --disable-shared
+
+The config.h header had to be made manually
+
+
+Generation of library:
+
+mkmk -l libsqlite3 -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION  -D_HAVE_SQLITE_CONFIG_H -DPLAN9 sqlite3.c > mkfile.lib
+
+
+Generation of binary:
+
+shell.c was edited to have the correct headers for editline. 
+- edited to avoid use of getrusage which is not present in APE sys/resource.h
+
+mkmk -o sqlite3 -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_TRACE -H./libsqlite3.a8 shell.c > mkfile.bin
+
+optional:
+ -DHAVE_EDITLINE 
+
+.a8 changed to a$O in mkfile

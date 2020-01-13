@@ -1,0 +1,4 @@
+
+mkmk -l libcommon -S -B -I. -DNEED_ALLOCA_H -DNEED_MALLOC_H -DNEED_UTMPX_H -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -DPLAN9 > mkfile
+
+manually change mkfile to install headers at /sys/include/ape/heirloom

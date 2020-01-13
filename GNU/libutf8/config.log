@@ -1,0 +1,203 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:565: checking whether make sets $(MAKE)
+configure:615: checking for gcc
+configure:645: checking for cc
+configure:728: checking whether the C compiler (cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE ) works
+configure:744: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:770: checking whether the C compiler (cc -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE ) is a cross-compiler
+configure:775: checking whether we are using GNU C
+configure:784: cc -E conftest.c
+configure:819: checking how to run the C preprocessor
+configure:845: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:994: checking for ranlib
+configure:1032: checking for a BSD compatible install
+configure:1085: checking how to copy files
+configure:1104: checking how to make hard links
+configure:1123: checking whether ln -s works
+configure:1148: checking host system type
+configure:1185: checking for AIX
+configure:1220: checking for minix/config.h
+configure:1230: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1268: checking for POSIXized ISC
+configure:1372: checking build system type
+configure:1428: checking for non-GNU ld
+configure:1463: checking if the linker (/bin/ld) is GNU ld
+configure:1478: checking for BSD-compatible nm
+configure:1514: checking whether ln -s works
+ltconfig:581: checking whether we are using GNU C
+ltconfig:589: cc -E conftest.c
+ltconfig:603: checking for object suffix
+ltconfig:604: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE  conftest.c 1>&5
+ltconfig:629: checking for executable suffix
+ltconfig:630: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+ltconfig:829: checking if cc supports -c -o file.o
+ltconfig:830: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -o out/conftest2.o  conftest.c 1>&5
+ltconfig:862: checking if cc supports -c -o file.lo
+ltconfig:863: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE -c -o conftest.lo  conftest.c 1>&5
+ltconfig:958: checking if cc static flag  works
+ltconfig:959: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE    conftest.c  1>&5
+ltconfig:1653: checking if global_symbol_pipe works
+ltconfig:1654: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE  conftest.c 1>&5
+ltconfig:1657: eval "/bin/nm conftest.o | sed -n -e 's/^.*[ 	]\([BCDEGRST]\)[ 	][ 	]*\(\)\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2\3 \3/p' > conftest.nm"
+ltconfig:1709: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c conftstm.o 1>&5
+configure:1703: checking for inttypes.h
+configure:1713: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1703: checking for stdint.h
+configure:1713: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1703: checking for wchar.h
+configure:1713: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1703: checking for wctype.h
+configure:1713: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1703: checking for langinfo.h
+configure:1713: cc -E  conftest.c >/dev/null 2>conftest.out
+configure:1765: checking for wchar_t size
+configure:1792: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+cpp: conftest.c:8 Could not find include file <stdint.h>
+cpp: conftest.c:11 Could not find include file <wchar.h>
+cpp: conftest.c:14 Could not find include file <wctype.h>
+cc: 8c: cpp 1134: errors
+configure:1812: checking for u_wchar_t type
+configure:1846: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+cpp: conftest.c:8 Could not find include file <stdint.h>
+cpp: conftest.c:11 Could not find include file <wchar.h>
+cpp: conftest.c:14 Could not find include file <wctype.h>
+cc: 8c: cpp 1145: errors
+configure:1865: checking for long long
+configure:1882: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE  conftest.c 1>&5
+configure:1907: checking for long double
+configure:1927: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE  conftest.c 1>&5
+configure:1952: checking for intmax_t
+configure:1973: cc -c -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE  conftest.c 1>&5
+cpp: configure:1965 Could not find include file <stdint.h>
+cc: 8c: cpp 1174: errors
+configure: failed program was:
+/usr/jens/dvl/libutf8-0.8.1/configure:1968[stdin:157] syntax error, last name: x
+#line 1957 "configure"
+#include "confdefs.h"
+
+#include <stddef.h>
+#include <stdlib.h>
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+#endif
+
+int main() {
+intmax_t x = -1;
+; return 0; }
+configure:1996: checking for strtof
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+main: undefined: strtof
+cc: 8l: 8l 1185: error
+configure: failed program was:
+#line 2001 "configure"
+#include "confdefs.h"
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char strtof(); below.  */
+#include <assert.h>
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char strtof();
+
+int main() {
+
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_strtof) || defined (__stub___strtof)
+choke me
+#else
+strtof();
+#endif
+
+; return 0; }
+configure:1996: checking for strtold
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+main: undefined: strtold
+cc: 8l: 8l 1197: error
+configure: failed program was:
+#line 2001 "configure"
+#include "confdefs.h"
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char strtold(); below.  */
+#include <assert.h>
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char strtold();
+
+int main() {
+
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_strtold) || defined (__stub___strtold)
+choke me
+#else
+strtold();
+#endif
+
+; return 0; }
+configure:1996: checking for strtoll
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:1996: checking for strtoull
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:1996: checking for vfprintf
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:1996: checking for vsprintf
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:1996: checking for vsnprintf
+configure:2027: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+configure:2054: checking for working alloca.h
+configure:2067: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+cpp: configure:2061 Could not find include file <alloca.h>
+cc: 8c: cpp 1278: errors
+configure: failed program was:
+#line 2060 "configure"
+#include "confdefs.h"
+#include <alloca.h>
+int main() {
+char *p = (char *) alloca(2 * sizeof(int));
+; return 0; }
+configure:2109: checking for alloca
+configure:2122: cc -o conftest -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE   conftest.c  1>&5
+main: undefined: alloca
+cc: 8l: 8l 1289: error
+configure: failed program was:
+#line 2115 "configure"
+#include "confdefs.h"
+#ifdef __GNUC__
+#define alloca __builtin_alloca
+#else
+#ifdef _MSC_VER
+#include <malloc.h>
+#define alloca _alloca
+#else
+#ifdef HAVE_ALLOCA_H
+#include <alloca.h>
+#else
+#ifdef _AIX
+ #pragma alloca
+#else
+#ifndef alloca
+char *alloca ();
+#endif
+#endif
+#endif
+#endif
+#endif
+
+int main() {
+char *p = (char *) alloca(1);
+; return 0; }

@@ -1,0 +1,14 @@
+The initial plan was to adopt the rather readable Makefile and issue "ape/make" rather than mk in the mkfile in the top directory.
+
+I did however decide to do a standard mk-based build...
+
+mkmk -x proto > mkfile
+
+The Makefile is saved for future reference or use...
+
+as can be seen in the Makefile, basically 4 things need to be made:
+
+libp2c.a: library for translated programs
+p2c: binary that translates
+p2cc: perl script for direct compilation
+p2c.1 and p2cc.1 : man files.

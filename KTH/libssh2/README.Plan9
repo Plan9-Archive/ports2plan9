@@ -1,0 +1,20 @@
+fix config.sub to know about Plan9
+
+fix configure so non-supported flags are not used
+
+cat configure | sed 's/mv -f/mv/g' > c2
+mv c2 configure
+
+cat configure | sed 's/ls -di/ls/g' > c2
+mv c2 configure
+
+cat configure | sed 's/cp -r/dircp/g' > c2
+mv c2 configure
+
+chmod +x configure
+add GREP=grep to configure.
+ape/psh
+
+Kitchen sink approach to configure:
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION" configure --prefix=/sys/lib/libssh2 --exec-prefix=/$objtype --sbindir=/$objtype/bin --libexecdir=/$objtype/bin --sysconfdir=/sys/lib/libssh2 --sharedstatedir=/sys/lib/libssh2 --localstatedir=/sys/lib/libssh2 --includedir=/sys/include/ape --datarootdir=/sys

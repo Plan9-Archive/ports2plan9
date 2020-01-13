@@ -1,0 +1,39 @@
+glob.o glob.o: glob.c ../config.h /sys/include/ape/errno.h \
+  /sys/include/ape/sys/types.h /sys/include/ape/sys/stat.h \
+  /sys/include/ape/assert.h /sys/include/gnu/stdio.h \
+  /386/include/gnu/stdarg.h /386/include/gnu/stddef.h \
+  /sys/include/ape/unistd.h /sys/include/gnu/bsd.h /sys/include/ape/pwd.h \
+  /sys/include/ape/dirent.h /sys/include/gnu/stdlib.h \
+  /sys/include/ape/string.h fnmatch.h glob.h
+
+../config.h:
+
+/sys/include/ape/errno.h:
+
+/sys/include/ape/sys/types.h:
+
+/sys/include/ape/sys/stat.h:
+
+/sys/include/ape/assert.h:
+
+/sys/include/gnu/stdio.h:
+
+/386/include/gnu/stdarg.h:
+
+/386/include/gnu/stddef.h:
+
+/sys/include/ape/unistd.h:
+
+/sys/include/gnu/bsd.h:
+
+/sys/include/ape/pwd.h:
+
+/sys/include/ape/dirent.h:
+
+/sys/include/gnu/stdlib.h:
+
+/sys/include/ape/string.h:
+
+fnmatch.h:
+
+glob.h:

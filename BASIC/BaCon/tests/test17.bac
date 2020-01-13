@@ -1,0 +1,33 @@
+REM Testing BASIC compiler
+PRINT "========================"
+PRINT "Test 17: Testing RECORDS"
+PRINT "========================"
+PRINT
+
+REM Array of records
+RECORD rec[10]
+    LOCAL name$
+    LOCAL street$
+    LOCAL city$
+    LOCAL age TYPE int
+    LOCAL zipcode
+END RECORD
+
+REM Using WITH to assign values
+WITH rec[0]
+    .name$ = "Peter"
+    .street$ = "Westlands Way 1"
+    .city$ = "The Hague"
+    .age = 40
+END WITH
+
+REM But standalone is allowed too
+rec[0].zipcode = 12345
+
+PRINT "Name in the first record is: ", rec[0].name$
+
+PRINT "Street in the first record is: ", rec[0].street$
+
+PRINT "Zipcode in the first record is: ", rec[0].zipcode
+
+PRINT

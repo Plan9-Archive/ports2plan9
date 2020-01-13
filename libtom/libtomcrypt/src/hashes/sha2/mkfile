@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=sha224.$O sha256.$O sha384.$O sha512.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../../testprof/ -I../..headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+sha512.$O: tomcrypt.h 
+sha256.$O: tomcrypt.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

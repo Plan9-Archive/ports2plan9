@@ -1,0 +1,20 @@
+change utils/config.sub to recognize plan9
+
+change configure to avoid unsupported flags
+
+cat configure | sed 's/mv -f/mv/g' > c2
+mv c2 configure
+
+cat configure | sed 's/cp -r/dircp/g' > c2
+mv c2 configure
+
+cat configure | sed 's/ls -di/ls/g' > c2
+mv c2 configure
+
+GREP=grep
+
+chmod +x configure
+
+Kitchen sink approach to configure:
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_REENTRANT_SOURCE -D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEX_EXTENSION" configure --prefix=/sys/lib/tre --exec-prefix=/$objtype --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --datarootdir=/sys --enable-system-abi --disable-nls --enable-static --disable-shared --without-libiconv-prefix --without-libintl-prefix

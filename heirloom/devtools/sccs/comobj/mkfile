@@ -1,0 +1,32 @@
+</$objtype/mkfile
+LIB=libcomobj.a
+OFILES=auxf.$O chkid.$O chksid.$O cmpdate.$O date_ab.$O date_ba.$O del_ab.$O del_ba.$O \
+	dodelt.$O dofile.$O dohist.$O doie.$O dolist.$O encode.$O eqsid.$O flushto.$O \
+	fmterr.$O getline.$O getser.$O logname.$O newsid.$O newstats.$O permiss.$O \
+	pf_ab.$O putline.$O rdmod.$O setup.$O sid_ab.$O sid_ba.$O sidtoser.$O sinit.$O \
+	stats_ab.$O strptim.$O 
+HFILES=../hdr/defines.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../hdr -B -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D_LIMITS_EXTENSION 
+
+putline.$O: ../hdr/i18n.h 
+permiss.$O: ../hdr/i18n.h 
+logname.$O: 
+getser.$O: ../hdr/had.h 
+fmterr.$O: 
+dolist.$O: 
+doie.$O: 
+dohist.$O: ../hdr/i18n.h ../hdr/had.h 
+dofile.$O: 
+date_ab.$O: 
+cmpdate.$O: 
+chksid.$O: 
+chkid.$O: 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

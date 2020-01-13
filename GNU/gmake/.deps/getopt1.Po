@@ -1,0 +1,12 @@
+getopt1.o getopt1.o: getopt1.c config.h getopt.h /sys/include/gnu/stdio.h \
+  /386/include/gnu/stdarg.h /386/include/gnu/stddef.h
+
+config.h:
+
+getopt.h:
+
+/sys/include/gnu/stdio.h:
+
+/386/include/gnu/stdarg.h:
+
+/386/include/gnu/stddef.h:

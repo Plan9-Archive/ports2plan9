@@ -1,0 +1,136 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libdb.a
+OFILES=bt_close.$O bt_conv.$O bt_debug.$O bt_delete.$O bt_get.$O bt_open.$O bt_overflow.$O \
+	bt_page.$O bt_put.$O bt_search.$O bt_seq.$O bt_split.$O bt_utils.$O db.$O \
+	hash.$O hash_bigkey.$O hash_buf.$O hash_func.$O hash_log2.$O hash_page.$O \
+	hsearch.$O mpool.$O ndbm.$O rec_close.$O rec_delete.$O rec_get.$O rec_open.$O \
+	rec_put.$O rec_search.$O rec_seq.$O rec_utils.$O 
+HFILES=db.h /sys/include/ape/stdio.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I/sys/include/ape/apr-1 -B \
+	-DPLAN9 -D_PLAN9_SOURCE -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION \
+	-D__DBINTERFACE_PRIVATE -D__BIT_TYPES_DEFINED__ 
+
+rec_utils.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/string.h /sys/include/ape/stdlib.h /sys/include/ape/sys/param.h 
+rec_seq.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/string.h /sys/include/ape/limits.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/types.h 
+rec_search.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+rec_put.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/string.h /sys/include/ape/stdlib.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/types.h 
+rec_open.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/unistd.h /sys/include/ape/stddef.h /sys/include/ape/limits.h \
+	/sys/include/ape/fcntl.h /sys/include/ape/errno.h /sys/include/ape/sys/stat.h \
+	/sys/include/ape/apr-1/apr_mmap.h /sys/include/ape/sys/types.h sys/mman.h \
+	/sys/include/ape/sys/types.h 
+rec_get.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/unistd.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/stddef.h /sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+rec_delete.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/string.h /sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+rec_close.$O: extern.h extern_rec.h extern.h sys/queue.h mpool.h btree.h recno.h \
+	/sys/include/ape/unistd.h /sys/include/ape/limits.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/uio.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_inherit.h /sys/include/ape/sys/uio.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_time.h /386/include/ape/stdarg.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr_ring.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/string.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_allocator.h /sys/include/ape/string.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_want.h /sys/include/ape/signal.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/limits.h \
+	/sys/include/ape/sys/wait.h /sys/include/ape/inttypes.h /sys/include/ape/stdint.h \
+	/sys/include/ape/sys/socket.h /sys/include/ape/sys/types.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_mmap.h /sys/include/ape/sys/types.h sys/mman.h \
+	/sys/include/ape/sys/uio.h /sys/include/ape/sys/types.h 
+ndbm.$O: hash.h ndbm.h /sys/include/ape/string.h /sys/include/ape/sys/param.h 
+mpool.$O: sys/queue.h mpool.h /sys/include/ape/unistd.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/errno.h /sys/include/ape/sys/stat.h \
+	sys/queue.h /sys/include/ape/sys/param.h 
+hsearch.$O: search.h /sys/include/ape/string.h /sys/include/ape/fcntl.h /sys/include/ape/sys/types.h 
+hash_page.$O: extern_hash.h page.h hash.h /sys/include/ape/unistd.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/signal.h /sys/include/ape/fcntl.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+hash_log2.$O: /sys/include/ape/sys/types.h 
+hash_func.$O: extern_hash.h page.h hash.h /sys/include/ape/sys/types.h 
+hash_buf.$O: extern_hash.h page.h hash.h /sys/include/ape/stdlib.h /sys/include/ape/stddef.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/param.h 
+hash_bigkey.$O: extern_hash.h page.h hash.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/param.h 
+hash.$O: extern_hash.h page.h hash.h /sys/include/ape/unistd.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/fcntl.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/stat.h /sys/include/ape/sys/param.h 
+db.$O: /sys/include/ape/stddef.h /sys/include/ape/fcntl.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/types.h 
+bt_utils.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/sys/param.h 
+bt_split.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/limits.h /sys/include/ape/sys/types.h 
+bt_seq.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/stdlib.h /sys/include/ape/stddef.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+bt_search.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/sys/types.h 
+bt_put.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/errno.h /sys/include/ape/sys/types.h 
+bt_page.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/sys/types.h 
+bt_overflow.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/sys/param.h 
+bt_open.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/unistd.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/signal.h /sys/include/ape/limits.h \
+	/sys/include/ape/sys/types.h /sys/include/ape/fcntl.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/stat.h /sys/include/ape/sys/param.h 
+bt_get.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/stddef.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/types.h 
+bt_delete.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/types.h 
+bt_debug.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/string.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/sys/param.h 
+bt_conv.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/sys/param.h 
+bt_close.$O: extern.h sys/queue.h mpool.h btree.h /sys/include/ape/bsd.h /sys/include/ape/unistd.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	/sys/include/ape/stddef.h /sys/include/ape/stdlib.h /sys/include/ape/errno.h \
+	/sys/include/ape/sys/param.h 
+nuke:V:
+	mk clean
+	rm -f $LIB
+
+all:V:
+
+install:V:
+	cp db.h /sys/include/ape/
+	cp cdefs.h /sys/include/ape/
+	mkdir -p /sys/man/3ape
+	cp man/btree.3 /sys/man/3ape/btree
+	cp man/dbopen.3 /sys/man/3ape/dbopen
+	cp man/hash.3 /sys/man/3ape/hash
+	cp man/mpool.3 /sys/man/3ape/mpool
+	cp man/recno.3 /sys/man/3ape/recno
+
+clean:V:
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	rm -f /sys/include/ape/db.h
+	rm -f /sys/include/ape/cdefs.h
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+	rm -f /sys/man/3ape/btree
+	rm -f /sys/man/3ape/dbopen
+	rm -f /sys/man/3ape/hash
+	rm -f /sys/man/3ape/mpool
+	rm -f /sys/man/3ape/recno
+

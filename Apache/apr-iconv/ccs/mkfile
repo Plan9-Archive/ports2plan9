@@ -1,0 +1,56 @@
+</$objtype/mkfile
+LIB=../libapriconv-1.a$O
+OFILES=koi8-r.$O cp871.$O mac-ce.$O iso-ir-37.$O iso-8859-3.$O iso-ir-91.$O iso-ir-61.$O \
+	adobe-stdenc.$O iso-ir-51.$O iso-ir-158.$O ksx1001.$O iso-ir-93.$O iso-ir-151.$O \
+	iso-ir-84.$O gb12345.$O iso-ir-9-2.$O iso-ir-50.$O cp290.$O iso-ir-96.$O \
+	adobe-zdingbats.$O cp275.$O cp856.$O cp880.$O cp273.$O cp10081.$O iso-ir-90.$O \
+	cp862.$O cp1006.$O iso-ir-8-2.$O ebcdic-at-de.$O cp903.$O windows-1252.$O \
+	iso-ir-89.$O osd_ebcdic_df04_1.$O cp280.$O iso-ir-16.$O mac-greek.$O ebcdic-fr.$O \
+	iso-ir-94.$O ebcdic-uk.$O iso-8859-4.$O cp281.$O windows-1258.$O iso-ir-57.$O \
+	iso-ir-147.$O us-ascii.$O iso-ir-27.$O ebcdic-it.$O cp277.$O iso-8859-1.$O \
+	ebcdic-us.$O cp10006.$O ebcdic-dk-no-a.$O cp875.$O ebcdic-pt.$O iso-ir-13.$O \
+	mac-roman.$O ebcdic-es-a.$O cp850.$O iso-ir-10.$O iso-ir-153.$O mac-iceland.$O \
+	iso-ir-123.$O mac-japan.$O iso-ir-99.$O iso-8859-6.$O iso-ir-70.$O windows-1256.$O \
+	cp870.$O mac-croatian.$O iso-8859-5.$O iso-ir-14.$O cp420.$O iso-ir-92.$O \
+	ebcdic-ca-fr.$O iso-8859-13.$O mac-thai.$O iso-ir-142.$O cp855.$O cns11643-plane2.$O \
+	iso-ir-128.$O iso-8859-2.$O cp891.$O ebcdic-es.$O windows-1257.$O iso-ir-8-1.$O \
+	jis_x0201.$O cp10000.$O cp904.$O iso-ir-21.$O cp10079.$O iso-ir-2.$O cp950.$O \
+	jis_x0212-1990.$O ebcdic-es-s.$O iso-ir-139.$O iso-ir-15.$O koi8-u.$O iso-ir-122.$O \
+	iso-ir-69.$O iso-ir-143.$O iso-ir-150.$O cp437.$O cp860.$O cp775.$O cp10007.$O \
+	cp038.$O iso-8859-8.$O macintosh.$O adobe-symbol.$O iso-ir-55.$O mac-cyrillic.$O \
+	big5.$O koi8-ru.$O cp284.$O iso-ir-85.$O jis_x0208-1983.$O cp905.$O cp851.$O \
+	cp918.$O windows-1250.$O cns11643-plane14.$O mac-ukraine.$O cp866.$O cp424.$O \
+	iso-ir-86.$O ebcdic-fi-se-a.$O cp864.$O iso-ir-154.$O cp932.$O cp737.$O \
+	iso-8859-14.$O iso-ir-98.$O cp278.$O cp037.$O iso-ir-25.$O iso-8859-9.$O \
+	iso-ir-95.$O iso646-dk.$O iso-ir-18.$O gb_2312-80.$O osd_ebcdic_df04_15.$O \
+	cp1026.$O iso-8859-10.$O cp285.$O mac-romania.$O mac-dingbats.$O hp-roman8.$O \
+	iso646-kr.$O cp863.$O iso-ir-60.$O cp852.$O cp936.$O iso-ir-47.$O dec-mcs.$O \
+	iso-ir-102.$O iso-ir-155.$O cp423.$O cp861.$O cp274.$O iso-ir-88.$O iso-ir-111.$O \
+	shift_jis.$O ebcdic-fi-se.$O cp500.$O cp869.$O cp857.$O cp865.$O iso-ir-11.$O \
+	windows-1255.$O windows-1254.$O windows-1251.$O iso-ir-4.$O cp868.$O ebcdic-at-de-a.$O \
+	iso-ir-146.$O iso-ir-103.$O cp949.$O iso-ir-54.$O cp10029.$O iso-ir-17.$O \
+	iso-8859-15.$O iso-8859-7.$O iso-ir-141.$O iso-ir-152.$O windows-1253.$O \
+	ebcdic-dk-no.$O johab.$O iso-ir-19.$O iso-ir-49.$O cp297.$O mac-turkish.$O \
+	iso-ir-121.$O cp874.$O iso-ir-9-1.$O cns11643-plane1.$O 
+HFILES=../lib/iconv.h ../lib/apr_iconv_private.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h ../include/apr_iconv.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../lib -I../include -I/sys/include/ape/apr-1 -DHAVE_SOCK_OPTS -D_REENTRANT_SOURCE \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION \
+	-D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

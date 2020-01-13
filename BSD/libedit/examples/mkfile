@@ -1,0 +1,16 @@
+</$objtype/mkfile
+TARG=fileman tc1 wtc1 
+LIB=../src/libedit.a 
+BIN=/$objtype/bin
+HFILES=../src/histedit.h /$objtype/lib/ape/libwchar.a
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I.. -I../src -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE \
+	-D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION 
+
+wtc1.$O: err.h 
+tc1.$O: ../src/sys.h ../config.h 
+fileman.$O: ../src/editline/readline.h sys/errno.h sys/file.h 

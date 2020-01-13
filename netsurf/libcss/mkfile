@@ -1,0 +1,22 @@
+</$objtype/mkfile
+DIRS=src 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mkdir -p /sys/include/ape/libcss
+	cp include/libcss/*.h /sys/include/ape/libcss/
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	rm -f /sys/include/ape/libcss
+

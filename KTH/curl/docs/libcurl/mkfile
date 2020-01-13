@@ -1,0 +1,69 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp curl_easy_send.3 /sys/man/3/curl_easy_send
+	cp curl_share_cleanup.3 /sys/man/3/curl_share_cleanup
+	cp curl_easy_escape.3 /sys/man/3/curl_easy_escape
+	cp curl_strequal.3 /sys/man/3/curl_strequal
+	cp curl_multi_add_handle.3 /sys/man/3/curl_multi_add_handle
+	cp curl_multi_timeout.3 /sys/man/3/curl_multi_timeout
+	cp curl_free.3 /sys/man/3/curl_free
+	cp curl_version.3 /sys/man/3/curl_version
+	cp curl_easy_getinfo.3 /sys/man/3/curl_easy_getinfo
+	cp curl_unescape.3 /sys/man/3/curl_unescape
+	cp curl_multi_perform.3 /sys/man/3/curl_multi_perform
+	cp libcurl-share.3 /sys/man/3/libcurl-share
+	cp curl_easy_unescape.3 /sys/man/3/curl_easy_unescape
+	cp curl_easy_init.3 /sys/man/3/curl_easy_init
+	cp libcurl-tutorial.3 /sys/man/3/libcurl-tutorial
+	cp curl_slist_append.3 /sys/man/3/curl_slist_append
+	cp curl_share_init.3 /sys/man/3/curl_share_init
+	cp curl_easy_cleanup.3 /sys/man/3/curl_easy_cleanup
+	cp curl_easy_pause.3 /sys/man/3/curl_easy_pause
+	cp curl_easy_duphandle.3 /sys/man/3/curl_easy_duphandle
+	cp curl_multi_socket.3 /sys/man/3/curl_multi_socket
+	cp curl_version_info.3 /sys/man/3/curl_version_info
+	cp curl_share_strerror.3 /sys/man/3/curl_share_strerror
+	cp curl_multi_wait.3 /sys/man/3/curl_multi_wait
+	cp curl_multi_init.3 /sys/man/3/curl_multi_init
+	cp curl_multi_setopt.3 /sys/man/3/curl_multi_setopt
+	cp curl_mprintf.3 /sys/man/3/curl_mprintf
+	cp curl_formadd.3 /sys/man/3/curl_formadd
+	cp curl_global_init_mem.3 /sys/man/3/curl_global_init_mem
+	cp libcurl-easy.3 /sys/man/3/libcurl-easy
+	cp curl_easy_strerror.3 /sys/man/3/curl_easy_strerror
+	cp curl_multi_cleanup.3 /sys/man/3/curl_multi_cleanup
+	cp curl_escape.3 /sys/man/3/curl_escape
+	cp curl_global_init.3 /sys/man/3/curl_global_init
+	cp curl_easy_setopt.3 /sys/man/3/curl_easy_setopt
+	cp curl_multi_remove_handle.3 /sys/man/3/curl_multi_remove_handle
+	cp curl_easy_recv.3 /sys/man/3/curl_easy_recv
+	cp curl_easy_reset.3 /sys/man/3/curl_easy_reset
+	cp curl_global_cleanup.3 /sys/man/3/curl_global_cleanup
+	cp curl_multi_fdset.3 /sys/man/3/curl_multi_fdset
+	cp curl_formfree.3 /sys/man/3/curl_formfree
+	cp curl_multi_strerror.3 /sys/man/3/curl_multi_strerror
+	cp curl_share_setopt.3 /sys/man/3/curl_share_setopt
+	cp curl_multi_assign.3 /sys/man/3/curl_multi_assign
+	cp curl_formget.3 /sys/man/3/curl_formget
+	cp curl_multi_socket_action.3 /sys/man/3/curl_multi_socket_action
+	cp curl_easy_perform.3 /sys/man/3/curl_easy_perform
+	cp libcurl-errors.3 /sys/man/3/libcurl-errors
+	cp curl_getenv.3 /sys/man/3/curl_getenv
+	cp curl_getdate.3 /sys/man/3/curl_getdate
+	cp libcurl-multi.3 /sys/man/3/libcurl-multi
+	cp curl_multi_info_read.3 /sys/man/3/curl_multi_info_read
+	cp curl_slist_free_all.3 /sys/man/3/curl_slist_free_all
+	cp libcurl.3 /sys/man/3/libcurl
+

@@ -1,0 +1,40 @@
+REM Testing BASIC compiler
+
+PRINT "============================"
+PRINT "Test 2: Testing IF/THEN/ELSE"
+PRINT "============================"
+PRINT
+
+DECLARE a[10] TYPE double
+
+REM Default integer values are assumed
+PRINT "Enter a value... ";
+INPUT a[1]
+
+PRINT "Enter another value...";
+INPUT b
+
+IF a[1] < b THEN
+    PRINT "First was lower than last."
+ELSE
+    PRINT "Last was lower than first."
+ENDIF
+
+REM If entered values are float, declare first
+DECLARE i TYPE double
+DECLARE j TYPE double
+
+PRINT "Enter a float value... ";
+INPUT i
+
+PRINT "Enter another float value...";
+INPUT j
+
+IF i < j THEN
+    PRINT "First was lower than last."
+ELSE
+    PRINT "Last was lower than first."
+ENDIF
+
+PRINT "First value was: ", i FORMAT "%s%g\n"
+PRINT "First value was: ", j FORMAT "%s%g\n"

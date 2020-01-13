@@ -1,0 +1,2 @@
+
+mkmk -l libmpw -S -B -I../hdr -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D_LIMITS_EXTENSION > mkfile

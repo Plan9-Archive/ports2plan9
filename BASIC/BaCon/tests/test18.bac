@@ -1,0 +1,40 @@
+' Testing BASIC compiler
+PRINT "==============================="
+PRINT "Test 18: Testing MEMORY STREAMS"
+PRINT "==============================="
+PRINT
+
+' Claim some memory
+data = MEMORY(500)
+
+' Open memory area as a stream
+OPEN data FOR MEMORY AS mem
+
+' Put some data into stream
+PUTLINE "Hello cruel world" TO mem
+PUTLINE "The weather is nice" TO mem
+PUTLINE "as the sun shines" TO mem
+PUTLINE "and there is no rain" TO mem
+
+' Get back to starting point
+MEMREWIND mem
+
+' Now perform subsequent reads
+GETLINE txt$ FROM mem
+PRINT txt$
+PRINT "-------------------------"
+GETLINE txt$ FROM mem
+PRINT txt$
+PRINT "-------------------------"
+GETLINE txt$ FROM mem
+PRINT txt$
+PRINT "-------------------------"
+GETLINE txt$ FROM mem
+PRINT txt$
+PRINT "-------------------------"
+
+' Close memory stream
+CLOSE MEMORY mem
+
+' Free memory
+FREE data

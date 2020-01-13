@@ -1,0 +1,57 @@
+signame.o signame.o: signame.c make.h config.h \
+  /sys/include/ape/sys/types.h /sys/include/ape/sys/stat.h \
+  /sys/include/gnu/signal.h /sys/include/gnu/stdio.h \
+  /386/include/gnu/stdarg.h /386/include/gnu/stddef.h \
+  /sys/include/ape/ctype.h /sys/include/ape/sys/time.h \
+  /sys/include/ape/time.h /sys/include/ape/errno.h \
+  /sys/include/ape/unistd.h /sys/include/gnu/bsd.h \
+  /386/include/gnu/limits.h /sys/include/gnu/syslimits.h \
+  /sys/include/ape/sys/limits.h /sys/include/ape/sys/param.h \
+  /sys/include/gnu/stdlib.h /sys/include/ape/string.h \
+  /sys/include/ape/inttypes.h /sys/include/ape/locale.h gettext.h
+
+make.h:
+
+config.h:
+
+/sys/include/ape/sys/types.h:
+
+/sys/include/ape/sys/stat.h:
+
+/sys/include/gnu/signal.h:
+
+/sys/include/gnu/stdio.h:
+
+/386/include/gnu/stdarg.h:
+
+/386/include/gnu/stddef.h:
+
+/sys/include/ape/ctype.h:
+
+/sys/include/ape/sys/time.h:
+
+/sys/include/ape/time.h:
+
+/sys/include/ape/errno.h:
+
+/sys/include/ape/unistd.h:
+
+/sys/include/gnu/bsd.h:
+
+/386/include/gnu/limits.h:
+
+/sys/include/gnu/syslimits.h:
+
+/sys/include/ape/sys/limits.h:
+
+/sys/include/ape/sys/param.h:
+
+/sys/include/gnu/stdlib.h:
+
+/sys/include/ape/string.h:
+
+/sys/include/ape/inttypes.h:
+
+/sys/include/ape/locale.h:
+
+gettext.h:

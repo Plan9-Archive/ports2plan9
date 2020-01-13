@@ -1,0 +1,201 @@
+`configure' configures this package to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+      --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [/usr/local]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                          [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --datadir=DIR           read-only architecture-independent data [PREFIX/share]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --infodir=DIR           info documentation [PREFIX/info]
+  --mandir=DIR            man documentation [PREFIX/man]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD           configure for building on BUILD [guessed]
+  --host=HOST       build programs to run on HOST [BUILD]
+  --target=TARGET   configure for building compilers for TARGET [HOST]
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+
+Optional Features:
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+
+  --with-rel-version=XXX  override derived release version
+  --with-abi-version=XXX  override derived ABI version
+  --with-system-type=XXX  test: override derived host system-type
+  --without-cxx           do not adjust ncurses bool to match C++
+  --without-cxx-binding   do not build C++ binding and demo
+  --without-ada           suppress check for Ada95, don't build demo
+  --without-manpages      suppress install of manpages
+  --without-progs         suppress build with programs (e.g., tic)
+  --without-tests         suppress build with test-programs
+  --without-curses-h      install curses.h as ncurses.h only
+  --with-pkg-config{=path} enable/disable use of pkg-config
+  --enable-pc-files       generate and install .pc files for pkg-config
+  --enable-mixed-case     tic should assume mixed-case filenames
+  --with-install-prefix   prefixes actual install-location ($DESTDIR)
+Build-Tools Needed to Compile Temporary Applications for Cross-compiling:
+  --with-build-cc=XXX     the build C compiler ($BUILD_CC)
+  --with-build-cpp=XXX    the build C preprocessor ($BUILD_CPP)
+  --with-build-cflags=XXX the build C compiler-flags ($BUILD_CFLAGS)
+  --with-build-cppflags=XXX the build C preprocessor-flags ($BUILD_CPPFLAGS)
+  --with-build-ldflags=XXX the build linker-flags ($BUILD_LDFLAGS)
+  --with-build-libs=XXX   the build libraries (${BUILD_LIBS})
+Options to Specify the Libraries Built/Used:
+  --disable-libtool-version  enable to use libtool's incompatible naming scheme
+  --with-libtool          generate libraries with libtool
+  --with-shared           generate shared-libraries
+  --with-normal           generate normal-libraries (default)
+  --with-debug            generate debug-libraries (default)
+  --with-profile          generate profile-libraries
+  --with-termlib          generate separate terminfo library
+  --with-ticlib           generate separate tic library
+  --with-gpm              use Alessandro Rubini's GPM library
+  --without-dlsym         do not use dlsym() to load GPM dynamically
+  --with-sysmouse         use sysmouse (FreeBSD console)
+  --enable-rpath          use rpath option when generating shared libraries
+  --disable-relink        relink shared libraries during install
+  --with-shlib-version=X  Specify rel or abi version for shared libs
+  --disable-rpath-hack    don't add rpath options for additional libraries
+Fine-Tuning Your Configuration:
+  --disable-overwrite     leave out the link to -lcurses
+  --disable-database      do not use terminfo, only fallbacks/termcap
+  --with-database=XXX     specify terminfo source to install
+  --with-hashed-db        specify hashed-database library
+  --with-fallbacks=XXX    specify list of fallback terminal descriptions
+  --without-xterm-new     specify if xterm terminfo should be old version
+  --with-terminfo-dirs=XXX specify list of terminfo directories (default: DATADIR/terminfo)
+  --with-default-terminfo-dir=DIR default terminfo directory (default: DATADIR/terminfo)
+  --disable-big-core      assume machine has little memory
+  --disable-big-strings   assume compiler has only standard-size strings
+  --enable-termcap        compile in termcap fallback support
+  --with-termpath=XXX     specify list of termcap files (default: /etc/termcap:/usr/share/misc/termcap)
+  --enable-getcap         fast termcap load, no xrefs to terminfo
+  --enable-getcap-cache   cache translated termcaps in ~/.terminfo
+  --disable-home-terminfo drop ~/.terminfo from terminfo search-path
+  --disable-root-environ  restrict environment when running as root
+  --enable-symlinks       make tic use symbolic links not hard links
+  --enable-broken_linker  compile with broken-linker support code
+  --enable-bsdpad         recognize BSD-style prefix padding
+  --enable-widec          compile with wide-char/UTF-8 code
+  --disable-lp64          allow chtype to be long (ignore _LP64)
+  --disable-largefile     omit support for large files
+  --disable-tparm-varargs compile tparm() without varargs interface
+  --disable-tic-depends   link tic library without explicit dependency on ncurses library
+  --with-bool=TYPE        override fallback type of bool variable
+  --with-caps=alt         compile with alternate Caps file
+  --with-chtype=TYPE      override type of chtype
+  --with-ospeed=TYPE      override type of ospeed variable
+  --with-mmask-t=TYPE     override type of mmask_t
+  --with-ccharw-max=XXX   override size CCHARW_MAX
+  --with-rcs-ids          compile-in RCS identifiers
+Options to Specify How Manpages are Installed:
+  --with-manpage-format   specify manpage-format: gzip/compress/BSDI/normal and
+                          optionally formatted/catonly, e.g., gzip,formatted
+  --with-manpage-renames  specify manpage-renaming
+  --with-manpage-aliases  specify manpage-aliases using .so
+  --with-manpage-symlinks specify manpage-aliases using symlinks
+  --with-manpage-tbl      specify manpage processing with tbl
+Extensions:
+  --disable-ext-funcs     disable function-extensions
+  --enable-sp-funcs       enable experimental SCREEN-extensions
+  --enable-term-driver    enable experimental terminal-driver
+  --enable-const          compile with extra/non-standard const
+  --enable-ext-colors     compile for 256-color support
+  --enable-ext-mouse      compile for extended mouse-encoding
+  --enable-no-padding     compile with $NCURSES_NO_PADDING code
+  --enable-signed-char    compile using signed Boolean's in term.h
+  --enable-sigwinch       compile with SIGWINCH handler
+  --enable-tcap-names     compile with user-definable terminal capabilities
+Development Code:
+  --without-develop       disable development options
+  --enable-hard-tabs      compile with hard-tabs code
+  --enable-xmc-glitch     compile with support for xmc (magic-cookie)
+Experimental Code:
+  --disable-assumed-color do not assume anything about default-colors
+  --disable-hashmap       compile without hashmap scrolling-optimization
+  --enable-colorfgbg      compile-in experimental $COLORFGBG code
+  --enable-interop        compile-in experimental interop bindings
+  --with-pthread          use POSIX thread library
+  --enable-pthreads-eintr enable EINTR in wgetch with pthreads
+  --enable-weak-symbols   enable weak-symbols for pthreads
+  --enable-reentrant      compile with experimental reentrant code
+  --with-wrap-prefix=XXX  override prefix used for public variables
+  --enable-safe-sprintf   compile with experimental safe-sprintf code
+  --disable-scroll-hints  compile without scroll-hints code
+  --enable-wgetch-events  compile with experimental wgetch-events code
+Testing/development Options:
+  --enable-echo           build: display "compiling" commands (default)
+  --enable-warnings       build: turn on GCC compiler warnings
+  --enable-assertions     test: turn on generation of assertion code
+  --with-dmalloc          test: use Gray Watson's dmalloc library
+  --with-dbmalloc         test: use Conor Cahill's dbmalloc library
+  --with-valgrind         test: use valgrind
+  --disable-leaks         test: free permanent memory, analyze leaks
+  --enable-expanded       test: generate functions for certain macros
+  --disable-macros        test: use functions rather than macros
+  --with-trace            test: add trace() function to all models of ncurses
+Ada95 Binding Options:
+  --with-ada-compiler=CMD specify Ada95 compiler command (default gnatmake)
+  --with-ada-include=DIR  Ada includes are in DIR (default: PREFIX/share/ada/adainclude)
+  --with-ada-objects=DIR  Ada objects are in DIR (default: PREFIX/lib/ada/adalib)
+  --with-ada-sharedlib=XX build Ada95 shared-library
+
+Some influential environment variables:
+  CC          C compiler command
+  CFLAGS      C compiler flags
+  LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+              nonstandard directory <lib dir>
+  CPPFLAGS    C/C++ preprocessor flags, e.g. -I<include dir> if you have
+              headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
+  CXX         C++ compiler command
+  CXXFLAGS    C++ compiler flags
+  CXXCPP      C++ preprocessor
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+

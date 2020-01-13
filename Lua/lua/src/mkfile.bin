@@ -1,0 +1,16 @@
+</$objtype/mkfile
+TARG=luac lua 
+LIB=liblua.a$O 
+BIN=/$objtype/bin
+HFILES=lauxlib.h lua.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION \
+	-DLUA_COMPAT_ALL -DLUA_USE_ANSI 
+
+lua.$O: lualib.h 
+luac.$O: llimits.h lopcodes.h lobject.h lstate.h ldebug.h lzio.h lobject.h lundump.h \
+	llimits.h lmem.h lzio.h lobject.h ltm.h lobject.h lstate.h llimits.h lobject.h 

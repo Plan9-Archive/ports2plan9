@@ -1,0 +1,70 @@
+</$objtype/mkfile
+TARG=curl
+OFILES=tool_xattr.$O tool_metalink.$O tool_cb_prg.$O tool_getpass.$O tool_convert.$O \
+	tool_vms.$O tool_main.$O tool_easysrc.$O tool_dirhie.$O tool_cb_see.$O \
+	tool_urlglob.$O tool_doswin.$O tool_bname.$O tool_binmode.$O tool_parsecfg.$O \
+	tool_setopt.$O tool_operhlp.$O tool_cb_rea.$O tool_operate.$O tool_libinfo.$O \
+	tool_writeenv.$O tool_writeout.$O tool_util.$O tool_getparam.$O tool_paramhlp.$O \
+	tool_formparse.$O tool_homedir.$O tool_help.$O tool_msgs.$O tool_cb_hdr.$O \
+	tool_cfgable.$O tool_mfiles.$O tool_panykey.$O tool_helpers.$O tool_sleep.$O \
+	tool_cb_wrt.$O tool_cb_dbg.$O hugehelp.$O 
+LIB=../libcurl.a8 
+BIN=/$objtype/bin
+HFILES=../lib/memdebug.h tool_setup.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I../lib -I../include -I../include/curl -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION \
+	-D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS \
+	-DPLAN9 -DHAVE_STRDUP 
+
+hugehelp.$O: hugehelp.h 
+tool_cb_dbg.$O: tool_util.h tool_cb_dbg.h tool_msgs.h tool_cfgable.h ../lib/curlx.h 
+tool_cb_wrt.$O: tool_cb_wrt.h tool_msgs.h tool_cfgable.h ../lib/curlx.h 
+tool_sleep.$O: tool_sleep.h 
+tool_helpers.$O: tool_helpers.h tool_getparam.h tool_msgs.h tool_cfgable.h ../lib/curlx.h \
+	../lib/rawstr.h 
+tool_mfiles.$O: tool_mfiles.h 
+tool_cfgable.$O: tool_cfgable.h 
+tool_cb_hdr.$O: tool_cb_hdr.h tool_msgs.h tool_cfgable.h ../lib/curlx.h ../lib/rawstr.h 
+tool_msgs.$O: tool_msgs.h tool_cfgable.h ../lib/curlx.h 
+tool_help.$O: tool_help.h tool_panykey.h 
+tool_homedir.$O: tool_homedir.h 
+tool_formparse.$O: tool_formparse.h tool_msgs.h tool_mfiles.h tool_cfgable.h ../lib/curlx.h \
+	../lib/rawstr.h 
+tool_paramhlp.$O: tool_paramhlp.h tool_msgs.h tool_homedir.h tool_getpass.h tool_getparam.h \
+	tool_cfgable.h ../lib/curlx.h ../lib/rawstr.h 
+tool_getparam.$O: tool_version.h tool_parsecfg.h tool_paramhlp.h tool_msgs.h tool_metalink.h \
+	tool_libinfo.h tool_helpers.h tool_help.h tool_getparam.h tool_formparse.h \
+	tool_cb_prg.h tool_cfgable.h tool_binmode.h hugehelp.h ../lib/curlx.h ../lib/rawstr.h 
+tool_util.$O: tool_util.h 
+tool_writeout.$O: tool_writeout.h tool_cfgable.h ../include/curl/mprintf.h 
+tool_libinfo.$O: tool_libinfo.h ../lib/curlx.h ../lib/rawstr.h 
+tool_operate.$O: tool_xattr.h tool_writeout.h tool_writeenv.h tool_util.h tool_urlglob.h \
+	tool_sleep.h tool_setopt.h tool_parsecfg.h tool_operhlp.h tool_operate.h \
+	tool_msgs.h tool_metalink.h tool_main.h tool_libinfo.h tool_homedir.h tool_helpers.h \
+	tool_getparam.h tool_easysrc.h tool_doswin.h tool_dirhie.h tool_cb_wrt.h \
+	tool_cb_see.h tool_cb_rea.h tool_cb_prg.h tool_cb_hdr.h tool_cb_dbg.h tool_cfgable.h \
+	tool_binmode.h ../lib/curlx.h ../lib/rawstr.h 
+tool_cb_rea.$O: tool_cb_rea.h tool_cfgable.h ../lib/curlx.h 
+tool_operhlp.$O: ../include/curl/curlver.h tool_version.h tool_operhlp.h tool_convert.h \
+	tool_cfgable.h ../lib/curlx.h ../include/curl/curl.h ../lib/rawstr.h 
+tool_setopt.$O: tool_setopt.h tool_easysrc.h tool_cfgable.h ../lib/curlx.h 
+tool_parsecfg.$O: tool_parsecfg.h tool_msgs.h tool_homedir.h tool_helpers.h tool_getparam.h \
+	tool_cfgable.h ../lib/curlx.h 
+tool_bname.$O: tool_bname.h 
+tool_urlglob.$O: tool_vms.h tool_urlglob.h ../include/curl/mprintf.h 
+tool_cb_see.$O: tool_cb_see.h tool_cfgable.h ../lib/curlx.h 
+tool_dirhie.$O: tool_dirhie.h ../lib/curlx.h 
+tool_easysrc.$O: tool_msgs.h tool_easysrc.h tool_cfgable.h ../lib/curlx.h 
+tool_main.$O: tool_main.h tool_vms.h tool_panykey.h tool_operate.h tool_convert.h \
+	tool_cfgable.h ../lib/curlx.h 
+tool_getpass.$O: tool_getpass.h ../include/curl/mprintf.h 
+tool_cb_prg.$O: tool_cb_prg.h tool_metalink.h tool_cfgable.h tool_sdecls.h tool_cfgable.h \
+	../lib/warnless.h ../include/curl/curl.h ../lib/nonblock.h ../lib/setup.h \
+	../lib/timeval.h ../lib/setup.h ../lib/strtoofft.h ../include/curl/curl.h \
+	../lib/strequal.h ../include/curl/curl.h ../include/curl/mprintf.h ../lib/curlx.h 
+tool_xattr.$O: tool_xattr.h 

@@ -1,0 +1,36 @@
+</$objtype/mkfile 
+
+all:V:
+	mk -f mkfile.lib
+	mk -f mkfile.bin all
+
+install:V:
+	mk -f mkfile.lib
+	mk -f mkfile.bin
+	cp liblua.a$O /$objtype/lib/ape/liblua.a
+	mkdir -p /$objtype/lib/ape/lua
+	mkdir -p /sys/lib/lua
+	cp $O.lua /$objtype/bin/lua
+	cp $O.luac /$objtype/bin/luac
+	cp lua.h /sys/include/ape/
+	cp luaconf.h /sys/include/ape/
+	cp lualib.h /sys/include/ape/
+	cp lauxlib.h /sys/include/ape/
+	cp lua.hpp /sys/include/ape/
+
+clean:V:
+	mk -f mkfile.lib clean
+	mk -f mkfile.bin clean
+
+nuke:V:
+	mk -f mkfile.lib nuke
+	mk -f mkfile.bin nuke
+	rm -f /$objtype/lib/ape/liblua.a
+	rm -f /$objtype/bin/lua
+	rm -f /$objtype/bin/luac
+	rm -f /sys/include/ape/lua.h
+	rm -f /sys/include/ape/luaconf.h
+	rm -f /sys/include/ape/lualib.h
+	rm -f /sys/include/ape/lauxlib.h
+	rm -f /sys/include/ape/lua.hpp
+

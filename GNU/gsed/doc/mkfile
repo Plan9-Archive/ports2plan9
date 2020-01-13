@@ -1,0 +1,18 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	rm -f /sys/man/1gnu/gsed
+	;
+
+install:V:
+	mkdir -p /sys/man/1gnu
+	cp sed.1 /sys/man/1gnu/gsed
+

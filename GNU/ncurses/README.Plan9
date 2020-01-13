@@ -1,0 +1,52 @@
+ape/psh
+
+AWK=gawk SED=gsed GREP=grep LEX=flex YACC=byacc CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_REENTRANT_SOURCE -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DPLAN9" configure --prefix=/sys/lib --exec-prefix=/$objtype --bindir=/$objtype/bin/ape --sbindir=/$objtype/bin/ape --libexecdir=/$objtype/bin/ape --datadir=/sys/lib --sysconfdir=/sys/lib --sharedstatedir=/sys/lib --localstatedir=/sys/lib --libdir=/$objtype/lib/ape --includedir=/sys/include/ape --infodir=/sys/lib --mandir=/sys/man --without-cxx --without-cxx-binding --without-ada --without-tests --without-pkg-config --disable-pc-files --with-build-cflags="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION -D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -D_REENTRANT_SOURCE -DPLAN9" --without-libtool --without-shared --without-debug --with-profile --with-termlib --without-dlsym --without-xterm-new --disable-symlinks --disable-lp64 --with-bool=int --enable-echo --enable-pthreads --with-dmalloc --disable-home-terminfo --enable-reentrant --enable-sp-funcs --enable-termcap --with-termpath=/lib/termcap --enable-interop --enable-broken_linker --enable-widec --enable-getcap --enable-getcap-cache --enable-ext-colors --enable-sigwinch
+
+
+
+edit config.sub for plan9 support
+
+directory apeheaders includes the modified headers with
+
+#pragma lib "$M/lib/ape/library.a" - type modifications.
+
+The contents of this directory is installed.
+
+
+ncurses is built and installed with
+gmake
+/edit destdir in Makefile
+gmake install
+
+tic can not be built the first time. Need to figure that one out.
+ncurses had to be built twice, first time with
+--without-progs
+in order to get tic support...
+second build could build all progs except tput
+BUG: tbut does not build.
+
+post -install in a packaging directory:
+- fix manpages
+- fix installed headers with pragma
+- copy termcap to /lib/termcap (to ensure that it is there)
+no symlink support, so we have to accept some bloat...
+- copy libncursestw.a to libcurses.a (some will expect to do -lcurses)
+- copy libmenutw.a to libmenu.a
+- copy libformtw.a to libform.a
+- copy libtinfotw.a to libtinfo.a
+- copy libpaneltw.a to libpanel.a
+-gmake clean
+- copy source to destination
+
+
+HACKS
+
+for some strange reason, the file 
+
+ncurses/tty/hashmap.c caused an error in one of the for - functions. It is very mysterious since everything else looks the same.
+right now inactivated by an #ifndef PLAN9...
+could it be that "blank" can not be given as an argument?
+would it be safer to do --disable-hasmap in configure?
+
+
+progs/tput.c : ifs with PUTS and/or TPARM_1 or TPARM_2 got syntax error

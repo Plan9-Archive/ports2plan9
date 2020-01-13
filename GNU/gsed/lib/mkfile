@@ -1,0 +1,96 @@
+</$objtype/mkfile
+LIB=libsed.a$O
+OFILES=alloca.$O btowc.$O dirname.$O error.$O exitfail.$O getdelim.$O getline.$O \
+	getopt.$O getopt1.$O localcharset.$O lstat.$O mbrlen.$O mbrtowc.$O mbsinit.$O \
+	mkstemp.$O obstack.$O quote.$O quotearg.$O regex.$O rename.$O strerror.$O \
+	stripslash.$O strndup.$O strnlen.$O tempname.$O wcrtomb.$O wctob.$O xmalloc.$O \
+	xstrndup.$O basename.$O strverscmp.$O xalloc-die.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -I/sys/include/ape -I/$objtype/include/ape -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_EXPERIMENTAL_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -DHAVE_CONFIG_H \
+	-DPLAN9 -DHAVE_ISBLANK -DHAVE_WCTYPE_H -DHAVE_ISWCTYPE -DHAVE_CALLOC 
+
+xalloc-die.$O: gettext.h exitfail.h error.h /sys/include/ape/stdlib.h stdlib.h \
+	xalloc.h ../config.h 
+strverscmp.$O: /sys/include/ape/ctype.h /sys/include/ape/string.h string.h ../config.h 
+basename.$O: /sys/include/ape/stddef.h xstrndup.h xalloc.h /sys/include/ape/string.h \
+	string.h dirname.h ../config.h 
+xstrndup.$O: xalloc.h /sys/include/ape/string.h string.h /sys/include/ape/stddef.h \
+	xstrndup.h ../config.h 
+xmalloc.$O: /sys/include/ape/string.h string.h /sys/include/ape/stdlib.h stdlib.h \
+	xalloc.h ../config.h 
+wctob.$O: /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/stdio.h stdio.h wchar.h \
+	../config.h 
+wcrtomb.$O: /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/errno.h errno.h \
+	wchar.h ../config.h /sys/include/ape/wchar.h 
+tempname.$O: /sys/include/ape/sys/stat.h sys/stat.h /sys/include/ape/unistd.h unistd.h \
+	stdint.h /sys/include/ape/sys/time.h /sys/include/ape/sys/types.h /sys/include/ape/fcntl.h \
+	/sys/include/ape/string.h string.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/stddef.h \
+	/sys/include/ape/stdio.h stdio.h /sys/include/ape/errno.h errno.h /sys/include/ape/assert.h \
+	/sys/include/ape/sys/types.h tempname.h ../config.h 
+strnlen.$O: /sys/include/ape/string.h string.h ../config.h 
+strndup.$O: /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/string.h string.h \
+	../config.h 
+stripslash.$O: dirname.h ../config.h 
+strerror.$O: /sys/include/ape/limits.h intprops.h /sys/include/ape/stdio.h stdio.h \
+	/sys/include/ape/errno.h errno.h /sys/include/ape/string.h string.h ../config.h 
+rename.$O: ../config.h 
+regex.$O: regexec.c regcomp.c regex_internal.c alloca.h stdint.h wctype.h wchar.h \
+	/sys/include/ape/stddef.h /sys/include/ape/locale.h localcharset.h /sys/include/ape/string.h \
+	string.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/stdio.h stdio.h \
+	stdbool.h /sys/include/ape/ctype.h /sys/include/ape/assert.h regex_internal.h \
+	/sys/include/ape/sys/types.h regex.h /sys/include/ape/limits.h ../config.h 
+quotearg.$O: gettext.h wctype.h wchar.h /sys/include/ape/string.h string.h /sys/include/ape/stdlib.h \
+	stdlib.h stdbool.h /sys/include/ape/limits.h /sys/include/ape/errno.h errno.h \
+	/sys/include/ape/ctype.h xalloc.h quotearg.h ../config.h 
+quote.$O: quote.h /sys/include/ape/stddef.h quotearg.h ../config.h 
+obstack.$O: gettext.h exitfail.h /sys/include/ape/stdlib.h stdlib.h stdint.h /sys/include/ape/stddef.h \
+	/sys/include/ape/stdio.h stdio.h /sys/include/ape/string.h string.h /sys/include/ape/stddef.h \
+	obstack.h ../config.h 
+mkstemp.$O: /sys/include/ape/stdio.h stdio.h tempname.h /sys/include/ape/stdlib.h \
+	stdlib.h ../config.h 
+mbsinit.$O: verify.h wchar.h ../config.h 
+mbrtowc.$O: verify.h /sys/include/ape/string.h string.h streq.h localcharset.h \
+	/sys/include/ape/stdlib.h stdlib.h /sys/include/ape/errno.h errno.h wchar.h \
+	../config.h /sys/include/ape/stdio.h stdio.h /386/include/ape/stdarg.h \
+	/sys/include/ape/stdlib.h stdlib.h /sys/include/ape/inttypes.h /sys/include/ape/wchar.h 
+mbrlen.$O: wchar.h ../config.h 
+lstat.$O: /sys/include/ape/errno.h errno.h /sys/include/ape/string.h string.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/sys/stat.h sys/stat.h /sys/include/ape/sys/stat.h sys/stat.h \
+	/sys/include/ape/sys/types.h ../config.h 
+localcharset.$O: configmake.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/string.h \
+	string.h /sys/include/ape/stdio.h stdio.h /sys/include/ape/stddef.h localcharset.h \
+	../config.h 
+getopt1.$O: /sys/include/ape/stdio.h stdio.h getopt_int.h getopt.h ../config.h 
+getopt.$O: getopt_int.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/string.h \
+	string.h gettext.h /sys/include/ape/unistd.h unistd.h /sys/include/ape/string.h \
+	string.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/stdio.h stdio.h \
+	/sys/include/ape/ctype.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/bsd.h \
+	/sys/include/ape/unistd.h unistd.h /sys/include/ape/stdio.h stdio.h /sys/include/ape/stdlib.h \
+	stdlib.h getopt.h ../config.h 
+getline.$O: /sys/include/ape/stdio.h stdio.h ../config.h 
+getdelim.$O: unlocked-io.h /sys/include/ape/errno.h errno.h /sys/include/ape/stdlib.h \
+	stdlib.h stdint.h /sys/include/ape/limits.h /sys/include/ape/stdio.h stdio.h \
+	../config.h 
+exitfail.$O: /sys/include/ape/stdlib.h stdlib.h exitfail.h ../config.h 
+error.$O: /sys/include/ape/stdio.h stdio.h unlocked-io.h /sys/include/ape/string.h \
+	string.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/stdio.h stdio.h \
+	/386/include/ape/stdarg.h error.h ../config.h 
+dirname.$O: /sys/include/ape/stddef.h xalloc.h /sys/include/ape/string.h string.h \
+	/sys/include/ape/stddef.h stdbool.h dirname.h ../config.h 
+btowc.$O: /sys/include/ape/stdio.h stdio.h wchar.h ../config.h 
+alloca.$O: /sys/include/ape/stddef.h /sys/include/ape/time.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/stddef.h /$objtype/include/ape/stdarg.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/stddef.h /$objtype/include/ape/stdarg.h /sys/include/ape/stdio.h \
+	stdio.h /sys/include/ape/stddef.h wchar.h /sys/include/ape/limits.h /sys/include/ape/sys/types.h \
+	stdint.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h stdlib.h /sys/include/ape/sys/types.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	string.h /sys/include/ape/stddef.h alloca.h ../config.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

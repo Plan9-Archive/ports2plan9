@@ -1,0 +1,22 @@
+mkmk -l libcares -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_BSD_EXTENSION -D_REENTRANT_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DHAVE_CONFIG_H -x windows_port.c -x vc -x m4 -x .deps -x apeheaders -x progs -x ahost.c -x adig.c -x acountry.c > mkfile
+
+fix configure script:
+
+cat configure | sed 's/ls -di/ls/g' > conf2
+mv conf2 configure
+
+cat configure | sed 's/mv -f/mv/g' > conf2
+mv conf2 configure
+
+cat configure | sed 's/cp -r/dircp/g' > conf2
+mv conf2 configure
+
+chmod +x configure
+
+change config.sub to recognize plan9
+
+change mkfile to install c-ares headers and libcares.a in the correct locations.
+
+function names: main() was present in 3 files which caused a naming conflict while making the library. It was later revealed that those 3 files represent independent programs. They are now excluded from the library. 
+
+

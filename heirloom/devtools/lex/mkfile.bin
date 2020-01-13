@@ -1,0 +1,25 @@
+</$objtype/mkfile
+TARG=lex
+OFILES=main.$O sub1.$O sub2.$O sub3.$O header.$O wcio.$O y.tab.$O getopt.$O lsearch.$O \
+	ldefs.$O 
+YFILES=parser.y 
+LIB=./liblex.a8 
+BIN=/$objtype/bin/ape
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE \
+	-D_LIMITS_EXTENSION -DFORMPATH="/sys/lib/heirloom" -Dunix 
+
+ldefs.$O: 
+lsearch.$O: search.h 
+getopt.$O: 
+parser.$O: ldefs.c 
+wcio.$O: 
+header.$O: ldefs.c 
+sub3.$O: ldefs.c search.h 
+sub2.$O: ldefs.c 
+sub1.$O: ldefs.c 
+main.$O: sgs.h ldefs.c once.h 

@@ -1,0 +1,8 @@
+This is a mini library implementing poll.h and related functions.
+
+the sources were copied from
+
+/n/sources/contrib/fgb/tar/poll.tgz
+
+
+mkmk -l libpoll -S -B -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION > mkfile

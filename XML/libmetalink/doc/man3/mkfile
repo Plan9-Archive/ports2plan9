@@ -1,0 +1,30 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp metalink_t.3 /sys/man/3/metalink_t
+	cp metalink_resource_t.3 /sys/man/3/metalink_resource_t
+	cp metalink_piece_hash_t.3 /sys/man/3/metalink_piece_hash_t
+	cp metalink_parser_context_new.3 /sys/man/3/metalink_parser_context_new
+	cp metalink_parser_context_delete.3 /sys/man/3/metalink_parser_context_delete
+	cp metalink_parse_update.3 /sys/man/3/metalink_parse_update
+	cp metalink_parse_memory.3 /sys/man/3/metalink_parse_memory
+	cp metalink_parse_fp.3 /sys/man/3/metalink_parse_fp
+	cp metalink_parse_final.3 /sys/man/3/metalink_parse_final
+	cp metalink_parse_file.3 /sys/man/3/metalink_parse_file
+	cp metalink_parse_fd.3 /sys/man/3/metalink_parse_fd
+	cp metalink_file_t.3 /sys/man/3/metalink_file_t
+	cp metalink_delete.3 /sys/man/3/metalink_delete
+	cp metalink_chunk_checksum_t.3 /sys/man/3/metalink_chunk_checksum_t
+	cp metalink_checksum_t.3 /sys/man/1/metalink_checksum_t
+

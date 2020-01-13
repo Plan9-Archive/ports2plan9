@@ -1,0 +1,28 @@
+</$objtype/mkfile
+LIB=libbz2.a
+OFILES=blocksort.$O huffman.$O crctable.$O randtable.$O compress.$O decompress.$O \
+	bzlib.$O 
+HFILES=bzlib_private.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+install:V:
+	mk -f mkfile.bins installall
+	cp libbz2.a /$objtype/lib/ape/
+	cp bzlib.h.ape /sys/include/ape/bzlib.h
+	cp bzmore /rc/bin/ape/
+	cp bzgrep /rc/bin/ape/
+	cp bzdiff /rc/bin/ape/
+	cp bzip2.1 /sys/man/1ape/bzip2
+	cp bzdiff.1 /sys/man/1ape/bzdiff
+	cp bzmore.1 /sys/man/1ape/bzmore
+	cp bzgrep.1 /sys/man/1ape/bzgrep 
+

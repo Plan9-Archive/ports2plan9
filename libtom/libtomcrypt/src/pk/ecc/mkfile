@@ -1,0 +1,23 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=ecc.$O ecc_ansi_x963_export.$O ecc_ansi_x963_import.$O ecc_decrypt_key.$O \
+	ecc_encrypt_key.$O ecc_export.$O ecc_free.$O ecc_get_size.$O ecc_import.$O \
+	ecc_make_key.$O ecc_shared_secret.$O ecc_sign_hash.$O ecc_sizes.$O ecc_test.$O \
+	ecc_verify_hash.$O ltc_ecc_is_valid_idx.$O ltc_ecc_map.$O ltc_ecc_mul2add.$O \
+	ltc_ecc_mulmod.$O ltc_ecc_mulmod_timing.$O ltc_ecc_points.$O ltc_ecc_projective_add_point.$O \
+	ltc_ecc_projective_dbl_point.$O 
+HFILES=tomcrypt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../../testprof/ -I../../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

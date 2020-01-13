@@ -1,0 +1,13 @@
+</$objtype/mkfile
+
+#copies and makes script executeable
+
+install:V:
+	cp bacon /rc/bin/ape/
+	chmod +x /rc/bin/ape/bacon
+	cp bacon-doc.pdf /sys/doc/
+
+nuke:V:
+	rm /rc/bin/ape/bacon
+	rm /sys/doc/bacon-doc.pdf
+

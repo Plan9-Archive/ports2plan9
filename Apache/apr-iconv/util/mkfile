@@ -1,0 +1,27 @@
+</$objtype/mkfile
+TARG=apriconv
+OFILES=iconv.$O iconv_stream.$O 
+LIB=../libapriconv-1.a8 
+BIN=/$objtype/bin
+HFILES=iconv_stream.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../lib -I../include -I/sys/include/ape/apr-1 -B -DHAVE_SOCK_OPTS \
+	-D_REENTRANT_SOURCE -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE \
+	-D_REGEXP_EXTENSION -D_PLAN9_SOURCE -D_C99_SNPRINTF_EXTENSION -D_NET_EXTENSION \
+	-D_LIMITS_EXTENSION 
+
+iconv_stream.$O: 
+iconv.$O: /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h ../include/apr_iconv.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_version.h ../include/api_version.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_getopt.h \
+	/sys/include/ape/apr-1/apr.h 

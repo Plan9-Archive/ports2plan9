@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=libmalloc.a$O
+OFILES=malloc-2.8.6.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DPLAN9_APE 
+
+malloc-2.8.6.$O: 
+
+install:V:
+	mv libmalloc.a$O /$objtype/lib/ape/libmalloc.a
+	cp malloc.h.ape /sys/include/ape/malloc.h
+
+nuke:V:
+	mk clean
+	rm -f $LIB

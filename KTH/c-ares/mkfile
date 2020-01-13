@@ -1,0 +1,120 @@
+</$objtype/mkfile
+LIB=libcares.a
+OFILES=ares__timeval.$O ares_library_init.$O bitncmp.$O ares_options.$O ares_free_string.$O \
+	ares_process.$O ares_parse_srv_reply.$O ares_init.$O ares_parse_ns_reply.$O \
+	ares_cancel.$O ares__read_line.$O ares_destroy.$O ares_parse_mx_reply.$O \
+	inet_ntop.$O ares_query.$O ares_parse_a_reply.$O ares_strerror.$O ares_free_hostent.$O \
+	ares_send.$O ares_timeout.$O ares_gethostbyaddr.$O ares_writev.$O ares_mkquery.$O \
+	ares_parse_txt_reply.$O ares_search.$O ares_getopt.$O inet_net_pton.$O \
+	ares_parse_naptr_reply.$O ares_parse_soa_reply.$O ares_nowarn.$O ares_parse_ptr_reply.$O \
+	ares_expand_name.$O ares_version.$O ares_platform.$O ares__get_hostent.$O \
+	ares_parse_aaaa_reply.$O ares_fds.$O ares_getenv.$O ares_strdup.$O ares_data.$O \
+	ares_expand_string.$O ares_getsock.$O ares__close_sockets.$O ares_getnameinfo.$O \
+	ares_strcasecmp.$O ares_gethostbyname.$O ares_llist.$O 
+HFILES=ares_private.h ares.h ares_setup.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE \
+	-D_BSD_EXTENSION -D_REENTRANT_SOURCE -D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION \
+	-DHAVE_CONFIG_H -DHAVE_STDBOOL_H -DHAVE_STRDUP -DHAVE_WRITEV -DHAVE_GETHOSTNAME 
+
+ares_gethostbyname.$O: ares_nowarn.h ares_platform.h bitncmp.h inet_net_pton.h \
+	nameser.h 
+ares_strcasecmp.$O: ares_strcasecmp.h 
+ares_getnameinfo.$O: ares_nowarn.h inet_ntop.h ares_ipv6.h nameser.h 
+ares__close_sockets.$O: 
+ares_getsock.$O: 
+ares_expand_string.$O: nameser.h 
+ares_data.$O: ares_data.h 
+ares_strdup.$O: ares_strdup.h 
+ares_getenv.$O: ares_getenv.h 
+ares_fds.$O: ares_nowarn.h 
+ares_parse_aaaa_reply.$O: inet_net_pton.h ares_dns.h nameser.h 
+ares__get_hostent.$O: ares_nowarn.h inet_net_pton.h 
+ares_platform.$O: ares_nowarn.h ares_platform.h 
+ares_expand_name.$O: ares_nowarn.h nameser.h 
+ares_parse_ptr_reply.$O: ares_nowarn.h ares_dns.h nameser.h 
+ares_nowarn.$O: ares_nowarn.h 
+ares_parse_soa_reply.$O: ares_data.h ares_dns.h nameser.h 
+ares_parse_naptr_reply.$O: ares_data.h ares_dns.h nameser.h 
+inet_net_pton.$O: inet_net_pton.h ares_nowarn.h ares_ipv6.h nameser.h 
+ares_getopt.$O: ares_getopt.h 
+ares_search.$O: 
+ares_parse_txt_reply.$O: ares_data.h ares_dns.h nameser.h 
+ares_mkquery.$O: ares_dns.h nameser.h 
+ares_writev.$O: 
+ares_gethostbyaddr.$O: ares_platform.h inet_net_pton.h nameser.h 
+ares_timeout.$O: 
+ares_send.$O: ares_dns.h nameser.h 
+ares_free_hostent.$O: 
+ares_strerror.$O: 
+ares_parse_a_reply.$O: ares_dns.h nameser.h 
+ares_query.$O: ares_dns.h nameser.h 
+inet_ntop.$O: inet_ntop.h ares_ipv6.h nameser.h 
+ares_parse_mx_reply.$O: ares_data.h ares_dns.h nameser.h 
+ares_destroy.$O: 
+ares__read_line.$O: ares_nowarn.h 
+ares_cancel.$O: 
+ares_parse_ns_reply.$O: ares_dns.h nameser.h 
+ares_init.$O: ares_platform.h ares_nowarn.h ares_library_init.h inet_net_pton.h \
+	inet_ntop.h nameser.h 
+ares_parse_srv_reply.$O: ares_data.h ares_dns.h nameser.h 
+ares_process.$O: ares_nowarn.h ares_dns.h nameser.h 
+ares_free_string.$O: 
+ares_options.$O: inet_net_pton.h ares_data.h 
+bitncmp.$O: bitncmp.h 
+ares_library_init.$O: ares_library_init.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+install:V:
+	cp ares_parse_txt_reply.3 /sys/man/3/ares_parse_txt_reply
+	cp acountry.1 /sys/man/1/acountry
+	cp ares_getnameinfo.3 /sys/man/3/ares_getnameinfo
+	cp ares_gethostbyname.3 /sys/man/3/ares_gethostbyname
+	cp ares_free_string.3 /sys/man/3/ares_free_string
+	cp ares_version.3 /sys/man/3/ares_version
+	cp ares_cancel.3 /sys/man/3/ares_cancel
+	cp ares_destroy_options.3 /sys/man/3/ares_destroy_options
+	cp ares_parse_mx_reply.3 /sys/man/3/ares_parse_mx_reply
+	cp ares_parse_ptr_reply.3 /sys/man/3/ares_parse_ptr_reply
+	cp ares_get_servers.3 /sys/man/3/ares_get_servers
+	cp ares_free_data.3 /sys/man/3/ares_free_data
+	cp ares_process.3 /sys/man/3/ares_process
+	cp ares_expand_name.3 /sys/man/3/ares_expand_name
+	cp ares_gethostbyaddr.3 /sys/man/3/ares_gethostbyaddr
+	cp ares_mkquery.3 /sys/man/3/ares_mkquery
+	cp ares_fds.3 /sys/man/3/ares_fds
+	cp ares_parse_srv_reply.3 /sys/man/3/ares_parse_srv_reply
+	cp ares_parse_ns_reply.3 /sys/man/3/ares_parse_ns_reply
+	cp ares_timeout.3 /sys/man/3/ares_timeout
+	cp ares_free_hostent.3 /sys/man/3/ares_free_hostent
+	cp ares_expand_string.3 /sys/man/3/ares_expand_string
+	cp ares_parse_naptr_reply.3 /sys/man/3/ares_parse_naptr_reply
+	cp ares_parse_aaaa_reply.3 /sys/man/3/ares_parse_aaaa_reply
+	cp ares_save_options.3 /sys/man/3/ares_save_options
+	cp ahost.1 /sys/man/1/ahost
+	cp ares_library_cleanup.3 /sys/man/3/ares_library_cleanup
+	cp ares_library_init.3 /sys/man/3/ares_library_init
+	cp ares_parse_a_reply.3 /sys/man/3/ares_parse_a_reply
+	cp adig.1 /sys/man/1/adig
+	cp ares_send.3 /sys/man/3/ares_send
+	cp ares_destroy.3 /sys/man/3/ares_destroy
+	cp ares_parse_soa_reply.3 /sys/man/3/ares_parse_soa_reply
+	cp ares_init_options.3 /sys/man/3/ares_init_options
+	cp ares_gethostbyname_file.3 /sys/man/3/ares_gethostbyname_file
+	cp ares_query.3 /sys/man/3/ares_query
+	cp ares_set_servers.3 /sys/man/3/ares_set_servers
+	cp ares_dup.3 /sys/man/3/ares_dup
+	cp ares_search.3 /sys/man/3/ares_search
+	cp ares_init.3 /sys/man/3/ares_init
+	cp ares_strerror.3 /sys/man/3/ares_strerror
+	cp ares_getsock.3 /sys/man/3/ares_getsock
+	cp ares_set_socket_callback.3 /sys/man/3/ares_set_socket_callback
+	cp libcares.a /$objtype/lib/ape/
+	cp apeheaders/* /sys/include/ape/
+

@@ -1,0 +1,7 @@
+This is a port of libtomfloat to Plan9 APE
+
+generation of mkfile made by:
+
+mkmk -s libtomfloat -a -B -I. -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -x demos > mkfile
+
+manually edited mkfile for proper library name + installation of headers.

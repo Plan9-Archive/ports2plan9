@@ -1,0 +1,66 @@
+/ChangeLog/1.11/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/FILES/1.6/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/Makefile.in/1.20/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/README/1.2/Tue Nov 11 14:37:05 2008//Tpkgsrc-2012Q2
+/aclocal.m4/1.3/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/arch.c/1.6/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/bmake.1/1.9/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/bmake.cat1/1.9/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/boot-strap/1.10/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/buf.c/1.4/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/buf.h/1.3/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/compat.c/1.9/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/cond.c/1.7/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/config.h.in/1.7/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/configure/1.13/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/configure.in/1.11/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/dir.c/1.5/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/dir.h/1.3/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/dirname.c/1.1.1.1/Sat Jun 18 22:17:55 2011//Tpkgsrc-2012Q2
+/find_lib.sh/1.1/Mon Oct 31 21:34:24 2005//Tpkgsrc-2012Q2
+/for.c/1.6/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/getenv.c/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/getopt.c/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/hash.c/1.4/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/hash.h/1.3/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/install-sh/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/job.c/1.12/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/job.h/1.7/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/lst.h/1.3/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/machine.sh/1.4/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/main.c/1.11/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/make-bootstrap.sh.in/1.3/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/make-conf.h/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/make.c/1.5/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/make.h/1.6/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/make_malloc.c/1.1.1.2/Sat Jun 18 22:18:03 2011//Tpkgsrc-2012Q2
+/make_malloc.h/1.1.1.1/Fri Sep 18 20:55:23 2009//Tpkgsrc-2012Q2
+/meta.c/1.1.1.1/Sat Jun 18 22:18:04 2011//Tpkgsrc-2012Q2
+/meta.h/1.1.1.1/Sat Jun 18 22:18:04 2011//Tpkgsrc-2012Q2
+/mkdeps.sh/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/nonints.h/1.7/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/os.sh/1.5/Tue Sep  7 14:28:00 2010//Tpkgsrc-2012Q2
+/parse.c/1.9/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/pathnames.h/1.4/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/ranlib.h/1.3/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/realpath.c/1.1.1.2/Sat Apr 24 20:33:57 2010//Tpkgsrc-2012Q2
+/setenv.c/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+/sigcompat.c/1.5/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/sprite.h/1.3/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/str.c/1.4/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/stresep.c/1.1.1.1/Sat Jun 18 22:18:07 2011//Tpkgsrc-2012Q2
+/strlcpy.c/1.1.1.1/Sat Jun 18 22:18:07 2011//Tpkgsrc-2012Q2
+/strlist.c/1.1.1.1/Fri Sep 18 20:55:27 2009//Tpkgsrc-2012Q2
+/strlist.h/1.1.1.1/Fri Sep 18 20:55:27 2009//Tpkgsrc-2012Q2
+/suff.c/1.4/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/targ.c/1.5/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/trace.c/1.5/Fri Sep 18 21:27:25 2009//Tpkgsrc-2012Q2
+/trace.h/1.4/Tue Nov 11 14:37:05 2008//Tpkgsrc-2012Q2
+/util.c/1.10/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/var.c/1.9/Sat Jun 18 22:39:46 2011//Tpkgsrc-2012Q2
+/wait.h/1.2/Sun Mar  9 19:54:29 2008//Tpkgsrc-2012Q2
+D/PSD.doc////
+D/lst.lib////
+D/missing////
+D/unit-tests////
+D

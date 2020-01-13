@@ -1,0 +1,32 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=fortuna.$O rc4.$O rng_get_bytes.$O rng_make_prng.$O sober128.$O \
+	sprng.$O yarrow.$O 
+#sober128tab.$O deleted
+HFILES=../../src/headers/tomcrypt.h ../../src/headers/tomcrypt_pkcs.h /sys/include/ape/signal.h \
+	../../src/headers/tomcrypt_argchk.h ../../src/headers/tomcrypt_misc.h ../../src/headers/tomcrypt_math.h \
+	/sys/include/ape/stdio.h /386/include/ape/stdarg.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/inttypes.h /sys/include/ape/wchar.h ../../src/headers/tomcrypt_pk.h \
+	../../src/headers/tomcrypt_prng.h ../../src/headers/tomcrypt_mac.h ../../src/headers/tomcrypt_hash.h \
+	../../src/headers/tomcrypt_cipher.h ../../src/headers/tomcrypt_macros.h \
+	../../src/headers/tomcrypt_cfg.h ../../src/headers/tomcrypt_custom.h /sys/include/ape/sys/limits.h \
+	/sys/include/ape/limits.h /sys/include/ape/ctype.h /sys/include/ape/stddef.h \
+	/sys/include/ape/time.h /sys/include/ape/stddef.h /sys/include/ape/stdlib.h \
+	/sys/include/ape/bsd.h /sys/include/ape/stddef.h /sys/include/ape/string.h \
+	/sys/include/ape/sys/types.h /sys/include/ape/stddef.h /386/include/ape/stdarg.h \
+	/sys/include/ape/stdio.h /sys/include/ape/assert.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../testprof/ -I../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+sober128.$O: sober128tab.c 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

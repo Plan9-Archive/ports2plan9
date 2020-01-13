@@ -1,0 +1,17 @@
+</$objtype/mkfile
+default:VQ:
+	;
+
+install:VQ:
+	;
+
+clean:VQ:
+	;
+
+nuke:VQ:
+	;
+
+install:V:
+	cp editline.3.roff /sys/man/3/editline
+	cp editrc.5.roff /sys/man/5/editrc
+

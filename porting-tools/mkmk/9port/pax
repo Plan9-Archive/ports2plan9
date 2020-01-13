@@ -1,0 +1,8 @@
+#!/bin/rc
+
+@{
+	cd /sys/src/ape/cmd/pax
+	mkmk '-DPATH_MAX=1024' -B -x paxdir.c -x paxdir.h -o pax > mkfile.mkmk
+}
+
+

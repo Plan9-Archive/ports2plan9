@@ -1,0 +1,5 @@
+#define NO_MKDTEMP
+#define NO_MKSTEMP
+
+
+

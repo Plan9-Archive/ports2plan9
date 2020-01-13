@@ -1,0 +1,3 @@
+this is a port of the Heirloom libuxre to Plan9/APE
+
+mkmk -s libuxre -a -B -S -I. -I/sys/include/ape -I/$objtype/include/ape -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -x onefile.c > mkfile

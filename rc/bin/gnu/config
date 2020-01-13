@@ -1,0 +1,46 @@
+#!/bin/rc
+
+CC=gcc
+CFLAGS='-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION'
+
+opts = ( --build $objtype-lucent-plan9 )
+opts = ( $opts --bindir /$objtype/bin/gnu )
+opts = ( $opts --datadir /sys/lib/gnu )
+opts = ( $opts --exec-prefix /$objtype/bin/gnu )
+opts = ( $opts --includedir /sys/include/gnu )
+opts = ( $opts --oldincludedir /$objtype/include/gnu )
+opts = ( $opts --libdir /$objtype/lib/gnu )
+opts = ( $opts --prefix /sys/lib/gnu )
+opts = ( $opts --sbindir /$objtype/bin/gnu )
+opts = ( $opts --sharedstatedir /lib  )
+opts = ( $opts --disable-nls )
+opts = ( $opts --disable-dso )
+
+# fix config.sub if present
+csub=`{du -a | grep config.sub | awk '{print $2}'}
+if (~ $#csub 1) {
+	sed  's/\-gnu\* \| \-bsd/\-plan9\* \| &/' $csub > csub.$pid
+	mv csub.$pid $csub
+}
+
+# fix build-aux/config.sub if present
+csub=`{du -a | grep build-aux/config.sub | awk '{print $2}'}
+if (~ $#csub 1) {
+	sed  's/\-gnu\* \| \-bsd/\-plan9\* \| &/' $csub > csub.$pid
+	mv csub.$pid $csub
+}
+
+# fix configure
+lsdi=`{grep 'ls \-di' configure}
+if (! ~ $#lsdi 0) {
+	sed 's/ls \-di/ls/' < configure > conf.$pid
+	mv conf.$pid configure
+}
+mvf=`{grep 'mv \-f' configure}
+if (! ~ $#mvf 0) {
+	sed 's/mv \-f/mv/' < configure > conf.$pid
+	mv conf.$pid configure
+}
+
+chmod 0755 configure
+echo gnu/gsh configure $* $opts

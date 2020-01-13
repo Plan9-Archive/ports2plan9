@@ -1,0 +1,7 @@
+This is the root of the ports2plan9 repository
+
+Each package resides in its own sub-directory with sepparate installation instructions.
+
+Licensing information is also given sepparately for each package.
+
+Some packages may reside under a "master directory" (like X11/ or python/ or similar) grouping packages with a major dependency.

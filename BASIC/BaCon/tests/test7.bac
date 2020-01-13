@@ -1,0 +1,27 @@
+REM Testing BASIC compiler
+
+PRINT "==================================="
+PRINT "Test 7: Testing LEFT, RIGHT, CONCAT"
+PRINT "==================================="
+PRINT
+
+LET a$ = "Hello "
+LET b$ = CONCAT$(a$, "cruel ")
+
+PRINT b$
+
+PRINT RIGHT$(b$, 3)
+PRINT RIGHT$(b$, 2)
+PRINT RIGHT$(b$, 5)
+
+PRINT LEFT$(b$, 3)
+PRINT LEFT$(b$, 1)
+PRINT LEFT$(b$, 5)
+
+PRINT "Sleeping half second..."
+SLEEP 500
+
+PRINT CONCAT$("1", "2", "3", "4", "5")
+PRINT CONCAT$("Goodbye!")
+
+END

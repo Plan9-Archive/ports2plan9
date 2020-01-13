@@ -1,0 +1,48 @@
+</$objtype/mkfile
+LIB=libcommon.a
+OFILES=vpfmt.$O utmpx.$O sysv3.$O strtol.$O sigset.$O sigrelse.$O sigpause.$O signal.$O \
+	sigignore.$O sighold.$O sfile.$O setuxlabel.$O setlabel.$O regexpr.$O pfmt_label.$O \
+	pfmt.$O pathconf.$O oblok.$O memalign.$O ib_seek.$O ib_read.$O ib_popen.$O \
+	ib_open.$O ib_getw.$O ib_getlin.$O ib_free.$O ib_close.$O ib_alloc.$O gmatch.$O \
+	getopt.$O getdir.$O asciitype.$O CHECK.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -DNEED_ALLOCA_H -DNEED_MALLOC_H -DNEED_UTMPX_H -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -DPLAN9
+
+CHECK.$O: 
+asciitype.$O: asciitype.h 
+getdir.$O: getdir.h sys/dirent.h 
+getopt.$O: msgselect.h alloca.h 
+gmatch.$O: mbtowi.h 
+ib_alloc.$O: iblok.h memalign.h malloc.h 
+ib_close.$O: iblok.h 
+ib_free.$O: iblok.h 
+ib_getlin.$O: iblok.h 
+ib_getw.$O: mbtowi.h iblok.h 
+ib_open.$O: iblok.h 
+ib_popen.$O: iblok.h 
+ib_read.$O: iblok.h 
+ib_seek.$O: iblok.h 
+oblok.$O: oblok.h memalign.h malloc.h 
+pfmt.$O: pfmt.h 
+regexpr.$O: regexp.h regexpr.h 
+setuxlabel.$O: msgselect.h 
+sfile.$O: 
+utmpx.$O: 
+vpfmt.$O: pfmt.h 
+
+
+install:V:
+	cp libcommon.a /$objtype/lib/ape/
+	mkdir -p /sys/include/ape/heirloom
+	cp apeheaders/*.h /sys/include/ape/heirloom/
+
+nuke:V:
+	mk clean
+	rm -f $LIB
+	rm -f /$objtype/lib/ape/libcommon.a
+	rm -rf /sys/include/ape/heirloom

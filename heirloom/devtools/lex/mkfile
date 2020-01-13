@@ -1,0 +1,25 @@
+</$objtype/mkfile
+MKFILES=mkfile.lib mkfile.bin
+
+all:V:
+	for (i in $MKFILES)
+		@{ mk -f $i }
+
+install:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+	mv libl.a$O /$objtype/lib/ape/libl.a
+	cp lex.1 /sys/man/1ape/lex
+	cp nceucform /sys/lib/heirloom/
+	cp ncform /sys/lib/heirloom/
+	cp nrform /sys/lib/heirloom/
+
+
+clean:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+
+nuke:V:
+	for (i in $MKFILES)
+		@{ mk -f $i $target }
+

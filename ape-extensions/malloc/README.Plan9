@@ -1,0 +1,6 @@
+This is a dlmalloc implementation, which can be used to extend the standard APE libraries.
+
+The sources are released under public domain, so risk-free to use in any project.
+
+
+mkmk -l libmalloc -B -S -I. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DPLAN9_APE > mkfile 

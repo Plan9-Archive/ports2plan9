@@ -1,0 +1,30 @@
+</$objtype/mkfile
+LIB=../libaprutil-1.a$O
+OFILES=apr_ldap_rebind.$O apr_ldap_stub.$O apr_ldap_option.$O apr_ldap_init.$O \
+	apr_ldap_url.$O 
+HFILES=../include/apr_ldap.h /sys/include/ape/apr-1/apr_strings.h /sys/include/ape/apr-1/apr_pools.h \
+	../include/apu.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE \
+	-D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -UAPU_DSO_BUILD 
+
+apr_ldap_url.$O: /sys/include/ape/apr-1/apr_general.h 
+apr_ldap_init.$O: /sys/include/ape/apr-1/apr_errno.h apr_dso.h /sys/include/ape/apr-1/apr.h \
+	../include/private/apu_internal.h ../include/private/apu_config.h /sys/include/ape/apr-1/apr.h 
+apr_ldap_option.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_tables.h \
+	/sys/include/ape/apr-1/apr_errno.h ../include/private/apu_config.h /sys/include/ape/apr-1/apr.h 
+apr_ldap_stub.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_version.h \
+	../include/apu_version.h /sys/include/ape/apr-1/apr_errno.h apr_dso.h apr_dso.h \
+	/sys/include/ape/apr-1/apr.h ../include/private/apu_internal.h ../include/private/apu_config.h \
+	/sys/include/ape/apr-1/apr.h 
+apr_ldap_rebind.$O: ../include/apr_ldap_rebind.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h \
+	../include/private/apu_config.h /sys/include/ape/apr-1/apr.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

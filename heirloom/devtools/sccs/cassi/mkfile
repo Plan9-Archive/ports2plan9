@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=libcassi.a
+OFILES=cmrcheck.$O deltack.$O error.$O filehand.$O gf.$O 
+HFILES=../hdr/filehand.h ../hdr/defines.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../hdr -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTESNION 
+
+gf.$O: ../hdr/i18n.h 
+error.$O: 
+deltack.$O: ../hdr/ccstypes.h ../hdr/i18n.h ../hdr/had.h 
+cmrcheck.$O: ../hdr/i18n.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

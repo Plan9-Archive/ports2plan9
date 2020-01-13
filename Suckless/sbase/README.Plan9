@@ -1,0 +1,29 @@
+This package is attempted to be built using the Makefile
+
+The Makefile is changed to Plan9/APE compatible directory structure.
+Since stuff seems to be complicated, I make a mkfile-based build.
+
+WARNING:
+
+highly experimental. This package will overwrite the APE utilities - including those in /rc/bin/ape !
+
+Purpose:
+
+Several configure scripts etc expects functionality not provided by the APE utilities.
+
+excluded binaries are put in scraps.
+first build the library in util...
+
+excluded binaries:
+ln: symlinks unsupported
+
+copied libgen.h + dependencies + library source from newlib:
+
+basename, dirname : need libgen.h
+cp: requires the enmasse object in libutil, which needs libgen.h
+
+
+mkmk -m -I. -S -B -a -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REGEXP_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D'S_ISSOCK(m)=S_ISFIFO(m)' -H./util/libutil.a -x .git -x scraps -x util -x sys > mkfile
+
+I assume that a "socket" on Plan9 just as well could be a pipe...
+defined undefined stuff in util.h

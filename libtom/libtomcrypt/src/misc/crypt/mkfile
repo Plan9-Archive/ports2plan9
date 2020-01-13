@@ -1,0 +1,26 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=crypt.$O crypt_argchk.$O crypt_cipher_descriptor.$O crypt_cipher_is_valid.$O \
+	crypt_find_cipher.$O crypt_find_cipher_any.$O crypt_find_cipher_id.$O crypt_find_hash.$O \
+	crypt_find_hash_any.$O crypt_find_hash_id.$O crypt_find_hash_oid.$O crypt_find_prng.$O \
+	crypt_fsa.$O crypt_hash_descriptor.$O crypt_hash_is_valid.$O crypt_ltc_mp_descriptor.$O \
+	crypt_prng_descriptor.$O crypt_prng_is_valid.$O crypt_register_cipher.$O \
+	crypt_register_hash.$O crypt_register_prng.$O crypt_unregister_cipher.$O \
+	crypt_unregister_hash.$O crypt_unregister_prng.$O 
+HFILES=tomcrypt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/$objtype/include/ape -I../../../testprof/ -I../../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+crypt_fsa.$O: /$objtype/include/ape/stdarg.h 
+crypt_argchk.$O: /sys/include/ape/signal.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

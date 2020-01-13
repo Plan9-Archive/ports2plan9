@@ -1,0 +1,19 @@
+This directory is simply a mirror of handy porting tools regularly used when porting and packaging.
+
+
+mkmk comes from contrib: steve/mkmk
+
+____
+
+pkg comes from 9front
+
+____
+
+rc/config comes from /n/sources/contrib/fgb/rc/config
+
+with some minor changes:
+attempt to make it $objtype-agnostic
+"mv -f" replaced with "mv" in config scripts
+
+todo: automatic introduction of a line "GREP=grep" at the top of "configure" to suppress errors related to this.
+

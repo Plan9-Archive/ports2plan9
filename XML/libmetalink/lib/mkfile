@@ -1,0 +1,45 @@
+</$objtype/mkfile
+LIB=libmetalink.a$O
+OFILES=libexpat_metalink_parser.$O timegm.$O strptime.$O metalink_helper.$O metalink_string_buffer.$O \
+	metalink_list.$O metalink_stack.$O metalink_session_data.$O metalink_parser_common.$O \
+	metalink_pctrl.$O metalink_pstate_v4.$O metalink_pstate_v3.$O metalink_pstate.$O \
+	metalink_pstm.$O metalink_types.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I.. -I. -I./includes -I/sys/include/ape/libxml2 -B -D_POSIX_SOURCE -D_SUSV2_SOURCE \
+	-D_BSD_EXTENSION -D_NET_EXTENSION 
+
+metalink_types.$O: metalink_config.h includes/metalink/metalink_types.h 
+metalink_pstm.$O: metalink_pstm.h 
+metalink_pstate.$O: metalink_helper.h metalink_pstm.h metalink_pstate.h 
+metalink_pstate_v3.$O: metalink_helper.h metalink_pstm.h metalink_pstate_v3.h 
+metalink_pstate_v4.$O: timegm.h strptime.h metalink_helper.h metalink_pstm.h metalink_pstate_v4.h 
+metalink_pctrl.$O: metalink_pctrl.h 
+metalink_parser_common.$O: metalink_pctrl.h metalink_parser_common.h 
+metalink_session_data.$O: metalink_string_buffer.h metalink_session_data.h 
+metalink_stack.$O: metalink_stack.h 
+metalink_list.$O: metalink_list.h 
+metalink_string_buffer.$O: metalink_string_buffer.h 
+metalink_helper.$O: includes/metalink/metalink.h metalink_config.h metalink_helper.h 
+strptime.$O: metalink_config.h strptime.h 
+timegm.$O: stdint.h metalink_config.h timegm.h 
+libexpat_metalink_parser.$O: includes/metalink/metalink.h metalink_config.h metalink_string_buffer.h \
+	metalink_stack.h metalink_session_data.h includes/metalink/metalink.h metalink_config.h \
+	metalink_stack.h metalink_pstm.h includes/metalink/metalink.h metalink_config.h \
+	metalink_session_data.h includes/metalink/metalink.h metalink_config.h \
+	metalink_parser_common.h metalink_pstate.h includes/metalink/metalink.h \
+	metalink_config.h metalink_list.h includes/metalink/metalink.h metalink_config.h \
+	metalink_pctrl.h metalink_pstate.h includes/metalink/metalink.h metalink_config.h \
+	metalink_pstate_v4.h metalink_pstate.h includes/metalink/metalink.h metalink_config.h \
+	metalink_pstate_v3.h includes/metalink/metalink.h metalink_config.h metalink_pstate.h \
+	includes/metalink/metalink_parser.h includes/metalink/metalink_types.h \
+	includes/metalink/metalink_error.h includes/metalink/metalinkver.h includes/metalink/metalink.h \
+	metalink_config.h metalink_pstm.h metalink_config.h includes/metalink/metalink_error.h \
+	includes/metalink/metalink_error.h includes/metalink/metalink_types.h includes/metalink/metalink_parser.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

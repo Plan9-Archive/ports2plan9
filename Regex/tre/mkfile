@@ -1,0 +1,21 @@
+</$objtype/mkfile
+DIRS=doc lib src 
+
+all:V:
+	for (i in $DIRS)
+		@{ cd $i; mk }
+
+install:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+	mkdir -p /sys/include/ape/tre
+	cp apeheaders/*.h /sys/include/ape/tre/
+
+clean:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ cd $i; mk $target }
+

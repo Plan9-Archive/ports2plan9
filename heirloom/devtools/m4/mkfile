@@ -1,0 +1,17 @@
+</$objtype/mkfile
+TARG=m4
+OFILES=m4.$O m4ext.$O m4macs.$O y.tab.$O version.$O 
+YFILES=m4y_xpg4.y 
+BIN=/$objtype/bin/ape
+
+</sys/src/cmd/mkone
+
+YACC=byacc
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DXPG4 
+
+m4y_xpg4.$O: m4.h 
+m4macs.$O: m4.h 
+m4ext.$O: m4.h 
+m4.$O: m4.h 

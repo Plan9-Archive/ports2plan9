@@ -1,0 +1,25 @@
+</$objtype/mkfile
+BUILDS=lib bin 
+
+all:V:
+	for (i in $BUILDS)
+		@{ mk -f mkfile.$BUILDS }
+
+install:V:
+	for (i in $DIRS)
+		@{ mk -f mkfile.$BUILDS $target }
+	mv libsqlite3.a$O /$objtype/lib/ape/libsqlite3.a
+	cp sqlite3.h.ape /sys/include/ape/sqlite3.h
+	cp sqlite3ext.h.ape /sys/include/ape/sqlite3ext.h
+	mkdir -p /$objtype/lib/ape/pkgconfig
+	cp sqlite3.pc  /$objtype/lib/ape/pkgconfig/
+	cp sqlite3.1 /sys/man/1/sqlite3
+
+clean:V:
+	for (i in $DIRS)
+		@{ mk -f mkfile.$BUILDS $target }
+
+nuke:V:
+	for (i in $DIRS)
+		@{ mk -f mkfile.$BUILDS $target }
+

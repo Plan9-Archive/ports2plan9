@@ -1,0 +1,40 @@
+</$objtype/mkfile
+LIB=/$objtype/lib/ape/libhubbub.a
+OFILES=after_after_body.$O after_after_frameset.$O after_body.$O after_frameset.$O \
+	after_head.$O before_head.$O before_html.$O detect.$O entities.$O errors.$O \
+	generic_rcdata.$O in_body.$O in_caption.$O in_cell.$O in_column_group.$O \
+	in_foreign_content.$O in_frameset.$O in_head.$O in_head_noscript.$O in_row.$O \
+	in_select.$O in_select_in_table.$O in_table.$O in_table_body.$O initial.$O \
+	parser.$O string.$O tokeniser.$O treebuilder.$O 
+HFILES=utils.h treebuilder.h internal.h modes.h /sys/include/ape/string.h /sys/include/ape/assert.h 
+
+</sys/src/cmd/mksyslib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../include -I/sys/include/ape -I/386/include/ape -I. -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION 
+
+treebuilder.$O: string.h /sys/include/ape/stdio.h 
+tokeniser.$O: tokeniser.h entities.h parserutilserror.h /sys/include/ape/parserutils/charset/utf8.h \
+	/sys/include/ape/stdio.h /sys/include/ape/stdbool.h 
+string.$O: string.h /sys/include/ape/stdbool.h /sys/include/ape/inttypes.h /sys/include/ape/stddef.h 
+parser.$O: ../include/hubbub/errors.h /sys/include/ape/parserutils/errors.h parserutilserror.h \
+	tokeniser.h detect.h ../include/hubbub/types.h ../include/hubbub/tree.h \
+	../include/hubbub/functypes.h ../include/hubbub/errors.h /sys/include/ape/inttypes.h \
+	/sys/include/ape/stdbool.h ../include/hubbub/parser.h /sys/include/ape/parserutils/input/inputstream.h \
+	/sys/include/ape/parserutils/charset/mibenum.h 
+initial.$O: string.h 
+in_table.$O: string.h 
+in_head.$O: string.h detect.h /sys/include/ape/parserutils/charset/mibenum.h 
+in_foreign_content.$O: string.h 
+errors.$O: ../include/hubbub/errors.h 
+entities.$O: ../include/hubbub/functypes.h ../include/hubbub/errors.h /sys/include/ape/inttypes.h \
+	entities.h 
+detect.$O: /sys/include/ape/parserutils/errors.h /sys/include/ape/inttypes.h detect.h \
+	../include/hubbub/types.h /sys/include/ape/parserutils/functypes.h /sys/include/ape/parserutils/errors.h \
+	/sys/include/ape/stdbool.h /sys/include/ape/inttypes.h /sys/include/ape/parserutils/charset/mibenum.h \
+	/sys/include/ape/stdbool.h 
+nuke:V:
+	mk clean
+	rm -f $LIB

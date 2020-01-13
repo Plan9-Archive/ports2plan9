@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=eax_addheader.$O eax_decrypt.$O eax_decrypt_verify_memory.$O eax_done.$O \
+	eax_encrypt.$O eax_encrypt_authenticate_memory.$O eax_init.$O eax_test.$O 
+HFILES=tomcrypt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../../testprof/ -I../../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

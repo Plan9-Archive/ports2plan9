@@ -1,0 +1,42 @@
+We have an issue with gnu/as not being able to handle the APE libs asm files.
+
+"solution": re-write all .s files to fit gnu/as
+as templates, I use crt0.s and the .s files from the old ported apelibs.
+
+setjmp.s and tas.s are copied from the original APE lib port
+
+notes on porting:
+
+it seems like 
+			FP=%esp
+			AX=%eax
+			BX=%edx / %edi
+			SP=%esi / %ebp ... but no logic could be found.
+			
+I gave up on trying to understand Assembler and try the following instead:
+
+Cheating:
+
+The following asm files were removed in favour of the .c files found in ../gen
+	memchr.s
+	  memcmp.s
+	  memcpy.s
+	  memmove.s
+	  memset.s
+	  strchr.s
+	  strlen.s
+	  strcat.s
+	  strcpy.s
+	  
+The following asm files were replaced by new .c files in ../gen
+	  cycles.s
+	  main9.s (from src/lib9/main.c in plan9port ...hopefully the correct approximation)
+
+remaining asm files to be fought with:
+	  main9p.s
+	  vlop.s
+	  
+	  those will be temporarily inactivated in the mkfile
+	  
+
+		     

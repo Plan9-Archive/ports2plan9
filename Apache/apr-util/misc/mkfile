@@ -1,0 +1,78 @@
+</$objtype/mkfile
+LIB=../libaprutil-1.a$O
+OFILES=apr_thread_pool.$O apr_queue.$O apr_rmm.$O apr_date.$O apu_version.$O apr_reslist.$O \
+	apu_dso.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I../include -I../include/private -I/sys/include/ape/apr-1 -B -D_POSIX_SOURCE \
+	-D_SUSV2_SOURCE -D_BSD_EXTENSION -D_LIMITS_EXTENSION -D_RESEARCH_SOURCE \
+	-D_NET_EXTENSION -D_C99_SNPRINTF_EXTENSION -DPLAN9 -UAPU_DSO_BUILD 
+
+apu_dso.$O: ../include/apu_version.h ../include/apu.h apr_dso.h /sys/include/ape/apr-1/apr.h \
+	../include/private/apu_internal.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_atomic.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_env.h /sys/include/ape/apr-1/apr_file_io.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_hash.h /sys/include/ape/apr-1/apr_strings.h \
+	apr_dso.h /sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	../include/apu.h ../include/private/apu_config.h 
+apr_reslist.$O: /sys/include/ape/apr-1/apr_ring.h /sys/include/ape/apr-1/apr_thread_cond.h \
+	/sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_strings.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h ../include/apu.h /sys/include/ape/apr-1/apr.h \
+	../include/apr_reslist.h ../include/apu.h 
+apu_version.$O: ../include/apu.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_version.h \
+	../include/apu_version.h ../include/apu.h /sys/include/ape/apr-1/apr_general.h 
+apr_date.$O: /sys/include/ape/apr-1/apr_time.h ../include/apu.h ../include/apr_date.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_lib.h \
+	/sys/include/ape/apr-1/apr.h 
+apr_rmm.$O: /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_strings.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_lib.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_rwlock.h \
+	/sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_proc_mutex.h \
+	../include/apr_anylock.h ../include/apu.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h ../include/apr_rmm.h \
+	/sys/include/ape/apr-1/apr_general.h 
+apr_queue.$O: /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	../include/apu.h ../include/apr_queue.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_thread_cond.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_portable.h ../include/apu.h /sys/include/ape/apr-1/apr.h 
+apr_thread_pool.$O: /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_shm.h apr_dso.h \
+	/sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_proc_mutex.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_proc_mutex.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_global_mutex.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_inherit.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_file_io.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_network_io.h \
+	/sys/include/ape/apr-1/apr_file_io.h /sys/include/ape/apr-1/apr_thread_proc.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_portable.h \
+	/sys/include/ape/apr-1/apr_thread_mutex.h /sys/include/ape/apr-1/apr_time.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_thread_cond.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr_ring.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_inherit.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_tables.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_user.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_info.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr_pools.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_time.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_mutex.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h \
+	/sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_allocator.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_want.h /sys/include/ape/apr-1/apr_errno.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_general.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_errno.h /sys/include/ape/apr-1/apr.h \
+	/sys/include/ape/apr-1/apr_pools.h /sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_file_io.h \
+	/sys/include/ape/apr-1/apr.h /sys/include/ape/apr-1/apr_thread_proc.h ../include/apu.h \
+	../include/apr_thread_pool.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

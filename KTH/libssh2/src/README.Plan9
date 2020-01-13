@@ -1,0 +1,6 @@
+gleanded from Makefile:
+we need alloca.c, which is copied from gnulib together with alloca.h
+
+mkmk -l libssh2 -S -B -I. -I../include -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_PLAN9_SOURCE -D_LIMITS_EXTENSION -D_NET_EXTENSION -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION -DHAVE_CONFIG_H -x .deps > mkfile
+
+add install option to /$objtype/lib/ape in mkfile.

@@ -1,0 +1,24 @@
+configure and config.sub edited
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DPLAN9" GREP=grep configure --prefix=/sys --exec-prefix=/$objtype --sbindir=/$objtype/bin --libexecdir=/$objtype/bin --sharedstatedir=/sys/lib/curl --localstatedir=/sys/lib/curl --libdir=/$objtype/lib/ape --includedir=/sys/incldue/ape --datarootdir=/sys --with-random=/dev/random --without-libmetalink --without-libssh2 --without-ssl 
+
+optional:
+--enable-ares
+
+
+Currently, the following support libraries are built/ported:
+
+openssl is apparently a problem during linking, so we skip that one for now...
+apparently - functionality expected by libssh2 and libmetalink is not provided by the old openssl.
+
+zlib
+c-ares
+libssh2
+openssl (old port)
+libmetalink
+
+TODO:
+heimdal (krb5)
+openldap
+updated openssl
+cyassl

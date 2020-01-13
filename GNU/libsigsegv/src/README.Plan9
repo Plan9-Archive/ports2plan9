@@ -1,0 +1,14 @@
+generation of mkfile
+
+mkmk -l libsigsegv -S -B -I. -I.. -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H handler.c stackvma.c leave.c dispatcher.c version.c > mkfile
+
+headers to install:
+sigsegv.h
+
+
+Problems: I had problems getting the library to assemble using mk
+
+alternative strategy:
+ - changed Makefile and libtool to not use "mv -f" "cp -p" or other unsupported stuff.
+ - ran gmake. installed to DESTDIR
+ - manually moved stuff around and edited the installed header

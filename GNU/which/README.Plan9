@@ -1,0 +1,13 @@
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS" GREP=grep configure --prefix=/sys --exec-prefix=/$objtype --libdir=/$objtype/lib/ape --includedir=/sys/include/ape
+
+manually build libtilde first by cd to tilde and run "mk"
+
+generation of mkfile
+
+mkmk -o which -S -B -I. -I./tilde -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE -D_BSD_EXTENSION -D_NET_EXTENSION -D_LIMITS_EXTENSION -D_C99_SNPRINTF_EXTENSION -D_REGEXP_EXTENSION -DHAVE_SOCK_OPTS -DHAVE_CONFIG_H -x .deps -x tilde -H./tilde/libtilde.a8 > mkfile
+
+change .a8 to .a$O in mkfile
+
+changes: which does not execute under rc and need ape/psh
+
+because of this, which is installed under /$objtype/bin/ape

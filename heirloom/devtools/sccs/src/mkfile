@@ -1,0 +1,29 @@
+</$objtype/mkfile
+TARG=admin comb delta get help prs prt rmchg sccs unget \
+	val vc what 
+LIB=../cassi/libcassi.a ../comobj/libcomobj.a ../mpwlib/libmpw.a 
+BIN=/$objtype/bin/ape
+HFILES=../hdr/i18n.h ../hdr/defines.h ../hdr/fatal.h ../hdr/fatal.h ../hdr/macros.h 
+
+</sys/src/cmd/mkmany
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I../hdr -B -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D_LIMITS_EXTENSION \
+	-DBINDIR="/bin" -DSUSBIN="/bin" -DLIBDIR="/sys/lib/heirloom" 
+
+vc.$O: 
+val.$O: ../hdr/ccstypes.h ../hdr/had.h 
+unget.$O: ../hdr/ccstypes.h ../hdr/had.h 
+sccs.$O: 
+rmchg.$O: ../hdr/filehand.h ../hdr/had.h 
+prt.$O: ../hdr/had.h 
+prs.$O: ../hdr/had.h 
+help.$O: ../hdr/ccstypes.h 
+get.$O: ../hdr/ccstypes.h ../hdr/had.h 
+delta.$O: ../hdr/ccstypes.h ../hdr/had.h 
+comb.$O: ../hdr/had.h 
+admin.$O: ../hdr/had.h 
+
+install:V:
+	cp sccsdiff.sh /rc/bin/ape/sccsdiff

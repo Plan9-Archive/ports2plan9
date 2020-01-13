@@ -1,0 +1,79 @@
+</$objtype/mkfile
+
+TARG=make
+OFILES=alloca.$O ar.$O arscan.$O commands.$O default.$O dir.$O expand.$O file.$O \
+	function.$O getloadavg.$O getopt.$O getopt1.$O hash.$O implicit.$O job.$O \
+	main.$O misc.$O read.$O remake.$O remote-stub.$O rule.$O \
+	signame.$O strcache.$O variable.$O version.$O vpath.$O glob.$O fnmatch.$O
+
+#glob.$O fnmatch.$O manually added, destination directory changed to gnu
+
+BIN=/$objtype/bin/gnu
+
+HFILES=make.h gettext.h /sys/include/ape/locale.h /sys/include/ape/inttypes.h /sys/include/ape/string.h \
+	/sys/include/ape/stdlib.h /sys/include/ape/sys/param.h /sys/include/ape/limits.h \
+	/sys/include/ape/unistd.h /sys/include/ape/errno.h /sys/include/ape/time.h \
+	/sys/include/ape/sys/time.h /sys/include/ape/ctype.h /sys/include/ape/stdio.h \
+	/sys/include/ape/signal.h /sys/include/ape/sys/stat.h /sys/include/ape/sys/types.h \
+	config.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -p -B -I. -Iglob -I/sys/include/ape -I/$objtype/include/ape -DPLAN9 -DHAVE_CONFIG_H \
+	-D_LIMITS_EXTENSION -DHAVE_SYS_RESOURCE_H -DHAVE_STRCASECMP -DHAVE_STRNCASECMP \
+	-DHAVE_SETLOCALE -DHAVE_FILENO -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_RESEARCH_SOURCE -D_BSD_EXTENSION -D_C99_SNPRINTF_EXTENSION
+
+vpath.$O: hash.h variable.h hash.h filedef.h 
+variable.$O: hash.h rule.h hash.h variable.h commands.h job.h hash.h filedef.h \
+	dep.h /sys/include/ape/assert.h 
+strcache.$O: hash.h /sys/include/ape/assert.h 
+rule.$O: rule.h hash.h variable.h commands.h job.h hash.h filedef.h dep.h /sys/include/ape/assert.h 
+remote-stub.$O: commands.h job.h hash.h filedef.h 
+remake.$O: /sys/include/ape/fcntl.h /sys/include/ape/assert.h debug.h hash.h variable.h \
+	dep.h commands.h job.h hash.h filedef.h 
+read.$O: /sys/include/ape/pwd.h hash.h debug.h rule.h hash.h variable.h commands.h \
+	job.h hash.h filedef.h dep.h glob/glob.h /sys/include/ape/assert.h 
+misc.$O: /$objtype/include/ape/stdarg.h debug.h dep.h 
+main.$O: /sys/include/ape/fcntl.h /sys/include/ape/assert.h getopt.h debug.h rule.h \
+	commands.h job.h hash.h variable.h hash.h filedef.h dep.h 
+job.$O: /sys/include/ape/sys/wait.h debug.h hash.h variable.h commands.h hash.h \
+	filedef.h debug.h job.h /sys/include/ape/assert.h 
+implicit.$O: commands.h job.h hash.h variable.h debug.h dep.h rule.h hash.h filedef.h 
+hash.$O: hash.h 
+getopt1.$O: getopt.h 
+getopt.$O: getopt.h 
+getloadavg.$O: /sys/include/ape/fcntl.h 
+function.$O: debug.h commands.h job.h dep.h hash.h variable.h hash.h filedef.h 
+file.$O: hash.h debug.h hash.h variable.h commands.h job.h hash.h filedef.h dep.h \
+	/sys/include/ape/assert.h 
+expand.$O: rule.h hash.h variable.h commands.h job.h hash.h filedef.h /sys/include/ape/assert.h 
+dir.$O: glob/glob.h /sys/include/ape/dirent.h hash.h 
+default.$O: commands.h job.h dep.h rule.h hash.h variable.h hash.h filedef.h 
+commands.$O: commands.h /sys/include/ape/fcntl.h job.h hash.h variable.h hash.h \
+	filedef.h dep.h 
+arscan.$O: /sys/include/ape/fcntl.h 
+
+#copied from Andrey's mkfile
+glob.$O: glob/glob.c
+	$CC $CFLAGS glob/glob.c
+
+fnmatch.$O: glob/fnmatch.c
+	$CC $CFLAGS glob/fnmatch.c
+
+
+clean:V:
+	rm -f [$OS].* *.[$OS] $CLEANFILES
+
+nuke:V:
+	rm -f *.[$OS] y.tab.? y.debug y.output [$OS].$TARG $TARG
+	rm -f /sys/lib/gnu/man/man1/make
+	rm -f /rc/bin/ape/gmake
+
+install:V:
+	mkdir -p /sys/lib/gnu/man/man1
+	cp make.1 /sys/lib/gnu/man/man1/make
+	cp gmake.rc /rc/bin/ape/gmake
+	chmod +x /rc/bin/ape/gmake
+

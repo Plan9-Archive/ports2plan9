@@ -1,0 +1,7 @@
+mkmk -o xmlwf -I. -I.. -I../lib -S -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -H../libexpat.a8 -x win32filemap.c -x unixfilemap.c > mkfile
+
+.a8 changed to .a$O in mkfile
+
+unixfilemap.c depends on sys/mman.h
+
+we make a variant of this file called plan9filemap.c

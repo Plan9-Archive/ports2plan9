@@ -1,0 +1,10 @@
+Changes in version 1.2:
+
+The option "-F, --recompress", which forces recompression of files whose
+name already has the ".lz" or ".tlz" suffix, has been added.
+
+Print only one status line for each multimember file when only one "-v"
+is specified.
+
+For large values of "--match-length", compression ratio has been
+slightly increased and compression time has been reduced by up to 6%.

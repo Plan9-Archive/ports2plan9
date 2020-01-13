@@ -1,0 +1,51 @@
+REM Testing BASIC compiler
+
+PRINT "========================="
+PRINT "Test 4: Testing PUSH/PULL"
+PRINT "========================="
+PRINT
+
+REM Get passed values from stack in a sub
+SUB show_values
+
+PRINT "Pulling the values again, a string: ";
+PULL dat$
+PRINT dat$
+
+PRINT "Pulling an integer: ";
+PULL q
+PRINT q
+
+ENDSUB
+
+REM Program starts here
+PRINT "Pushing some values..."
+PUSH 5.678
+PUSH 1234
+PUSH "abcd"
+
+PRINT "Showing a string from stack: ";
+PULL a$
+PRINT a$
+
+PRINT "Showing a value from stack: ";
+PULL x
+PRINT x
+
+DECLARE y TYPE double
+PRINT "Showing a value from stack: ";
+PULL y
+PRINT y
+
+PRINT "Another pull takes last value: ";
+PULL y
+PRINT y
+
+PRINT "Now pushing some variables..."
+x = 432
+PUSH x
+b$ = "Bacon is nice"
+PUSH b$
+
+REM SUB is already defined, no need to use CALL here
+show_values

@@ -1,0 +1,15 @@
+config.sub fixed first
+
+CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION" configure --prefix=/sys/lib/png --exec-prefix=/$objtype --bindir=/$objtype/bin/ape --sbindir=/$objtype/bin/ape --libexecdir=/$objtype/bin/ape --includedir=/sys/include/ape
+
+generation of mkfile:
+
+mkmk -l libpng15 -S -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_CONFIG_H -DPNG_CONFIGURE_LIBPNG -x .deps -x arm -x contrib -x projects -x scripts -x pngtest.c -x example.c -x apeheaders > mkfile
+
+install headers: png.h pngconf.h pnglibconf.h
+modified with #pragma lib "/$M/lib/ape/libpng.a"
+ /sys/include/ape/
+install libpng-config to /rc/bin/ape
+install lipng.pc to /$objtype/lib/ape/pkgconfig/
+
+in contrib/pngminus, the png2pnm and pnm2png binaries are built, which are installed at /$objtype/bin

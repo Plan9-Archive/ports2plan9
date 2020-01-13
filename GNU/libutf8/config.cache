@@ -1,0 +1,53 @@
+# This file is a shell script that caches the results of configure
+# tests run on this system so they can be shared between configure
+# scripts and configure runs.  It is not useful on other systems.
+# If it contains results you don't want to keep, you may remove or edit it.
+#
+# By default, configure uses ./config.cache as the cache file,
+# creating it if it does not exist already.  You can give configure
+# the --cache-file=FILE option to use a different cache file; that is
+# what configure does when it calls configure scripts in
+# subdirectories, so they share the cache.
+# Giving --cache-file=/dev/null disables caching, for debugging configure.
+# config.status only pays attention to the cache file if you give it the
+# --recheck option to rerun configure.
+#
+ac_cv_exeext=${ac_cv_exeext=no}
+ac_cv_func_strtof=${ac_cv_func_strtof=no}
+ac_cv_func_strtold=${ac_cv_func_strtold=no}
+ac_cv_func_strtoll=${ac_cv_func_strtoll=yes}
+ac_cv_func_strtoull=${ac_cv_func_strtoull=yes}
+ac_cv_func_vfprintf=${ac_cv_func_vfprintf=yes}
+ac_cv_func_vsnprintf=${ac_cv_func_vsnprintf=yes}
+ac_cv_func_vsprintf=${ac_cv_func_vsprintf=yes}
+ac_cv_header_inttypes_h=${ac_cv_header_inttypes_h=yes}
+ac_cv_header_langinfo_h=${ac_cv_header_langinfo_h=yes}
+ac_cv_header_minix_config_h=${ac_cv_header_minix_config_h=yes}
+ac_cv_header_stdint_h=${ac_cv_header_stdint_h=yes}
+ac_cv_header_wchar_h=${ac_cv_header_wchar_h=yes}
+ac_cv_header_wctype_h=${ac_cv_header_wctype_h=yes}
+ac_cv_path_LD=${ac_cv_path_LD=/bin/ld}
+ac_cv_path_NM=${ac_cv_path_NM=/bin/nm}
+ac_cv_prog_CC=${ac_cv_prog_CC=cc}
+ac_cv_prog_CPP=${ac_cv_prog_CPP='cc -E'}
+ac_cv_prog_LN_S=${ac_cv_prog_LN_S=ln}
+ac_cv_prog_RANLIB=${ac_cv_prog_RANLIB=ranlib}
+ac_cv_prog_cc_cross=${ac_cv_prog_cc_cross=no}
+ac_cv_prog_cc_works=${ac_cv_prog_cc_works=yes}
+ac_cv_prog_gcc=${ac_cv_prog_gcc=no}
+ac_cv_prog_gnu_ld=${ac_cv_prog_gnu_ld=no}
+ac_cv_prog_make_make_set=${ac_cv_prog_make_make_set=yes}
+ac_cv_sys_aix=${ac_cv_sys_aix=no}
+ac_cv_sys_isc_posix=${ac_cv_sys_isc_posix=no}
+cl_cv_func_alloca=${cl_cv_func_alloca=no}
+cl_cv_header_alloca_h=${cl_cv_header_alloca_h=no}
+cl_cv_host=${cl_cv_host=unknown-unknown-unknown}
+cl_cv_path_install=${cl_cv_path_install='/bin/install -c'}
+cl_cv_prog_LN=${cl_cv_prog_LN=ln}
+cl_cv_prog_LN_S=${cl_cv_prog_LN_S=ln}
+cl_cv_prog_cp=${cl_cv_prog_cp=cp}
+u8_cv_c_intmax_t=${u8_cv_c_intmax_t=no}
+u8_cv_c_long_double=${u8_cv_c_long_double=yes}
+u8_cv_c_long_long=${u8_cv_c_long_long=yes}
+u8_cv_wchar_bits=${u8_cv_wchar_bits=none}
+u8_cv_wchar_unsigned=${u8_cv_wchar_unsigned=none}

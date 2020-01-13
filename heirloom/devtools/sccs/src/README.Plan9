@@ -1,0 +1,5 @@
+
+mkmk -m -S -B -a -I../hdr -D_POSIX_SOURCE -D_BSD_EXTENSION -D_SUSV2_SOURCE -D_LIMITS_EXTENSION -D'BINDIR="/bin"' -D'SUSBIN="/bin"' -D'LIBDIR="/sys/lib/heirloom"' -H../cassi/libcassi.a -H../comobj/libcomobj.a -H../mpwlib/libmpw.a -x version.c > mkfile
+
+mkfile manually edited to work.
+sccsdiff installed to /rc/bin/ape

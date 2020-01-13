@@ -1,0 +1,23 @@
+REM Testing BASIC compiler
+PRINT "==============================="
+PRINT "Test 14: Testing ERROR CATCHING"
+PRINT "==============================="
+PRINT
+
+TRAP LOCAL
+
+CATCH GOTO error_msg
+
+PRINT "\nTrying to open non-existing file..."
+OPEN "non-existing.txt" FOR READING AS myfile
+
+PRINT "Trying an illegal peek..."
+LET q = PEEK(1234)
+
+PRINT "\nEnd test."
+END
+
+LABEL error_msg
+    PRINT "Found error ", ERROR
+    PRINT "Message is: ", ERR$(ERROR)
+    RESUME

@@ -1,0 +1,20 @@
+</$objtype/mkfile
+LIB=../libexpat.a$O
+OFILES=xmltok_ns.$O xmlrole.$O xmlparse.$O xmltok.$O xmltok_impl.$O 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I.. -B -D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -DHAVE_MEMMOVE 
+
+xmltok.$O: xmltok_ns.c latin1tab.h iasciitab.h latin1tab.h asciitab.h xmltok_impl.c \
+	latin1tab.h iasciitab.h latin1tab.h asciitab.h xmltok_impl.c asciitab.h \
+	latin1tab.h asciitab.h utf8tab.h iasciitab.h utf8tab.h asciitab.h xmltok_impl.c \
+	ascii.h xmltok_impl.h nametab.h xmltok.h internal.h expat_external.h 
+xmlparse.$O: xmlrole.h xmltok.h internal.h expat_external.h expat.h ascii.h 
+xmlrole.$O: ascii.h xmltok.h xmlrole.h internal.h expat_external.h 
+
+nuke:V:
+	mk clean
+	rm -f $LIB

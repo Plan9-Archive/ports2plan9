@@ -1,0 +1,19 @@
+</$objtype/mkfile
+LIB=local.a$O
+OFILES=katja_decrypt_key.$O katja_encrypt_key.$O katja_export.$O katja_exptmod.$O \
+	katja_free.$O katja_import.$O katja_make_key.$O 
+HFILES=tomcrypt.h 
+
+</sys/src/cmd/mklib
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I/sys/include/ape -I/386/include/ape -I../../../testprof/ -I../../headers/ \
+	-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION -D_RESEARCH_SOURCE -D_REENTRANT_SOURCE \
+	-D_C99_SNPRINTF_EXTENSION -D_LIMITS_EXTENSION -D_REGEXP_EXTENSION -DLTC_SOURCE \
+	-DLTC_NO_ASM -DLTC_NO_ROLC 
+
+
+nuke:V:
+	mk clean
+	rm -f $LIB

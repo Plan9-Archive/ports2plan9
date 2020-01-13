@@ -1,0 +1,9 @@
+GREP=grep CFLAGS="-D_POSIX_SOURCE -D_SUSV2_SOURCE -D_BSD_EXTENSION" configure --prefix=/sys --exec-prefix=/$objtype --bindir=/$objtype/bin/ape --includedir=/sys/include/ape --libdir=/$objtype/lib/ape --disable-shared
+
+gmake / gmake DESTDIR=$packagingdir install
+
+post-install to  $packagedir fixes:
+
+remove .la
+move manfiles
+add #pragma lib to headers

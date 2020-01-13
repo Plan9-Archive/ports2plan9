@@ -1,0 +1,16 @@
+</$objtype/mkfile
+TARG=bmake
+OFILES=main.$O 
+LIB=./base.a ./lib.a ./lst.lib/lst.a 
+BIN=/$objtype/bin
+HFILES=trace.h pathnames.h config.h job.h dir.h hash.h make.h nonints.h make_malloc.h \
+	buf.h make-conf.h hash.h sprite.h lst.h sprite.h missing/sys/cdefs.h config.h \
+	wait.h 
+
+</sys/src/cmd/mkone
+
+CC=pcc
+LD=pcc
+CFLAGS=-c -I. -I./missing -DHAVE_CONFIG_H -DHAVE_WAITPID 
+
+main.$O: 
